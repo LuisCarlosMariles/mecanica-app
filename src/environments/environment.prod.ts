@@ -1,12 +1,13 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyC7R26oDvr2wnZzchleF4gqrktd-GkMSik",
-    authDomain: "april-tests.firebaseapp.com",
-    projectId: "april-tests",
-    storageBucket: "april-tests.appspot.com",
-    messagingSenderId: "899259352248",
-    appId: "1:899259352248:web:a91d43f7de35a0c104204d",
-    measurementId: "G-DW9D154QR7"
+    apiKey: "AIzaSyADutkwq0N-JLXVSvBCNuWe7cyjuLDiiYs",
+    authDomain: "mecanica-app.firebaseapp.com",
+    databaseURL: "https://mecanica-app-default-rtdb.firebaseio.com",
+    projectId: "mecanica-app",
+    storageBucket: "mecanica-app.appspot.com",
+    messagingSenderId: "947454305691",
+    appId: "1:947454305691:web:b86cd166d12c9dfc692d3e",
+    measurementId: "G-JK3MMG2K65"
   }
 };

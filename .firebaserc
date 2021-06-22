@@ -7,15 +7,15 @@
         ]
       }
     },
-    "april-tests": {
+    "mecanica-app": {
       "hosting": {
         "december-project": [
-          "april-tests"
+          "mecanica-app"
         ]
       }
     }
   },
   "projects": {
-    "default": "april-tests"
+    "default": "mecanica-app"
   }
 }

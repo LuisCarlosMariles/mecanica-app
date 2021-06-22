@@ -3,11 +3,11 @@
     "rules": "coe"
   },
   "firestore": {
-    "rules": "coe",
-    "indexes": "coe1"
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist/december-project",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -33,5 +33,8 @@
   },
   "remoteconfig": {
     "template": "co6"
+  },
+  "functions": {
+    "source": "functions"
   }
 }
