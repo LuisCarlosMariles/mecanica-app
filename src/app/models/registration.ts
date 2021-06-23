@@ -7,13 +7,4 @@ export class SignUpRegitration {
 
   constructor() { }
 
-
-  // registration(data: IdentificationTemplate, email: string) {
-  //   if (LIST_ARRAY.find(x => x.email === email)) {
-  //     throw new Error ('This email is already taken!'); // Email repetition validatation
-  //   }
-
-  //   LIST_ARRAY.push(data); // All validations are correct
-  //   console.log('Array ', LIST_ARRAY);
-  // }
 }

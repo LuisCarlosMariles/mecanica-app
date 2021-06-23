@@ -52,6 +52,9 @@ import { ChatComponent } from './views/chat/chat.component';
 import { CompleteScheduleComponent } from './views/complete-schedule/complete-schedule.component';
 import { ChatComponentContent } from './views/chat/chat.component';
 import { SendEmailComponent } from './views/send-email/send-email.component';
+import { AboutComponent } from './views/about/about.component';
+import { ScheduleVisualizationGuard } from './shared/guards/schedule-visualization.guard';
+import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
 
 
 
@@ -74,6 +77,7 @@ import { SendEmailComponent } from './views/send-email/send-email.component';
     ChatComponentContent,
     CompleteScheduleComponent,
     SendEmailComponent,
+    AboutComponent,
 
   ],
   imports: [
@@ -107,7 +111,7 @@ import { SendEmailComponent } from './views/send-email/send-email.component';
     MatExpansionModule,
     // Time
   ],
-  providers: [AuthService, ChatComponentContent],
+  providers: [AuthService, ChatComponentContent, ScheduleVisualizationGuard, CheckSignInGuard],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })

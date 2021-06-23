@@ -18,7 +18,6 @@ import { MainNavComponent } from 'src/app/main-nav/main-nav.component';
 })
 export class ChatComponent implements OnInit {
 
-  // allMessages: Observable<Message>
 
   
 
@@ -28,7 +27,6 @@ export class ChatComponent implements OnInit {
     public _chatService: ChatService,
     public chatDeleter: ChatComponentContent,
   ) {
-    // this.allMessages = this.chatService.getMessages();
   }
 
 
@@ -61,6 +59,7 @@ export class ChatComponentContent implements OnInit {
   
   constructor(
     public _chatService: ChatService,
+    public _authService: AuthService,
   ) {
     this.allMessages = this._chatService.getMessages();
   }
@@ -69,8 +68,13 @@ export class ChatComponentContent implements OnInit {
   public hour: number;
   public minutes: Number;
   public newMessage: string;
+  public email: string;
   ngOnInit(): void {
+    this._authService.getCurrentUser().subscribe(user => {
+      this.email = user.email;
+    })
 
+    
    // this.deleteMessageAfter2Hours();
   }
 
@@ -87,7 +91,7 @@ export class ChatComponentContent implements OnInit {
   deleteMessageAfter2Hours(){
     this._chatService.getMessages().pipe().subscribe(async allMessages =>{
       let currentTime = Date.now();
-      // console.log(currentTime);
+
       let allMessagesTimes = [];
       let allIds = [];
 
@@ -102,8 +106,6 @@ export class ChatComponentContent implements OnInit {
         }
       }
 
-      // console.log(allMessagesTimes, "annnnnnnnnd" , currentTime);
-     // console.log(allIds);
     }); 
   }
 

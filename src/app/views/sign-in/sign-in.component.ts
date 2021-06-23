@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MainNavComponent } from '../../main-nav/main-nav.component'
 import { pipe, Subscription } from 'rxjs';
 import { first, last } from 'rxjs/operators';
+import { ScheduleVisualizationGuard } from 'src/app/shared/guards/schedule-visualization.guard';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class SignInComponent implements OnInit, OnDestroy{
 
   signInForm = this.fb.group({
     password: ['', Validators.required],
-    email: ['', [Validators.required/*, Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')*/]]
+    email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')]]
   });
 
   time: Time;
@@ -32,6 +33,7 @@ export class SignInComponent implements OnInit, OnDestroy{
     private fb: FormBuilder, 
     private _authentication: AuthService,
     private route: Router,
+    private activator: ScheduleVisualizationGuard,
     )
   {
     this.signInIdentificationService = new SignInIdentificationService();
@@ -62,18 +64,17 @@ export class SignInComponent implements OnInit, OnDestroy{
       this.isFormValid = false;
       return;
     }
-    
-    console.log(this.signInForm.valid);
 
     this._authentication.signIn(this.emailInput.value, this.passwordInput.value);
 
     this._authentication.subjectApproved.asObservable().pipe(first()).subscribe(v=> { 
-      console.log(v); 
+     // console.log(v); 
       if(v==false){
         this.userExists = false;
         //alert('Usuario y/o contraseña incorectos');
       }
       else if (v==true){
+        this.activator.canActivate();
         this.userExists = true;
         this.route.navigate(['/scheduleHome']);
       }

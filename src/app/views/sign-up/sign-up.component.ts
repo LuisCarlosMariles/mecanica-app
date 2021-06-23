@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit{
   validationStyles: ValidationStyles;
   majorList: Object = MAJOR_ARRAY;
   emails = [];
-
+///
   // showUsers(){
   //   let ALL_REGISTERED_EMAILS = this.emails;
   //   let results = ALL_REGISTERED_EMAILS.filter(x => x.email === 'lwfquasdsais');
@@ -55,7 +55,7 @@ export class SignUpComponent implements OnInit{
   signUpForm = this.fb.group({
     firstName: ['', [Validators.required, Validators.pattern('^[a-z A-Z]*$')]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-z A-Z]*$')]],
-    email: ['', [Validators.required/*, Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')*/]],
+    email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')]],
     password: ['', Validators.required],
     major: ['']
   });

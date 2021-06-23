@@ -1,7 +1,7 @@
 import { Injectable, OnChanges, OnInit } from '@angular/core';
 import { User } from './user.model';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { filter, first } from 'rxjs/operators';
+import { filter, first, map } from 'rxjs/operators';
 import firebase from 'firebase/app';
 import { promise } from 'protractor';
 import { async, BehaviorSubject, Observable, of, Subscription } from 'rxjs'; 
@@ -30,6 +30,13 @@ export class AuthService implements OnInit{
   public subjectApproved = new Subject;
   public chatApproval = new BehaviorSubject<boolean>(false);
   public chatSubscription: Subscription;
+
+
+  /////////////////
+  isAuth() {
+    return this.angularAuth.authState.pipe(map(auth => auth));
+  }
+  ////////////////
 
   isChatApproved(){
     this.chatSubscription = this.getCurrentUser().subscribe(result => {

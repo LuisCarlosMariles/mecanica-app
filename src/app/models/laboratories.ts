@@ -51,7 +51,6 @@ export const MANUFACTURE_LAB_ARRAY: LaboratoriesTemplate[] = [
 ];
 
 
-
 export const DESIGN_LAB_ARRAY: LaboratoriesTemplate[] = [
     {weekday: 'Lunes', className: 'Dibujo', teacher: 'Maestro 1', startHour: 8, endHour: 9},
     {weekday: 'Lunes', className: 'Diseño I', teacher: 'Maestra 2', startHour: 9, endHour: 11},

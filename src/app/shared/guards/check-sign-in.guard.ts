@@ -11,7 +11,7 @@ export class CheckSignInGuard implements CanActivate, OnChanges{
 
   ngOnChanges(){
   }
-  constructor( private _authentication: AuthService){}
+  constructor(private _authentication: AuthService){}
 
   public isLogged: boolean;
   public isLoggedSubject = new Subject<boolean>();
@@ -27,19 +27,7 @@ export class CheckSignInGuard implements CanActivate, OnChanges{
           this.isLoggedSubject.next(true);
         }
       });
-      return this.isLoggedSubject.asObservable();
-      // this._authentication.getCurrentUser().subscribe(result=> {
-      //   if(result){
-      //     this.isLogged = true;
-      //   }
-      //   else if (result == null){
-      //     this.isLogged = false;
-      //   }
-      //   else{
-      //     this.isLogged = false;
-      //   }
-      // });
-      // return !this.isLogged;
+      return this.isLoggedSubject.asObservable(); //canActivate returns guard state for visualization of sign in / register text on main navbar 
   }
   
 }

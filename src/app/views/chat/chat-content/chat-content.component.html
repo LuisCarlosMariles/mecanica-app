@@ -1,39 +1,41 @@
 <body>
-<h1>Pregunta algo</h1>
-
-<div class="messagesBox">
-<ul *ngFor="let message of allMessages | async">
-    <li>
-        <p>{{message.message}}</p>
-        <p>
-            <span class="bold">
-            {{message.date}}
-            {{message.time}}
-            </span>
-        </p>
-    </li>
-</ul>
-</div>
-
-
-
-
-<div>
-
+    <h1>Pregunta algo</h1>
     
-</div>
-
-<mat-card-footer>
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>Mensaje</mat-label>
-          <input matInput #newMessage maxlength="256" placeholder="¿Están abiertos los baños?" (keyup.enter)="sendMessage(newMessage.value)" >
-          <mat-hint align="start"><strong>Tu mensaje se borrará en 2 horas</strong> </mat-hint>
-        </mat-form-field>
-        <button mat-mini-fab (click)="sendMessage(newMessage.value)" type="button">
-          <mat-icon>send</mat-icon>
-      </button>
-      </form>
-
-</mat-card-footer>
-</body>
+    <div class="messagesBox">
+    <ul *ngFor="let message of allMessages | async">
+        <li>
+            <p>{{message.message}}</p>
+            <p>
+                <span class="bold">
+                <div *ngIf="message.message" class="email">{{email}}</div>    
+                {{message.date}}
+                {{message.time}}
+                </span>
+            </p>
+        </li> 
+    </ul>
+    </div>
+    
+    
+    
+    
+    <div>
+    
+        
+    </div>
+    
+    <mat-card-footer>
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Mensaje</mat-label>
+              <input matInput #newMessage maxlength="256" placeholder="¿Están abiertos los baños?" (keyup.enter)="sendMessage(newMessage.value)" >
+              <mat-hint align="start"><strong>Tu mensaje se borrará en 2 horas</strong> </mat-hint>
+            </mat-form-field>
+            <button mat-mini-fab (click)="sendMessage(newMessage.value)" type="button">
+              <mat-icon>send</mat-icon>
+          </button>
+          </form>
+    
+    </mat-card-footer>
+    </body>
+    
