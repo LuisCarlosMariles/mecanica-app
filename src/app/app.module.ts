@@ -24,6 +24,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
+//import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -55,6 +57,7 @@ import { SendEmailComponent } from './views/send-email/send-email.component';
 import { AboutComponent } from './views/about/about.component';
 import { ScheduleVisualizationGuard } from './shared/guards/schedule-visualization.guard';
 import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
+import { ProfessorsScheduleComponent } from './views/professors-schedule/professors-schedule.component';
 
 
 
@@ -78,6 +81,7 @@ import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
     CompleteScheduleComponent,
     SendEmailComponent,
     AboutComponent,
+    ProfessorsScheduleComponent,
 
   ],
   imports: [
@@ -109,6 +113,8 @@ import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
     MatCardModule,
     MatTabsModule,
     MatExpansionModule,
+    //MatSlideToggleModule,
+    MatRadioModule,
     // Time
   ],
   providers: [AuthService, ChatComponentContent, ScheduleVisualizationGuard, CheckSignInGuard],

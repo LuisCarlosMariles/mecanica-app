@@ -8,15 +8,17 @@ import { SendEmailComponent } from './views/send-email/send-email.component';
 import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
 import { AboutComponent } from './views/about/about.component';
 import { ScheduleVisualizationGuard } from './shared/guards/schedule-visualization.guard';
+import { ProfessorsScheduleComponent } from './views/professors-schedule/professors-schedule.component';
 
 const routes: Routes = [
   {path: 'map', component: ScheduleMapComponent},
   {path: 'signIn', canActivate:[CheckSignInGuard], component: SignInComponent},
   {path: 'signUp', canActivate:[CheckSignInGuard], component: SignUpComponent},
   {path: 'scheduleHome', canActivate:[ScheduleVisualizationGuard], component: ScheduleMapComponent},
-  {path: 'completeSchedule', component: CompleteScheduleComponent},
+  {path: 'completeSchedule', canActivate:[ScheduleVisualizationGuard], component: CompleteScheduleComponent},
   {path: 'sendVerificationEmail', component: SendEmailComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'professors', component: ProfessorsScheduleComponent},
   {path:'',redirectTo:'about', pathMatch: 'full' },
 ];
 
