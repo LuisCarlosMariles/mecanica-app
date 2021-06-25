@@ -1,36 +1,42 @@
-<label class="example-margin">Color:</label>
-<mat-radio-group >
-  <mat-radio-button class="label-spacing" value="primary" color="warn">
+<h2><label class="example-margin">Planta: </label></h2>
+<mat-radio-group [(ngModel)]="floor">
+  <mat-radio-button class="label-spacing" color="warn" (click)="display()" value="first">
     Baja
   </mat-radio-button>
-  <mat-radio-button class="label-spacing" value="accent" checked="checked​" color="warn">
+  <mat-radio-button class="label-spacing" color="warn" value="second" [checked]="true" (click)="display()" checked="checked" checked> 
     Alta
   </mat-radio-button>
 
-  <mat-card class="second-floor-card">
-
+<ng-container *ngIf="floor == undefined ||floor =='second'; else firstFloor">
+<mat-card class="second-floor-card">
+  <mat-card-title>Planta alta</mat-card-title>
     <mat-grid-list cols="10" rowHeight="2:1">
         <mat-grid-tile colspan="2" rowspan="2" class="transparent"></mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4">Vacante</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4">M.C. Ana María Castañeda</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4">Dr. Álvaro Gonzalez Álvarez</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4">Vacante</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4">Dr. Israel Sauceda Meza</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4">Dr. Fernando Lara Chávez</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4">Vacante</mat-grid-tile>
         <mat-grid-tile colspan="2" rowspan="4" class="transparent"></mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4">M.C. Rigoberto Zamora Alarcón</mat-grid-tile>
+        
       </mat-grid-list>
       
 </mat-card>
+</ng-container>
 
+
+
+<ng-template #firstFloor>
 <mat-card class="first-floor-card">
-
+  <mat-card-title>Planta baja</mat-card-title>
     <mat-grid-list cols="4" rowHeight="2:1">
         <mat-grid-tile colspan="2" rowspan="2" class="transparent"></mat-grid-tile>
         <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
         <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
         <mat-grid-tile colspan="2" rowspan="4">2</mat-grid-tile>
       </mat-grid-list>
-      
 </mat-card>
+</ng-template>

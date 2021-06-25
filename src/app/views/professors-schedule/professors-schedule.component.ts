@@ -10,6 +10,15 @@ export class ProfessorsScheduleComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.floor);
   }
 
+  public floor: string ;
+
+  public isChecked;
+
+  display(){
+    // if(this.floor){}
+    console.log(this.floor);
+  }
 }

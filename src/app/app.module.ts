@@ -24,7 +24,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
-//import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 
 
@@ -113,7 +113,7 @@ import { ProfessorsScheduleComponent } from './views/professors-schedule/profess
     MatCardModule,
     MatTabsModule,
     MatExpansionModule,
-    //MatSlideToggleModule,
+    MatSlideToggleModule,
     MatRadioModule,
     // Time
   ],
