@@ -1,10 +1,7 @@
-import { ElementSchemaRegistry } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { element } from 'protractor';
 import { Observable } from 'rxjs';
-import { first, map } from 'rxjs/operators';
-import {LIST_ARRAY, IdentificationTemplate, SignInTemplate} from '../models/identification';
+
 
 
 @Injectable({

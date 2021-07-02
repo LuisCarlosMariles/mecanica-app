@@ -11,8 +11,6 @@ import { ChatComponentContent } from '../../views/chat/chat.component';
 import { StudyRoomService } from 'src/app/data-services/study-room.service';
 import { first } from 'rxjs/operators';
 
-
-
 @Component({
   selector: 'app-schedule-map',
   templateUrl: './schedule-map.component.html',
@@ -49,7 +47,8 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
   ngOnInit() {              
     this.studyRoomPeople();                                     
     this.chatComponentContent.deleteMessageAfter2Hours();
-    this._authService.isChatApproved()
+    this._authService.isChatApproved();
+
       setInterval(() => {
         const time = new Date;
         this.seconds = time.getSeconds();
@@ -218,7 +217,6 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
   }
 
   tileColor(name) {
-
     if (this.currentClassIndex(name) == -1) {
       const buttonStyles = {
         'background-color': 'rgb(76, 175, 80)'
@@ -231,20 +229,6 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
       };
       return buttonStyles;
     }
-    // if (this.isAvailable) {
-    //   let buttonStyles = {
-    //     'background-color': 'rgb(212, 135, 153)'
-    //   }
-    //   return buttonStyles;
-    // }
-    // else {
-    //   let buttonStyles = {
-    //     'background-color': 'rgb(155, 243, 145)'
-    //   }
-    //   return buttonStyles;
-    // }
-
-
   }
 
   spinnerLoading: boolean = true;
