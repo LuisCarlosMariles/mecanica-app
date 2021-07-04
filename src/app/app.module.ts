@@ -58,6 +58,7 @@ import { AboutComponent } from './views/about/about.component';
 import { ScheduleVisualizationGuard } from './shared/guards/schedule-visualization.guard';
 import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
 import { ProfessorsScheduleComponent } from './views/professors-schedule/professors-schedule.component';
+import { DialogContentCubicle1, DialogCubicleComponent } from './shared/dialog-cubicle/dialog-cubicle.component';
 
 
 
@@ -82,6 +83,8 @@ import { ProfessorsScheduleComponent } from './views/professors-schedule/profess
     SendEmailComponent,
     AboutComponent,
     ProfessorsScheduleComponent,
+    DialogCubicleComponent,
+    DialogContentCubicle1,
 
   ],
   imports: [

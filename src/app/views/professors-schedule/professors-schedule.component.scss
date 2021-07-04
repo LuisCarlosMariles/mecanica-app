@@ -34,3 +34,18 @@ mat-grid-tile {
   width: 24px; 
   height: 24px; 
   }
+
+  .text-inside-grid{
+    font-weight:bold;
+    position: absolute;
+    margin-bottom: 90px;
+    align-self: center;
+}
+
+.tile-button{
+  position:absolute;
+  display: list-item;
+  bottom: 2%;
+  right: 2%;
+
+}

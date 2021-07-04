@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subscription } from 'rxjs';
 import { first, last } from 'rxjs/operators';
 import { ProfessorsScheduleService } from 'src/app/data-services/professors-schedule.service';
+import { DialogContentCubicle1, DialogCubicleComponent } from 'src/app/shared/dialog-cubicle/dialog-cubicle.component';
+
 import { MANUFACTURE_LAB_ARRAY, DESIGN_LAB_ARRAY, THERMO_LAB_ARRAY, FLUIDS_LAB_ARRAY } from '../../models/laboratories';
 
-export interface ProfessorScheduleTemplate {
+export interface CubicleScheduleTemplate {
   weekday: string;
   startHour1: number;
   endHour1: number;
@@ -23,12 +26,27 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
 
   constructor(
     public _professorsSchedule: ProfessorsScheduleService,
-  ) { }
+    public dialog: MatDialog,
+  ) {
+    this.dialogBox = new DialogCubicleComponent(dialog, _professorsSchedule);
+  }
 
-  public professor1Schedule = [];
-  public professor1: ProfessorScheduleTemplate;
-  public professor2Schedule = [];
-  public professor2: ProfessorScheduleTemplate;
+  public dialogBox: DialogCubicleComponent;
+  
+  public cbcData1 = [];
+  public weekdayData1: CubicleScheduleTemplate;
+  public cbcData2 = [];
+  public weekdayData2: CubicleScheduleTemplate;
+  public cbcData3 = [];
+  public weekdayData3: CubicleScheduleTemplate;
+  public cbcData4 = [];
+  public weekdayData4: CubicleScheduleTemplate;
+  public cbcData5 = [];
+  public weekdayData5: CubicleScheduleTemplate;
+  public cbcData6 = [];
+  public weekdayData6: CubicleScheduleTemplate;
+  public cbcData7 = [];
+  public weekdayData7: CubicleScheduleTemplate;
 
   hour: Number;
   minutes: Number;
@@ -37,6 +55,11 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
 
   public subscription1: Subscription;
   public subscription2: Subscription;
+  public subscription3: Subscription;
+  public subscription4: Subscription;
+  public subscription5: Subscription;
+  public subscription6: Subscription;
+  public subscription7: Subscription;
 
   ngOnInit(): void {
     const time = new Date;
@@ -98,10 +121,25 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     let cubicle;
     switch (number) {
       case 'cubicle1':
-        cubicle = this.professor1;
+        cubicle = this.weekdayData1;
         break;
       case 'cubicle2':
-        cubicle = this.professor1;
+        cubicle = this.weekdayData2;
+        break;
+      case 'cubicle3':
+        cubicle = this.weekdayData3;
+        break;
+      case 'cubicle4':
+        cubicle = this.weekdayData4;
+        break;
+      case 'cubicle5':
+        cubicle = this.weekdayData5;
+        break;
+      case 'cubicle6':
+        cubicle = this.weekdayData6;
+        break;
+      case 'cubicle7':
+        cubicle = this.weekdayData7;
         break;
       default:
         break;
@@ -112,19 +150,63 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
 
   spinnerLoading: boolean = true;
   subscriptions() {
-    this.subscription1 = this._professorsSchedule.professor1Data().pipe(first()).subscribe(data => {
+    this.subscription1 = this._professorsSchedule.cubicle1().pipe(first()).subscribe(data => {
       data.forEach(element => {
-        this.professor1Schedule.push(element.payload.doc.data()); // for each element inside firebase professor1Data array, it pushes the contnet into professor1Schedule(local variable)
-        this.professor1 = this.professor1Schedule.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local professor1 (local variable) it also takes the object out of the array with .reduce
+        this.cbcData1.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData1 = this.cbcData1.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
       });
-      // this.cubicleData('teacher1');
-      // console.log(this.professor1);
     });
 
-    this.subscription2 = this._professorsSchedule.professor2Data().pipe(first()).subscribe(data => {
+    this.subscription2 = this._professorsSchedule.cubicle2().pipe(first()).subscribe(data => {
       data.forEach(element => {
-        this.professor2Schedule.push(element.payload.doc.data()); // for each element inside firebase professor1Data array, it pushes the contnet into professor1Schedule(local variable)
-        this.professor2 = this.professor2Schedule.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local professor1 (local variable) it also takes the object out of the array with .reduce
+        this.cbcData2.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData2 = this.cbcData2.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
+      });
+
+      // this.spinnerLoading = false;
+    });
+
+    this.subscription3 = this._professorsSchedule.cubicle3().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData3.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData3 = this.cbcData3.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
+      });
+
+      // this.spinnerLoading = false;
+    });
+
+    this.subscription4 = this._professorsSchedule.cubicle4().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData4.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData4 = this.cbcData4.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
+      });
+
+      // this.spinnerLoading = false;
+    });
+
+    this.subscription5 = this._professorsSchedule.cubicle5().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData5.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData5 = this.cbcData5.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
+      });
+
+      // this.spinnerLoading = false;
+    });
+
+    this.subscription6 = this._professorsSchedule.cubicle6().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData6.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData6 = this.cbcData6.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
+      });
+
+      // this.spinnerLoading = false;
+    });
+
+    this.subscription7 = this._professorsSchedule.cubicle7().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData7.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData7 = this.cbcData7.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
+        
       });
       this.test();
       this.spinnerLoading = false;
@@ -137,15 +219,15 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   cubicleStatus(name: string): string {
     const CUBICLE_DATA = this.cubicleData(name);
     if ((this.hour > CUBICLE_DATA.startHour1 && this.hour < CUBICLE_DATA.endHour1) ||
-       (this.hour > CUBICLE_DATA.startHour2 && this.hour < CUBICLE_DATA.endHour2)){
+      (this.hour > CUBICLE_DATA.startHour2 && this.hour < CUBICLE_DATA.endHour2)) {
       return 'Cubiculo disponible';
     }
     else {
-      return 'Cubiculo no disponible' + this.hour;
+      return 'Cubiculo no disponible';
     }
   }
 
-  
+
   tileColor(name) {
     if (this.cubicleStatus(name) == 'Cubiculo disponible') {
       const buttonStyles = {
@@ -164,12 +246,11 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
 
 
   test() {
-    if (this.professor1) {
-      console.log(this.professor1.endHour1);
-      console.log(this.professor2.endHour1);
+    if (this.weekdayData1) {
+      console.log(this.cbcData1);
     }
     else {
-      console.log(this.professor1);
+    //  return 'No name'
     }
   }
 

@@ -19,19 +19,23 @@
 <ng-template #loaded>
 <ng-container *ngIf="floor == undefined || floor =='second'; else firstFloor">
 <mat-card class="second-floor-card">
-  <div *ngIf="professor1">
+  <div *ngIf="cbcData1">
   <mat-card-title>Planta alta</mat-card-title>
     <mat-grid-list cols="10" rowHeight="2:1">
         <mat-grid-tile colspan="2" rowspan="2" class="transparent"></mat-grid-tile>
         <mat-grid-tile colspan="2" rowspan="4">casc</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle1')">M.C. Ana mmaria</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">Dr. Álvaro Gonzalez Álvarez</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">Vacante</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">Dr. Israel Sauceda Meza</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">Dr. Fernando Lara Chávez</mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">Vacante</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle1')"><div class="text-inside-grid">M.C. Ana mmaria</div><div>{{cubicleStatus('cubicle1')}}</div>
+          <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle1')">
+            <mat-icon>list</mat-icon>
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle2')">Dr. Álvaro Gonzalez Álvarez<div>{{cubicleStatus('cubicle2')}}</div></mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle3')">Vacante<div>{{cubicleStatus('cubicle3')}}</div></mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle4')">Dr. Israel Sauceda Meza<div>{{cubicleStatus('cubicle4')}}</div></mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle5')">Dr. Fernando Lara Chávez<div>{{cubicleStatus('cubicle5')}}</div></mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle6')">Vacante<div>{{cubicleStatus('cubicle6')}}</div></mat-grid-tile>
         <mat-grid-tile colspan="2" rowspan="4" class="transparent"></mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="4">M.C. Rigoberto Zamora Alarcón</mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle7')">M.C. Rigoberto Zamora Alarcón<div>{{cubicleStatus('cubicle7')}}</div></mat-grid-tile>
         
       </mat-grid-list>
     </div>
