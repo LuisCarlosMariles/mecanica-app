@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, MatSortable } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { first } from 'rxjs/operators';
 import { ProfessorsScheduleService } from 'src/app/data-services/professors-schedule.service';
@@ -61,22 +61,30 @@ export class DialogCubicleComponent {
   templateUrl: './dialog-cubicle-content/cubicle1.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
-export class DialogContentCubicle1 implements OnInit{
+export class DialogContentCubicle1 implements  AfterViewInit{
+
+  // sort: any;
   constructor(
     public _professorsSchedule: ProfessorsScheduleService,) {}
+
+
+  // ngAfterViewInit(): void {
+  //   // this.dataSourceDesign.sort = this.sort;
+  // }
 
   
   isWeekend: boolean = false;
   man = MANUFACTURE_LAB_ARRAY;
-  dataSourceDesign = new MatTableDataSource(this.man);
+  // dataSourceDesign = new MatTableDataSource(this.man);
 
 
 
   // public DATA = this.cbcData1;
-  displayedColumns: string[] = ['weekday', 'startHour', 'endHour', 'className', 'teacher'];
+  displayedColumns: string[] = ['day', 'startHour1', 'endHour1', 'startHour2', 'endHour2', 'dayNumber'];
+  // displayedColumns: string[] = ['weekday', 'startHour', 'endHour', 'className', 'teacher'];
 
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   day: Number;
   public cbcData1 = [];
@@ -90,63 +98,109 @@ export class DialogContentCubicle1 implements OnInit{
   public dataSourceCubicle1;
   
     loaded = false;
-  ngOnInit() {
-    this.dataSourceDesign.sort = this.sort;
-      this._professorsSchedule.cubicle1().pipe(first()).subscribe(data => {
-      data.forEach(element => {
-        this.cbcData1.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
-      });
-      this.loaded = true;
-      this.dataSourceCubicle1 = new MatTableDataSource(this.cbcData1);
-    });
 
-  this._professorsSchedule.cubicle2().pipe(first()).subscribe(data => {
-      data.forEach(element => {
-        this.cbcData2.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
-      });
 
-      // this.spinnerLoading = false;
-    });
+//   ngOnInit() {
+//     // this.dataSourceDesign.sort = this.sort;
+//       this._professorsSchedule.cubicle1().pipe(first()).subscribe(data => {
+//       data.forEach(element => {
+//         this.cbcData1.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+//       });
 
-    this._professorsSchedule.cubicle3().pipe(first()).subscribe(data => {
-      data.forEach(element => {
-      });
-      // this.spinnerLoading = false;
-    });
+//       this.loaded = true;
+//       this.dataSourceCubicle1 = new MatTableDataSource(this.cbcData1);
+      
+//       this.dataSourceCubicle1.sort = this.sort;
+    
+//       console.log(this.cbcData1);
+//     });
 
-    this._professorsSchedule.cubicle4().pipe(first()).subscribe(data => {
-      data.forEach(element => {
-        this.cbcData4.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
-      });
-      // this.spinnerLoading = false;
-    });
+//   this._professorsSchedule.cubicle2().pipe(first()).subscribe(data => {
+//       data.forEach(element => {
+//         this.cbcData2.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+//       });
+   
+//       // this.spinnerLoading = false;
+//     });
 
-    this._professorsSchedule.cubicle5().pipe(first()).subscribe(data => {
-      data.forEach(element => {
-        this.cbcData5.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
-      });
-    });
+//     this._professorsSchedule.cubicle3().pipe(first()).subscribe(data => {
+//       data.forEach(element => {
+//       });
+//       // this.spinnerLoading = false;
+//     });
 
-    this._professorsSchedule.cubicle6().pipe(first()).subscribe(data => {
-      data.forEach(element => {
-        this.cbcData6.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
-      });
-    });
+//     this._professorsSchedule.cubicle4().pipe(first()).subscribe(data => {
+//       data.forEach(element => {
+//         this.cbcData4.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+//       });
+//       // this.spinnerLoading = false;
+//     });
 
-    this._professorsSchedule.cubicle7().pipe(first()).subscribe(data => {
-      data.forEach(element => {
-        this.cbcData7.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
-      });
-    });
+//     this._professorsSchedule.cubicle5().pipe(first()).subscribe(data => {
+//       data.forEach(element => {
+//         this.cbcData5.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+//       });
+//     });
 
-    if(this.dayNumber() == 5 || this.dayNumber() == 5){
-      this.isWeekend = true;
-    }
-  }
+//     this._professorsSchedule.cubicle6().pipe(first()).subscribe(data => {
+//       data.forEach(element => {
+//         this.cbcData6.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+//       });
+//     });
+
+//     this._professorsSchedule.cubicle7().pipe(first()).subscribe(data => {
+//       data.forEach(element => {
+//         this.cbcData7.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+//       });
+//     });
+
+//     if(this.dayNumber() == 5 || this.dayNumber() == 5){
+//       this.isWeekend = true;
+//     }
+//   }
   dayNumber(): Number{
     const time = new Date;
     this.day = time.getDay() ;
     return this.day;
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ ngAfterViewInit() {
+  // this.dataSourceDesign.sort = this.sort;
+    this._professorsSchedule.cubicle1().pipe(first()).subscribe(data => {
+    data.forEach(element => {
+      this.cbcData1.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+    });
+
+    this.loaded = true;
+    this.dataSourceCubicle1 = new MatTableDataSource(this.cbcData1);
+    
+    this.dataSourceCubicle1.sort = this.sort;
+    
+    console.log(this.cbcData1.sort((a,b)=> a.dayNumber - b.dayNumber));
+  });
+  // this.sort.sort(({ id: 'dayNumber', start: 'desc'}) as MatSortable);
+  if(this.dayNumber() == 5 || this.dayNumber() == 5){
+    this.isWeekend = true;
+  }
+}
 
 }

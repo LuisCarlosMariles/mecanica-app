@@ -98,7 +98,7 @@ export class DialogContentManufacture implements OnInit{
   }
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay() ;
+    this.day = time.getDay();
     return this.day;
  }
 
