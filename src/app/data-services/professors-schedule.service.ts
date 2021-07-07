@@ -42,6 +42,11 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle7/weekday').snapshotChanges();
   }
 
+  cubicle8(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('cubicles/cubicle8/weekday').snapshotChanges();
+  }
+
+
   test(){ // metodo para listar todos los estudiantes
     return this.firestore.collection('professorsSchedule').snapshotChanges();
     // return this.firestore.collectionGroup('Ana María').snapshotChanges)

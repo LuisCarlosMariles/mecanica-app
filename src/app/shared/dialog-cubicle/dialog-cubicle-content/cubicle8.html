@@ -1,0 +1,47 @@
+<h2 *ngIf="isWeekend; else cargo">El día de hoy el docente no está disponible</h2>
+
+<ng-template #cargo>
+    <h2>Horario del docente</h2>
+    <table mat-table #table [dataSource]="dataSourceCubicle8">
+
+        <ng-container matColumnDef="day">
+            <td mat-cell *matCellDef="let element"> {{element.day}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="startHour1">
+            <td mat-cell *matCellDef="let element" class="startHour"> {{element.startHour1}}:00 </td>
+        </ng-container>
+
+        <ng-container matColumnDef="endHour1">
+            <td mat-cell *matCellDef="let element"> {{element.endHour1}}:00 </td>
+        </ng-container>
+
+        <ng-container matColumnDef="startHour2">
+            <td mat-cell *matCellDef="let element" class="startHour"> {{element.startHour2}}:00 </td>
+        </ng-container>
+
+        <ng-container matColumnDef="endHour2">
+            <td mat-cell *matCellDef="let element"> {{element.endHour2}}:00 </td>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-first-group">
+            <th mat-header-cell *matHeaderCellDef>
+                Día
+            </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-second-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2" class="header">
+                Horario matutino
+            </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-third-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2" class="header">Horario vespertino</th>
+        </ng-container>
+
+        <tr mat-header-row
+            *matHeaderRowDef="['header-row-first-group', 'header-row-second-group', 'header-row-third-group']"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</ng-template>
