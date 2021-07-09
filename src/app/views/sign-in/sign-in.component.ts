@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {NgForm, FormControl, ReactiveFormsModule, Validator, AbstractControl, Validators, FormBuilder  } from '@angular/forms';
-import {LIST_ARRAY, IdentificationTemplate, SignInTemplate} from '../../models/identification';
-import { SignInIdentificationService } from '../../models/signInIdentificationService';
+import { SignInTemplate} from '../../models/identification';
 import { ValidationStyles } from '../../models/validationStyles';
 import { ScheduleInterface, SCHEDULE_LIST } from '../../models/schedules';
 import { Time } from '../../models/classes-time';
@@ -20,7 +19,6 @@ import { ScheduleVisualizationGuard } from 'src/app/shared/guards/schedule-visua
 })
 export class SignInComponent implements OnInit, OnDestroy{
 
-  signInIdentificationService: SignInIdentificationService;
   validationStyles: ValidationStyles;
 
   signInForm = this.fb.group({
@@ -36,7 +34,6 @@ export class SignInComponent implements OnInit, OnDestroy{
     private activator: ScheduleVisualizationGuard,
     )
   {
-    this.signInIdentificationService = new SignInIdentificationService();
     this.validationStyles = new ValidationStyles();
     this.time = new Time();
   }

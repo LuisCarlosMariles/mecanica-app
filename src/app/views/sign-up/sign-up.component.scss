@@ -21,6 +21,10 @@ label {
   .text-danger{
     color: red;
   }
+
+  .text-okay{
+    color: green;
+  }
   .text-hide{
     display: none;
   }
@@ -52,3 +56,18 @@ label {
   button{
     left: 50%
   }
+
+  .passwordWarning{
+    color: red;
+    display: inline-block;
+    white-space: nowrap;
+    margin-left: 10%;
+    padding: 0;
+    top:-20px;
+    bottom: -500px;
+    margin-bottom: -100px;
+    padding-bottom: -100px;
+    position: relative;
+  }
+
+ 

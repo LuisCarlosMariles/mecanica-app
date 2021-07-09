@@ -1,12 +1,10 @@
-<!-- <button (click)="showUsers()" >Botoncito</button> -->
 <mat-card>
   <mat-card-title>Registrar</mat-card-title>
 <form class="example-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
   <mat-form-field class="example-full-width">
     <mat-label>Nombre</mat-label>
-    <input matInput placeholder="Marlenn" type="text" formControlName="firstName"
-      [ngClass]="validationStyles.inputStyle(firstNameInput)">
+    <input matInput placeholder="Marlenn" type="text" formControlName="firstName">
     <small *ngIf="validationStyles.requiredPrecaution(firstNameInput)" class="text-danger">Este espacio es requerido</small>
     <small *ngIf="validationStyles.namesPatternPrecaution(firstNameInput)" class="text-danger">Por favor ingrese un nombre válido</small>
   </mat-form-field>
@@ -28,11 +26,20 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>Contraseña</mat-label>
-    <input matInput placeholder="*********"  type="password" formControlName="password" [ngClass]="validationStyles.inputStyle(passwordInput)">
+    <input matInput placeholder="*********"  type="password" formControlName="password">
     <small *ngIf="validationStyles.requiredPrecaution(passwordInput)" class="text-danger">Contraseña requerida</small>
+    <small *ngIf="validationStyles.passwordMinLength(passwordInput)" class="text-danger">La contraseña debe tener mínimo 8 caracteres</small>
   </mat-form-field>
 
+  <mat-form-field class="example-full-width">
+    <mat-label>Escribe de nuevo tu contraseña</mat-label>
+    <input matInput placeholder="*********"  type="password" formControlName="passwordRepeated">
+    <small *ngIf="validationStyles.requiredPrecaution(passwordRepeatedInput)" class="text-danger">Contraseña requerida</small>
+  </mat-form-field>
+ 
 
+<div *ngIf="validationStyles.samePassword(passwordInput, passwordRepeatedInput) && signUpForm.controls.passwordRepeated.dirty" class="text-okay">Coinciden</div>
+<div *ngIf="!validationStyles.samePassword(passwordInput, passwordRepeatedInput) && signUpForm.controls.passwordRepeated.dirty" class="text-danger">Contraseñas no coinciden</div>
 
   <mat-form-field appearance="fill">
     <mat-label>Carrera</mat-label>

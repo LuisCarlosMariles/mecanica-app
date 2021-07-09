@@ -20,9 +20,9 @@ mat-grid-tile {
   }
 
   .first-floor-card {
-    max-width: 400px;
+    max-width: 800px;
     height: 450px;
-    left: 35%;
+    left: 20%;
     top: 2%;
     background-color: transparent;
     box-shadow: transparent;
@@ -48,5 +48,16 @@ mat-grid-tile {
   display: list-item;
   bottom: 2%;
   right: 2%;
+}
 
+.planta-text{
+  font-size: 1.5em; 
+  font-weight: bolder;
+}
+
+.tile-button-2{
+  position:absolute;
+  display: list-item;
+  bottom: 2%;
+  right: 78%;
 }

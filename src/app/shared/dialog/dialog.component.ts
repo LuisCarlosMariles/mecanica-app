@@ -213,10 +213,6 @@ export class DialogContentDesign implements OnInit{
 
 
 
-
-
-
-
 @Component({
   templateUrl: './dialog-contents/dialog-content-thermo.html',
   styleUrls: ['./dialog.component.scss'],
@@ -225,10 +221,7 @@ export class DialogContentThermo implements OnInit{
   constructor() {}
 
   isWeekend: boolean = false;
-
   THERMO_ARRAY = THERMO_LAB_ARRAY.filter(x => x.weekday == this.weekdayNameForDialog());
-
-
   displayedColumns: string[] = ['weekday', 'startHour', 'endHour', 'className', 'teacher'];
   dataSourceThermo = new MatTableDataSource(this.THERMO_ARRAY);
 

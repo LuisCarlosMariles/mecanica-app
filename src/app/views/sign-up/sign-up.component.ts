@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, EmailValidator, NgForm, Validators, FormBuilder, FormGroup, FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { LIST_ARRAY, IdentificationTemplate, MAJOR_ARRAY } from '../../models/identification';
-import { SignUpRegitration } from '../../models/registration';
+import { IdentificationTemplate, MAJOR_ARRAY } from '../../models/identification';
+
 import { ValidationStyles } from '../../models/validationStyles';
 import { AuthService } from '../../data-services/auth.service';
 import { RegistrationService } from '../../data-services/registration.service'
@@ -16,10 +16,10 @@ import { MainNavComponent } from '../../main-nav/main-nav.component'
 })
 export class SignUpComponent implements OnInit{
 
-  registration: SignUpRegitration;
   validationStyles: ValidationStyles;
   majorList: Object = MAJOR_ARRAY;
   emails = [];
+
 ///
   // showUsers(){
   //   let ALL_REGISTERED_EMAILS = this.emails;
@@ -38,11 +38,11 @@ export class SignUpComponent implements OnInit{
     private mainNav: MainNavComponent,
     public registerDatabase: RegistrationService
   ) {
-    this.registration = new SignUpRegitration();
+
     this.validationStyles = new ValidationStyles;
   }
   ngOnInit(): void {
-    this.registerDatabase.getUser().subscribe( data => {
+    this.registerDatabase.getUser().subscribe( data => { // function that loads all emails into a variable to later compare it
       this.emails = data.map((e: any) => {
         return {
           email: e.payload.doc.data().email,
@@ -52,20 +52,22 @@ export class SignUpComponent implements OnInit{
       });
   }
 
-  signUpForm = this.fb.group({
+  signUpForm = this.fb.group({ // declaration and buildinf of the form
     firstName: ['', [Validators.required, Validators.pattern('^[a-z A-Z]*$')]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-z A-Z]*$')]],
-    email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')]],
-    password: ['', Validators.required],
+    email: ['', [Validators.required, /*Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')*/]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
+    passwordRepeated: ['', [Validators.required, Validators.minLength(8)]],
     major: ['']
   });
 
-  dataInput() {
+  dataInput() {// fills data object with input data
     const data: IdentificationTemplate = {
       firstName: this.signUpForm.get('firstName').value,
       lastName: this.signUpForm.get('lastName').value,
       email: this.signUpForm.get('email').value,
       password: this.signUpForm.get('password').value,
+      passwordRepeated: this.signUpForm.get('passwordRepeated').value,
       major: this.signUpForm.get('major').value
     };
     return data;
@@ -73,7 +75,7 @@ export class SignUpComponent implements OnInit{
 
 
 
-  get emailInput(): AbstractControl {
+  get emailInput(): AbstractControl { // AbstractControl that is used for styinf in validationStyles component
     return (this.signUpForm.get('email'));
   }
 
@@ -90,35 +92,50 @@ export class SignUpComponent implements OnInit{
     return (this.signUpForm.get('password'));
   }
 
+  get passwordRepeatedInput(): AbstractControl {
+    return (this.signUpForm.get('passwordRepeated'));
+  }
+
 
   public isFormValid: boolean = true;
   public emailExists: boolean = false;
+  public isA: boolean = false;
   onSubmit() {
     const data = this.dataInput();
     const ALL_REGISTERED_EMAILS = this.emails;
-    if (!this.signUpForm.valid) {
+
+    if (!this.validationStyles.samePassword(this.passwordInput, this.passwordRepeatedInput)) { // comparison of passwords
       this.isFormValid = false;
-      // alert('Not valid!');
+      alert('Not valid!');
       return;
     }
 
-    else if(ALL_REGISTERED_EMAILS.filter(x => x.email == data.email).length != 0){
+    if (this.passwordInput.value.length<8 && this.passwordRepeatedInput.value.length<8 ) { // checks is passwords lengths are less than 8 characters
+      this.isFormValid = false;
+      alert('Not valid! es peque;a');
+      return;
+    }
+
+
+    if (!this.signUpForm.valid) { // checks if the formattiong of the form is valid
+      this.isFormValid = false;
+      return;
+    }
+
+    else if(ALL_REGISTERED_EMAILS.filter(x => x.email == data.email).length != 0){ //IMPORTANT.- looks for email input in local variable illed with all emails from users collection from firestore
       this.emailExists = true;
       return;
     }
 
-    else {
-
-      
+    else { // this happens if everything is OKAY with the form
       this.isFormValid = true;
       this.emailExists = false;
 
-      this.registerDatabase.registerUser(data.firstName, data.lastName, data.email, data.major);
-      const user = this.authentication.signUp(data.email, data.password);
-      
+      this.registerDatabase.registerUser(data.firstName, data.lastName, data.email, data.major); // registers data in firestore user collection
+      const user = this.authentication.signUp(data.email, data.password); // uses firebase auth to register
 
       if (user) {
-        this.route.navigate(['/sendVerificationEmail']);
+        this.route.navigate(['/sendVerificationEmail']); // after registration, it navigates to sendVerification page
       }
     }
   }

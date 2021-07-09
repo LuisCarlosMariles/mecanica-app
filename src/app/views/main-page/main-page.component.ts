@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { Time } from '../../models/classes-time';
-import {LIST_ARRAY} from '../../models/identification';
 // import { NavigationBarComponent } from '../../shared/navigation-bar'
 import { Router } from '@angular/router';
 
