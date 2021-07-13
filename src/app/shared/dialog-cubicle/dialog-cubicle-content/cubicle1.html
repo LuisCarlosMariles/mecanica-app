@@ -1,7 +1,4 @@
-<h2 *ngIf="isWeekend; else cargo">El día de hoy el docente no está disponible</h2>
-
-<ng-template #cargo>
-  <h2>Horario del docente</h2>
+  <body><div class="column1"><h2>Horario del docente</h2>
   <table mat-table #table [dataSource]="dataSourceCubicle1">
 
     <ng-container matColumnDef="day">
@@ -44,4 +41,27 @@
       *matHeaderRowDef="['header-row-first-group', 'header-row-second-group', 'header-row-third-group']"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</ng-template>
+  <mat-divider vertical class="verticalDivider"></mat-divider>
+  </div>
+
+
+
+  <div class="column2">
+  <h2>Clases que imparte el docente</h2>
+  <br>
+  <mat-list>
+    <mat-list-item *ngFor="let class of classesArray2"> {{class}}
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  </mat-list>
+</div>
+
+
+<!-- <h3 class="bottomSticky">asdojnaosdnaosj</h3> -->
+</body>
+
+<mat-card class="bottom-card">
+<span class="textInCard">
+  hola mi estimado profesor
+</span>
+</mat-card>

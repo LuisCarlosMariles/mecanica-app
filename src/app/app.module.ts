@@ -26,6 +26,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -125,6 +126,7 @@ import { DialogContentCubicle1, DialogContentCubicle2, DialogContentCubicle3, Di
     MatExpansionModule,
     MatSlideToggleModule,
     MatRadioModule,
+    MatDividerModule,
     // Time
   ],
   providers: [AuthService, ChatComponentContent, ScheduleVisualizationGuard, CheckSignInGuard],

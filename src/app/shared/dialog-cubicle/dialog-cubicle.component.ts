@@ -73,6 +73,9 @@ export class DialogContentCubicle1 implements OnInit {
   public dataSourceCubicle1;
   public loaded = false;
 
+
+  classesArray2 = [];
+
   ngOnInit() {
     this._professorsSchedule.cubicle1().pipe(first()).subscribe(data => {
       data.forEach(element => {
@@ -80,6 +83,12 @@ export class DialogContentCubicle1 implements OnInit {
       });
       this.dataSourceCubicle1 = new MatTableDataSource(this.cbcData1);
       this.cbcData1.sort((a, b) => a.dayNumber - b.dayNumber);
+    });
+
+    this._professorsSchedule.cubicle1Classes().subscribe(data => {
+      data.forEach(element => {
+        this.classesArray2 = element.payload.doc.get('classesList');
+      });
     });
 
     if (this.dayNumber() == 6 || this.dayNumber() == 0) {

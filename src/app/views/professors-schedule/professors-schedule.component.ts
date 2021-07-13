@@ -49,6 +49,7 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   public hour: Number;
   public day: Number;
 
+
   public subscription1: Subscription;
   public subscription2: Subscription;
   public subscription3: Subscription;
@@ -76,25 +77,25 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     let dayName;
     switch (dayNumber) {
       case 0:
-        dayName = 'monday';
+        dayName = 'Lunes';
         break;
       case 1:
-        dayName = 'monday';
+        dayName = 'Lunes';
         break;
       case 2:
-        dayName = 'monday';
+        dayName = 'Lunes';
         break;
       case 3:
-        dayName = 'monday';
+        dayName = 'Lunes';
         break;
       case 4:
-        dayName = 'monday';
+        dayName = 'Lunes';
         break;
       case 5:
-        dayName = 'monday';
+        dayName = 'Lunes';
         break;
       case 6:
-        dayName = 'monday';
+        dayName = 'Lunes';
         break;
       default:
         break;
@@ -132,12 +133,20 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     return cubicle;
   }
 
+  classesArray2 = [];
   subscriptions() {
     this.subscription1 = this._professorsSchedule.cubicle1().pipe(first()).subscribe(data => {
       data.forEach(element => {
         this.cbcData1.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
         this.weekdayData1 = this.cbcData1.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
       });
+    });
+
+    this._professorsSchedule.cubicle1Classes().subscribe(data => {
+      data.forEach(element => {
+        this.classesArray2 = element.payload.doc.get('classesList');
+      });
+      console.log(this.classesArray2);
     });
 
     this.subscription2 = this._professorsSchedule.cubicle2().pipe(first()).subscribe(data => {

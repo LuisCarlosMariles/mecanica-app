@@ -13,9 +13,13 @@ export class ProfessorsScheduleService {
   getTeacherSchedule(): Observable<any>{ // metodo para listar todos los estudiantes
     return this.firestore.collection('teachersSchedule').snapshotChanges();
   }
+  
 
   cubicle1(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle1/weekday').snapshotChanges();
+  }
+  cubicle1Classes(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('cubicles/cubicle1/assignatures').snapshotChanges();
   }
 
   cubicle2(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
