@@ -65,9 +65,10 @@ export class MainNavComponent implements OnInit {
   
   onSignOut() {
     this.isLogged = false;
-    this._authService.logOut();
+    this._authService.logOut().then(()=>{
+      window.location.reload(); // refresh pages to reset auth state, keep it in the 'then'. I you use it outside, the call will be done before log out
+    });
     this._guard.isLoggedSubject.next(false);
-    window.location.reload(); // refresh pages to reset auth state
     this.afAuth.authState.pipe(take(1))
       .pipe(map(authState => !!authState))
       .pipe(tap(auth => {

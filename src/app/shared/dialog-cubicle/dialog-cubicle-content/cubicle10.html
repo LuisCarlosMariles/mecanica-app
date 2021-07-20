@@ -1,7 +1,6 @@
+<body><div class="column1"><h2>Horario del docente</h2>
 
- <body><div class="column1"><h2>Horario del docente</h2>
-
-    <table mat-table #table [dataSource]="dataSourceCubicle8">
+    <table mat-table #table [dataSource]="dataSourceCubicle10">
   
       <ng-container matColumnDef="day">
         <td mat-cell *matCellDef="let element"> {{element.day}} </td>
@@ -52,7 +51,7 @@
     <h2>Clases que imparte el docente</h2>
     <br>
     <mat-list>
-      <mat-list-item *ngFor="let class of classesArray8"> {{class}}
+      <mat-list-item *ngFor="let class of classesArray10"> {{class}}
       <mat-divider></mat-divider>
     </mat-list-item>
     </mat-list>
@@ -64,11 +63,11 @@
   
   <mat-card class="bottom-card">
     <div class="image-cropper">
-      <img src="{{cubicle8Photo}}" class="profile-pic">
+      <img src="{{cubicle10Photo}}" class="profile-pic">
     </div>
   
   <h3 class="textInCard">
-    {{description8}}
+    {{description10}}
   </h3>
   
   </mat-card>

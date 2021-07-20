@@ -39,6 +39,7 @@ import { ScheduleMapComponent } from './views/schedule-map/schedule-map.componen
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from 'src/environments/environment';
 import { NavigationBarComponent } from './shared/navigation-bar/navigation-bar.component';
@@ -59,7 +60,7 @@ import { AboutComponent } from './views/about/about.component';
 import { ScheduleVisualizationGuard } from './shared/guards/schedule-visualization.guard';
 import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
 import { ProfessorsScheduleComponent } from './views/professors-schedule/professors-schedule.component';
-import { DialogContentCubicle1, DialogContentCubicle2, DialogContentCubicle3, DialogContentCubicle4, DialogContentCubicle5, DialogContentCubicle6, DialogContentCubicle7, DialogContentCubicle8, DialogCubicleComponent } from './shared/dialog-cubicle/dialog-cubicle.component';
+import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, DialogContentCubicle2, DialogContentCubicle3, DialogContentCubicle4, DialogContentCubicle5, DialogContentCubicle6, DialogContentCubicle7, DialogContentCubicle8, DialogContentCubicle9, DialogCubicleComponent } from './shared/dialog-cubicle/dialog-cubicle.component';
 
 
 
@@ -93,6 +94,10 @@ import { DialogContentCubicle1, DialogContentCubicle2, DialogContentCubicle3, Di
     DialogContentCubicle6,
     DialogContentCubicle7,
     DialogContentCubicle8,
+    DialogContentCubicle9,
+    DialogContentCubicle10,
+    DialogContentCubicle11,
+
 
   ],
   imports: [
@@ -109,6 +114,8 @@ import { DialogContentCubicle1, DialogContentCubicle2, DialogContentCubicle3, Di
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,   
+    AngularFireStorageModule,
+    // AngularFireStorage,
      
     MatInputModule,
     MatFormFieldModule,

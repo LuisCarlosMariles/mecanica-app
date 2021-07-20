@@ -21,7 +21,7 @@
     ]
   },
   "storage": {
-    "rules": "coe5"
+    "rules": "storage.rules"
   },
   "emulators": {
     "hosting": {

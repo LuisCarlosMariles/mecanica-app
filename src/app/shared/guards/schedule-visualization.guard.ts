@@ -17,17 +17,34 @@ export class ScheduleVisualizationGuard implements CanActivate, OnInit{
 
   ngOnInit(): void {
     this.canActivate();
+
   } //?????
 
-  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    return this.afAuth.authState.pipe(take(1))
-      .pipe(map(authState => !!authState))
-      .pipe(tap(auth => {
-        if (!auth) {
-          this.route.navigate(['/signIn']);
-        } //pipes provided by domini code @ https://github.com/bezael/angular7_firebase/blob/master/src/app/guards/auth.guard.ts
-        // canActivate returns boolean state that activates page for authenticated users
-      }));
+  async canActivate(): Promise<boolean> {
+    return await this.afAuth.currentUser
+                      .then((result) => {
+                        if(result){
+                          return result.emailVerified}
+                        else{
+                          console.log(result)
+                           this.route.navigate(['/signIn']);
+                        }}).catch((result) => {
+                          if(result){
+                            return result.emailVerified}
+                          else{
+                            console.log(result)
+                             this.route.navigate(['/signIn']);
+                          }});
+
+
+    // return this.afAuth.authState.pipe(take(1))
+    //   .pipe(map(authState => !!authState))
+    //   .pipe(tap(auth => {
+    //     if (!auth) {
+    //       this.route.navigate(['/signIn']);
+    //     } //pipes provided by domini code @ https://github.com/bezael/angular7_firebase/blob/master/src/app/guards/auth.guard.ts
+    //     // canActivate returns boolean state that activates page for authenticated users
+    //   }));
 
 
 

@@ -35,13 +35,6 @@ body{
     top: 350px;
   }
 
-  .textInCard{
-    display: inline-block;
-    font-size: 20px;
-    padding: 20px;
-    position: relative;
-    top: 10px;
-  }
 
 table {
     width: 500px;
@@ -69,4 +62,31 @@ mat-divider{
 
 h2{
     margin-bottom: 0px;
+}
+
+
+.textInCard{
+  display: inline-block;
+  font-size: 20px;
+  position: relative;
+  bottom: 70%;
+  left: 20%;
+}
+
+.image-cropper {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  left: 10%;
+}
+
+.profile-pic {
+  display: inline;
+  margin: 0 auto;
+  margin-left: -25%; //centers the image
+  height: 100%;
+  width: auto;
+  left: 10%;
 }

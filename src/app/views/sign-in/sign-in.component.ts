@@ -10,6 +10,7 @@ import { MainNavComponent } from '../../main-nav/main-nav.component'
 import { pipe, Subscription } from 'rxjs';
 import { first, last } from 'rxjs/operators';
 import { ScheduleVisualizationGuard } from 'src/app/shared/guards/schedule-visualization.guard';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class SignInComponent implements OnInit, OnDestroy{
 
   signInForm = this.fb.group({
     password: ['', Validators.required],
-    email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')]]
+    email: ['', [Validators.required, /*Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')*/]]
   });
 
   time: Time;
@@ -32,6 +33,7 @@ export class SignInComponent implements OnInit, OnDestroy{
     private _authentication: AuthService,
     private route: Router,
     private activator: ScheduleVisualizationGuard,
+    public angularAuth: AngularFireAuth,
     )
   {
     this.validationStyles = new ValidationStyles();

@@ -10,6 +10,7 @@ import { MainNavComponent } from '../../main-nav/main-nav.component';
 import { ChatComponentContent } from '../../views/chat/chat.component';
 import { StudyRoomService } from 'src/app/data-services/study-room.service';
 import { first } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-schedule-map',
@@ -26,7 +27,8 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     public _authService: AuthService,
     public mainNavComponent: MainNavComponent,
     public chatComponentContent: ChatComponentContent,
-    public _studyRoom: StudyRoomService
+    public _studyRoom: StudyRoomService,
+    public angularAuth: AngularFireAuth,
     ) 
   {
     this.dialogBox = new DialogComponent(dialog);
@@ -44,7 +46,13 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
 
   name: string;
 
-  ngOnInit() {              
+  public verifiedBoolean: boolean; // prueba
+  ngOnInit() {
+    this.angularAuth.currentUser.then(result => {
+      this.verifiedBoolean = result.emailVerified;
+      console.log(this.verifiedBoolean);
+    })
+    //////////////////////////////        
     this.studyRoomPeople();                                     
     this.chatComponentContent.deleteMessageAfter2Hours();
     this._authService.isChatApproved();

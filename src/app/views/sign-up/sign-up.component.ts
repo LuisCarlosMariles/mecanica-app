@@ -131,7 +131,8 @@ export class SignUpComponent implements OnInit{
       this.isFormValid = true;
       this.emailExists = false;
 
-      this.registerDatabase.registerUser(data.firstName, data.lastName, data.email, data.major); // registers data in firestore user collection
+      // this.registerDatabase.registerUser(data.firstName, data.lastName, data.email, data.major); THIS FUNCTION WAS THE PREVIOUS VERSION OF THE ONE BELOW
+      this.registerDatabase.registerUserWithCUstomId(data.firstName, data.lastName, data.email, data.major);// registers data in firestore user collection
       const user = this.authentication.signUp(data.email, data.password); // uses firebase auth to register
 
       if (user) {

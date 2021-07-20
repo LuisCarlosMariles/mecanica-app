@@ -38,4 +38,10 @@ export class RegistrationService {
                           .then((resp)=>{console.log('REGISTRED', resp);})
                           .catch((error)=>{console.log('EXISTE UN ERROR ', error)});
   }
+
+  
+  registerUserWithCUstomId(firstName, lastName, email, major){ //metodo para crear usuario
+    const user = {firstName, lastName, email, major}
+    return this.firestore.collection('users').doc(email).set(user);
+  }
 }
