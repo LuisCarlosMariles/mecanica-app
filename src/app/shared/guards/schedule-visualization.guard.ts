@@ -20,21 +20,24 @@ export class ScheduleVisualizationGuard implements CanActivate, OnInit{
 
   } //?????
 
-  async canActivate(): Promise<boolean> {
-    return await this.afAuth.currentUser
-                      .then((result) => {
-                        if(result){
-                          return result.emailVerified}
-                        else{
-                          console.log(result)
-                           this.route.navigate(['/signIn']);
-                        }}).catch((result) => {
-                          if(result){
-                            return result.emailVerified}
-                          else{
-                            console.log(result)
-                             this.route.navigate(['/signIn']);
-                          }});
+  canActivate(): Promise<boolean> | Observable<boolean>{
+    return this.afAuth.authState
+                      .pipe(map(authState => {
+                        if(authState){ //if the user was created
+                        console.log(authState);
+                        return !!authState.emailVerified} //if the user has accpeted the email verification, the access is true. If it exists but hasnt accepted, returns false
+                        console.log('nooo');
+                        this.route.navigate(['/signIn']); // this happens if the user doesn't exist
+                      }));
+
+    // return await this.afAuth.currentUser
+    //                   .then((result) => {
+    //                     if(result){
+    //                       return result.emailVerified}
+    //                     else{
+    //                       console.log(result.emailVerified)
+    //                        this.route.navigate(['/signIn']);
+    //                     }});
 
 
     // return this.afAuth.authState.pipe(take(1))
