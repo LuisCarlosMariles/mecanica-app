@@ -10,44 +10,7 @@ export const MANUFACTURE_LAB_ARRAY: LaboratoriesTemplate[] = [
 
     {weekday: 'Lunes', className: 'Mecanismos', teacher: 'Maestro 1', startHour: 8, endHour: 9},
     {weekday: 'Lunes', className: 'Manufactura', teacher: 'Maestra 2', startHour: 9, endHour: 11},
-    {weekday: 'Lunes', className: 'Manufactura Asistida', teacher: 'Maestro 3', startHour: 11, endHour: 13},
-    {weekday: 'Lunes', className: 'CNC', teacher: 'Maestra 4', startHour: 15, endHour: 17},
-    {weekday: 'Lunes', className: 'Mecanismos II', teacher: 'Maestra 5', startHour: 17, endHour: 18},
-    {weekday: 'Lunes', className: 'Manufactura II', teacher: 'Maestra 6', startHour: 18, endHour: 19},
-    {weekday: 'Lunes', className: 'Manufactura Asistida II', teacher: 'Maestro 7', startHour: 19, endHour: 20},
-    {weekday: 'Lunes', className: 'CNC II', teacher: 'Maestro 8', startHour: 20, endHour: 22},
-    {weekday: 'Lunes', className: 'Mecanismos III', teacher: 'Maestra 9', startHour: 22, endHour: 23},
 
-    {weekday: 'Martes', className: 'Mecanismos', teacher: 'Maestro 1', startHour: 8, endHour: 9},
-    {weekday: 'Martes', className: 'Manufactura', teacher: 'Maestra 2', startHour: 9, endHour: 11},
-    {weekday: 'Martes', className: 'Manufactura Asistida', teacher: 'Maestro 3', startHour: 11, endHour: 13},
-    {weekday: 'Martes', className: 'CNC', teacher: 'Maestra 4', startHour: 15, endHour: 17},
-    {weekday: 'Martes', className: 'Mecanismos II', teacher: 'Maestra 5', startHour: 17, endHour: 18},
-    {weekday: 'Martes', className: 'Manufactura II', teacher: 'Maestra 6', startHour: 18, endHour: 19},
-    {weekday: 'Martes', className: 'Manufactura Asistida II', teacher: 'Maestro 7', startHour: 19, endHour: 20},
-    {weekday: 'Martes', className: 'CNC II', teacher: 'Maestro 8', startHour: 20, endHour: 22},
-    {weekday: 'Martes', className: 'Mecanismos III', teacher: 'Maestra 9', startHour: 22, endHour: 23},
-
-
-    {weekday: 'Jueves', className: 'Mecanismos', teacher: 'Maestro 1', startHour: 8, endHour: 9},
-    {weekday: 'Jueves', className: 'Manufactura', teacher: 'Maestra 2', startHour: 9, endHour: 11},
-    {weekday: 'Jueves', className: 'Manufactura Asistida', teacher: 'Maestro 3', startHour: 11, endHour: 13},
-    {weekday: 'Jueves', className: 'CNC', teacher: 'Maestra 4', startHour: 15, endHour: 17},
-    {weekday: 'Jueves', className: 'Mecanismos II', teacher: 'Maestra 5', startHour: 17, endHour: 18},
-    {weekday: 'Jueves', className: 'Manufactura II', teacher: 'Maestra 6', startHour: 18, endHour: 19},
-    {weekday: 'Jueves', className: 'Manufactura Asistida II', teacher: 'Maestro 7', startHour: 19, endHour: 20},
-    {weekday: 'Jueves', className: 'CNC II', teacher: 'Maestro 8', startHour: 20, endHour: 22},
-    {weekday: 'Jueves', className: 'Mecanismos III', teacher: 'Maestra 9', startHour: 22, endHour: 23},
-
-    {weekday: 'Sabado', className: 'Mecanismos', teacher: 'Maestro 1', startHour: 8, endHour: 9},
-    {weekday: 'Sabado', className: 'Manufactura', teacher: 'Maestra 2', startHour: 9, endHour: 11},
-    {weekday: 'Sabado', className: 'Manufactura Asistida', teacher: 'Maestro 3', startHour: 11, endHour: 13},
-    {weekday: 'Sabado', className: 'CNC', teacher: 'Maestra 4', startHour: 15, endHour: 17},
-    {weekday: 'Sabado', className: 'Mecanismos II', teacher: 'Maestra 5', startHour: 17, endHour: 18},
-    {weekday: 'Sabado', className: 'Manufactura II', teacher: 'Maestra 6', startHour: 18, endHour: 19},
-    {weekday: 'Sabado', className: 'Manufactura Asistida II', teacher: 'Maestro 7', startHour: 19, endHour: 20},
-    {weekday: 'Sabado', className: 'CNC II', teacher: 'Maestro 8', startHour: 20, endHour: 22},
-    {weekday: 'Sabado', className: 'Mecanismos III', teacher: 'Maestra 9', startHour: 22, endHour: 23}
 ];
 
 

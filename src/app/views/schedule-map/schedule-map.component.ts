@@ -11,12 +11,22 @@ import { ChatComponentContent } from '../../views/chat/chat.component';
 import { StudyRoomService } from 'src/app/data-services/study-room.service';
 import { first } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ScheduleMapService } from 'src/app/data-services/schedule-map.service';
+
+export interface ClassroomTemplate {
+  weekday: string;
+  className: string;
+  teacher: string;
+  startHour: number;
+  endHour: number;
+}
 
 @Component({
   selector: 'app-schedule-map',
   templateUrl: './schedule-map.component.html',
   styleUrls: ['./schedule-map.component.scss']
 })
+
 export class ScheduleMapComponent implements OnInit, OnDestroy {
 
   dialogBox: DialogComponent;
@@ -29,6 +39,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     public chatComponentContent: ChatComponentContent,
     public _studyRoom: StudyRoomService,
     public angularAuth: AngularFireAuth,
+    public _scheduleMap: ScheduleMapService,
     ) 
   {
     this.dialogBox = new DialogComponent(dialog);
@@ -51,6 +62,8 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     this.angularAuth.currentUser.then(result => {
       this.verifiedBoolean = result.emailVerified;
       console.log(this.verifiedBoolean);
+      console.log(MANUFACTURE_LAB_ARRAY)
+      this.subscriptionsTest()
     })
     //////////////////////////////        
     this.studyRoomPeople();                                     
@@ -66,7 +79,9 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
       }, 1000);
 
       //this.chatComponentContent.sameTime()
-
+      const time = new Date;
+      this.dayFirebase = time.getDay();
+      this.hourFirebase = time.getHours();
   }
 
 
@@ -94,7 +109,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
         dayName = 'Viernes';
         break;
       case 6:
-        dayName = 'Sabado';
+        dayName = 'Lunes';
         break;
       default:
         break;
@@ -325,13 +340,114 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
   //   }
   // }
 
+  public classroom1 = [];
+  public weekdayData1: ClassroomTemplate;
+  public isLoaded: boolean = false;
+  public dayFirebase: number;
+  public hourFirebase: number;
+
+  weekdayNameFirebase() {  // returns the current day number from Time function
+    const dayNumber = this.dayFirebase as number;
+    let dayName;
+    switch (dayNumber) {
+      case 0:
+        dayName = 'tuesday';
+        break;
+      case 1:
+        dayName = 'monday';
+        break;
+      case 2:
+        dayName = 'tuesday';
+        break;
+      case 3:
+        dayName = 'Miércoles';
+        break;
+      case 4:
+        dayName = 'Jueves';
+        break;
+      case 5:
+        dayName = 'Viernes';
+        break;
+      case 6:
+        dayName = 'Sábado';
+        break;
+      default:
+        break;
+    }
+    return dayName;
+  }
+
+  classroomData(className) {
+    let cubicle;
+    switch (className) {
+      case 'classroom1':
+        cubicle = this.weekdayData1;
+        break;
+      default:
+        break;
+    }
+    return cubicle;
+  }
+
+  currentClass(name: string) { // Returns index when conditions of schedule time apply
+    const DATA = this.weekdayData1;
+
+    const currentClass = DATA.className  //filter((lab) => (lab.startHour <= this.hour) && lab.endHour > this.hour);
+    // console.log(currentClassIndex);
+
+    return currentClass;
+    // console.log(currentClassIndex);
 
 
+  }
+
+  
+public isMap;
+subscriptions(){
+  this._scheduleMap.classroom1Test().pipe(first()).subscribe(data => {
+    data.forEach(element => {
+      this.isMap = element.payload.doc.get('monday');
+      // console.log(this.isMap.length)
+      // this.classroom1.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+    });
+    this.weekdayData1 = this.classroom1.filter(x => x.weekday == this.weekdayNameFirebase()).shift();
+    // console.log(this.weekdayData1);
+    this.isLoaded = true;
+  });
+}
 
 
+word = 'tuesday'//// deelete
+
+public dayData = [];
+public currentClassData;
+public currentClassName;
+subscriptionsTest(){
+  this._scheduleMap.classroom1Test().pipe(first()).subscribe(data => {
+
+    this.dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift();
+
+    console.log(this.dayData[0], this.dayData.length, this.hourFirebase);
+
+    this.currentClassData = this.dayData.find((lab) => (lab.startHour <= this.hourFirebase-11) && lab.endHour > this.hourFirebase-2);
+    // this.currentClassName = this.currentClassData.className; 
+    console.log(this.currentClassData);
+
+    if(this.currentClassData){
+      this.currentClassName = this.currentClassData.className; 
+      console.log('La clase es', this.currentClassName)
+    }
+    else{
+      this.currentClassName = 'Salón disponible'
+      console.log('Salón disponible')
+    }
 
 
-
+    this.weekdayData1 = this.classroom1.filter(x => x.weekday == this.weekdayNameFirebase()).shift();
+    // console.log(this.weekdayData1);
+    this.isLoaded = true;
+  });
+}
 
 
   // new(name) {
