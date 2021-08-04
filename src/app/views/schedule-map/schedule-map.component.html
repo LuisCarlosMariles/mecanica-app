@@ -1,9 +1,16 @@
 
-<mat-card color="accent" >Son las {{changeHourFormat()}} y las clases en los laboratorios son:</mat-card>
 
-<mat-grid-list cols="7" rowHeight="2:1">
+<mat-card color="accent">Son las {{changeHourFormat()}} y las clases en los laboratorios son:</mat-card>
 
-    <mat-grid-tile colspan="1" rowspan="5" [ngStyle]="tileColor('thermo')" >
+<ng-container *ngIf="!isLoaded ; else loaded">
+  <mat-spinner color="warn" class="centered"></mat-spinner>
+</ng-container>
+
+
+<ng-template #loaded>
+  <mat-grid-list cols="7" rowHeight="2:1">
+
+    <mat-grid-tile colspan="1" rowspan="5" [ngStyle]="tileColor('thermo')">
       <div class="text-inside-grid">
         Mantenimiento
       </div>
@@ -12,6 +19,7 @@
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
+
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('manufacture')">
       <div class="text-inside-grid">
@@ -23,83 +31,65 @@
       </button>
     </mat-grid-tile>
 
-   <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="studyRoomColor()">
-     <!-- <button (click)="botoncito()">Botoncito</button> -->
-     <div *ngIf="spinnerLoading ; else loaded"><mat-spinner></mat-spinner></div>
-     <ng-template #loaded>
-     <div class="text-inside-grid">
-       Sala de estudio
-    </div>
-    <div class="people-number">
-      {{peopleNumber}}
-    </div>
-  </ng-template>
 
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="studyRoomColor()">
+      <div *ngIf="spinnerLoading ; else studyLoaded">
+        <mat-spinner></mat-spinner>
+      </div>
 
-  </mat-grid-tile>
+        <ng-template #studyLoaded>
+          <div class="text-inside-grid">
+            Sala de estudio
+          </div>
+          <div class="people-number">
+            {{peopleNumber}}
+          </div>
+        </ng-template>
 
+    </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('fluids')">
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('maquinasHerramientas')">
       <div class="text-inside-grid">
         Taller de máquinas y herramientas
       </div>
-      {{classStatus('fluids') }}
-      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('fluids')">
+      {{currentClass('maquinasHerramientas')?.className }}
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('fluids')">
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('manufacture')">
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('cienciasMateriales')">
       <div class="text-inside-grid">
         Laboratorio de ciencia de materiales
       </div>
-      
-      <div *ngIf="!isLoaded; else loadedFirebase">
-        <mat-spinner></mat-spinner>
-      
-      </div>
-      
-      <ng-template #loadedFirebase>
-        {{currentClassName}}
-      </ng-template>
-
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-
-
-
-      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('manufacture')">
+      {{currentClass('cienciasMateriales')?.className}}
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('manufacture')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('fluids')">
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('mecanicaFluidos')">
       <div class="text-inside-grid">
         Laboratorio de mecánica de fluidos
       </div>
-      {{classStatus('fluids')}}
-      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('fluids')">
+      {{currentClass('mecanicaFluidos')?.className}}
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('fluids')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('thermo')">
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('salaAudiovisual')">
       <div class="text-inside-grid">
-        LA-1
+        Sala audiovisual
       </div>
-      {{classStatus('thermo')}}
-      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('thermo')">
+      {{currentClass('salaAudiovisual')?.className}}
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('thermo')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 
     <mat-grid-tile colspan="6" rowspan="1" rowHeight=".5:1">PASILLO</mat-grid-tile>
 
@@ -142,16 +132,18 @@
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('design')">
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('salaComputo')">
       <div class="text-inside-grid">
-        Laboratorio de dibujo
+        Laboratorio de cómputo
       </div>
-      {{classStatus('design')}}
-      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('design')">
+      {{currentClass('salaComputo')?.className}}
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('design')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('thermo')">
       <div class="text-inside-grid">
@@ -161,7 +153,12 @@
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('thermo')">
         <mat-icon>list</mat-icon>
       </button>
-    </mat-grid-tile> 
+    </mat-grid-tile>
+    
+  </mat-grid-list>
+</ng-template>
 
+<!-- </ng-template> -->
+<!-- </mat-grid-list> -->
 
-    <app-chat *ngIf="this._authService.chatApproval | async"></app-chat>
+<app-chat *ngIf="this._authService.chatApproval | async"></app-chat>

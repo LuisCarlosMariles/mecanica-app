@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { MANUFACTURE_LAB_ARRAY, DESIGN_LAB_ARRAY, THERMO_LAB_ARRAY, FLUIDS_LAB_ARRAY, LaboratoriesTemplate } from '../../models/laboratories';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent, DialogContentManufacture } from '../../shared/dialog/dialog.component';
 import { Time } from '../../models/classes-time';
 import { defaultMaxListeners } from 'stream';
 import { WeekdayArray } from '../schedule-map/weekdayArrayClass';
-import { AuthService } from '../../data-services/auth.service'; 
+import { AuthService } from '../../data-services/auth.service';
 import { MainNavComponent } from '../../main-nav/main-nav.component';
 import { ChatComponentContent } from '../../views/chat/chat.component';
 import { StudyRoomService } from 'src/app/data-services/study-room.service';
@@ -40,18 +40,17 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     public _studyRoom: StudyRoomService,
     public angularAuth: AngularFireAuth,
     public _scheduleMap: ScheduleMapService,
-    ) 
-  {
+  ) {
     this.dialogBox = new DialogComponent(dialog);
     this.manufactureContent = new DialogContentManufacture;
-   }
+  }
 
   hour: Number;
   minutes: Number;
   seconds: Number;
   day: Number;
   peopleNumber: Number = 0;
-  botoncito(){
+  botoncito() {
     console.log(this.peopleNumber[0]);
   }
 
@@ -61,27 +60,27 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.angularAuth.currentUser.then(result => {
       this.verifiedBoolean = result.emailVerified;
-      console.log(this.verifiedBoolean);
-      console.log(MANUFACTURE_LAB_ARRAY)
-      this.subscriptionsTest()
+      // console.log(this.verifiedBoolean);
+      // console.log(MANUFACTURE_LAB_ARRAY)
+      this.subscriptions()
     })
     //////////////////////////////        
-    this.studyRoomPeople();                                     
+    this.studyRoomPeople();
     this.chatComponentContent.deleteMessageAfter2Hours();
     this._authService.isChatApproved();
 
-      setInterval(() => {
-        const time = new Date;
-        this.seconds = time.getSeconds();
-        this.minutes = time.getMinutes();
-        this.hour = time.getHours();
-        this.day = time.getDay();
-      }, 1000);
-
-      //this.chatComponentContent.sameTime()
+    setInterval(() => {
       const time = new Date;
-      this.dayFirebase = time.getDay();
-      this.hourFirebase = time.getHours();
+      this.seconds = time.getSeconds();
+      this.minutes = time.getMinutes();
+      this.hour = time.getHours();
+      this.day = time.getDay();
+    }, 1000);
+
+    //this.chatComponentContent.sameTime()
+    const time = new Date;
+    this.dayFirebase = time.getDay();
+    this.hourFirebase = time.getHours();
   }
 
 
@@ -264,26 +263,26 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     );
   }
 
-  studyRoomColor(){
+  studyRoomColor() {
     if (this.peopleNumber <= 3) {
       const buttonStyles = {
         'background-color': 'rgb(76, 175, 80)'
       };
       return buttonStyles;
     }
-    else if (this.peopleNumber > 3 && this.peopleNumber <= 7){
+    else if (this.peopleNumber > 3 && this.peopleNumber <= 7) {
       const buttonStyles = {
         'background-color': 'rgb(174,	222,	62)'
       };
       return buttonStyles;
     }
-    else if (this.peopleNumber > 7 && this.peopleNumber <= 10){
+    else if (this.peopleNumber > 7 && this.peopleNumber <= 10) {
       const buttonStyles = {
         'background-color': 'rgb(255, 221, 60)'
       };
       return buttonStyles;
     }
-    else if (this.peopleNumber > 10 && this.peopleNumber <= 15){
+    else if (this.peopleNumber > 10 && this.peopleNumber <= 15) {
       const buttonStyles = {
         'background-color': 'rgb(	248, 87, 16)'
       };
@@ -325,23 +324,9 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
 
 
 
-  // currentClassIndex(name) {
-  //   const DATA = this.weekdayArray(name);
-  //   let currentClassIndex = <number>DATA.findIndex(currentHour => currentHour.startHour === <number>this.hour+13);
-  //   if (currentClassIndex == -1) {
-  //     currentClassIndex = <number>DATA.findIndex(currentHour => currentHour.startHour - 1 === <number>this.hour);
-  //     return currentClassIndex;
-  //     // console.log(currentClassIndex);
 
-  //   } else {
-  //     return currentClassIndex;
-  //     // console.log(currentClassIndex);
-
-  //   }
-  // }
 
   public classroom1 = [];
-  public weekdayData1: ClassroomTemplate;
   public isLoaded: boolean = false;
   public dayFirebase: number;
   public hourFirebase: number;
@@ -351,25 +336,25 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     let dayName;
     switch (dayNumber) {
       case 0:
-        dayName = 'tuesday';
+        dayName = 'sunday';
         break;
       case 1:
-        dayName = 'monday';
+        dayName = 'wednesday';
         break;
       case 2:
         dayName = 'tuesday';
         break;
       case 3:
-        dayName = 'Miércoles';
+        dayName = 'wednesday';
         break;
       case 4:
-        dayName = 'Jueves';
+        dayName = 'thursday';
         break;
       case 5:
-        dayName = 'Viernes';
+        dayName = 'friday';
         break;
       case 6:
-        dayName = 'Sábado';
+        dayName = 'saturday';
         break;
       default:
         break;
@@ -377,116 +362,134 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     return dayName;
   }
 
-  classroomData(className) {
-    let cubicle;
+  currentClass(className): ClassroomTemplate { //Returns the selected classroom
+    let data;
     switch (className) {
-      case 'classroom1':
-        cubicle = this.weekdayData1;
+      case 'mecanicaFluidos':
+        data = this.mecanicaFluidosStatus;
+        break;
+      case 'cienciasMateriales':
+        data = this.cienciasMaterialesStatus;
+        break;
+      case 'maquinasHerramientas':
+        data = this.maquinasHerramientasClassroom;
+        break;
+      case 'salaAudiovisual':
+        data = this.salaAudiovisualClassroom;
+        break;
+      case 'salaComputo':
+        data = this.salaComputoClassroom;
         break;
       default:
         break;
     }
-    return cubicle;
+    return data;
   }
 
-  currentClass(name: string) { // Returns index when conditions of schedule time apply
-    const DATA = this.weekdayData1;
-
-    const currentClass = DATA.className  //filter((lab) => (lab.startHour <= this.hour) && lab.endHour > this.hour);
-    // console.log(currentClassIndex);
-
-    return currentClass;
-    // console.log(currentClassIndex);
 
 
-  }
 
-  
-public isMap;
-subscriptions(){
-  this._scheduleMap.classroom1Test().pipe(first()).subscribe(data => {
-    data.forEach(element => {
-      this.isMap = element.payload.doc.get('monday');
-      // console.log(this.isMap.length)
-      // this.classroom1.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+
+  //public dayData = []; // complete array of objects from that day and class
+  // public completeClassroomData = [];
+  public cienciasMaterialesStatus: ClassroomTemplate;
+  public mecanicaFluidosStatus: ClassroomTemplate;
+  public maquinasHerramientasClassroom: ClassroomTemplate;
+  public salaAudiovisualClassroom: ClassroomTemplate;
+  public salaComputoClassroom: ClassroomTemplate;
+  // public currentClassData;
+  public currentClassName;
+
+  subscriptions() {
+    this._scheduleMap.cienciasMaterialesClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      console.log(completeClassroomData);
+
+      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      console.log(dayData, dayData.length, this.hourFirebase);
+
+      this.cienciasMaterialesStatus = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(this.cienciasMaterialesStatus);
     });
-    this.weekdayData1 = this.classroom1.filter(x => x.weekday == this.weekdayNameFirebase()).shift();
-    // console.log(this.weekdayData1);
-    this.isLoaded = true;
-  });
-}
 
 
-word = 'tuesday'//// deelete
+    this._scheduleMap.mecanicaFluidosClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      this.mecanicaFluidosStatus = this.classStatusTest(dayData); // checking if there is a class in current hour
+    });
 
-public dayData = [];
-public currentClassData;
-public currentClassName;
-subscriptionsTest(){
-  this._scheduleMap.classroom1Test().pipe(first()).subscribe(data => {
+    this._scheduleMap.maquinasHerramientasClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      this.maquinasHerramientasClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+    });
 
-    this.dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift();
+    this._scheduleMap.salaAudiovisualClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      this.salaAudiovisualClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(dayData);
+    });
 
-    console.log(this.dayData[0], this.dayData.length, this.hourFirebase);
+    this._scheduleMap.salaComputoClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      this.salaComputoClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(dayData);
+      this.isLoaded = true;
+    });
 
-    this.currentClassData = this.dayData.find((lab) => (lab.startHour <= this.hourFirebase-11) && lab.endHour > this.hourFirebase-2);
-    // this.currentClassName = this.currentClassData.className; 
-    console.log(this.currentClassData);
 
-    if(this.currentClassData){
-      this.currentClassName = this.currentClassData.className; 
-      console.log('La clase es', this.currentClassName)
+  }
+
+
+  classStatusTest(className: Array<ClassroomTemplate>): ClassroomTemplate { // function that takes data from that day and looks for the current hour availability
+    let currentClassData: ClassroomTemplate;
+    currentClassData = className.find((lab) => (lab.startHour <= this.hourFirebase) && lab.endHour > this.hourFirebase);
+    if (currentClassData) {
+      this.currentClassName = currentClassData;
+      return (this.currentClassName)
+    }
+    else {
+      currentClassData = {
+        weekday: null,
+        className: 'Salón disponible',
+        teacher: 'Docente no disponible',
+        startHour: 0,
+        endHour: 0,
+      }
+      this.currentClassName = currentClassData;
+      return (currentClassData)
+    }
+  }
+
+  tileTest(classTest){
+    if(this.currentClass(classTest).weekday){
+      console.log(true);
     }
     else{
-      this.currentClassName = 'Salón disponible'
-      console.log('Salón disponible')
+      console.log(false);
     }
+  }
+
+  tileColorFirebase(className: ClassroomTemplate): object {
+    if (!this.currentClass(className)?.weekday) {
+      const buttonStyles = {
+        'background-color': 'rgb(76, 175, 80)'
+      };
+      return buttonStyles;
+    }
+    else {
+      const buttonStyles = {
+        'background-color': 'rgb(244, 67, 54)'
+      };
+      return buttonStyles;
+    }
+  }
 
 
-    this.weekdayData1 = this.classroom1.filter(x => x.weekday == this.weekdayNameFirebase()).shift();
-    // console.log(this.weekdayData1);
-    this.isLoaded = true;
-  });
-}
-
-
-  // new(name) {
-  //   setInterval(() => {
-  //     this.classStatus(name)
-  //   }, 3000);
-  // }
-
-  // manufactureStatus() {
-  //   if (this.currentClassIndex('manufacture') == -1) {
-  //     this.className = 'You do not have class';
-  //     // console.log ('You do not have class');
-  //   }
-  //   else {
-  //     this.className = 'Your class is ' + this.labName('manufacture')[this.currentClassIndex('manufacture')].className;
-  //     // console.log(this.time.currentCourseInLab);
-  //   }
-  // }
-
-  //   classStatus(name: string) {
-  //     console.log(name);
-  //     if (this.time.currentClassIndex(name) == -1) {
-  //         this.className = 'You do not have class';
-  //         console.log ('You do not have class');
-  //     }
-  //     else {
-  //         this.className= 'Your class is ' + this.time.labName(name)[this.time.currentClassIndex(name)].className;
-  //         console.log(this.time.currentCourseInLab);
-  //     }
-  // }
-
-
-
-  // this.tiles = [
-  //   { rows: 2, cols: 2, data: this.classStatus('manufacture') },
-  //   { rows: 2, cols: 2, data: this.classStatus('design') },
-  //   { rows: 2, cols: 2, data: this.classStatus('fluids') },
-  //   { rows: 2, cols: 2, data: this.classStatus('thermo') },
-  // ];
 
 
 
@@ -499,9 +502,6 @@ subscriptionsTest(){
       this.day = time.getDay();
     }, 1000);
   }
-
-
-
 
 }
 

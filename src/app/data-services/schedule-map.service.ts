@@ -8,11 +8,24 @@ export class ScheduleMapService {
 
   constructor(public firestore: AngularFirestore) { }
 
-  classroom1(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
-    return this.firestore.collection('classrooms/cienciasMateriales/weekday').snapshotChanges();
+
+  cienciasMaterialesClassroom(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('classrooms/cienciasMateriales/classes').snapshotChanges();
   }
 
-  classroom1Test(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
-    return this.firestore.collection('classrooms/cienciasMateriales/classes').snapshotChanges();
+  mecanicaFluidosClassroom(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('classrooms/mecanicaFluidos/classes').snapshotChanges();
+  }
+
+  maquinasHerramientasClassroom(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('classrooms/maquinasHerramientas/classes').snapshotChanges();
+  }
+
+  salaAudiovisualClassroom(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('classrooms/salaAudiovisual/classes').snapshotChanges();
+  }
+
+  salaComputoClassroom(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('classrooms/salaComputo/classes').snapshotChanges();
   }
 }
