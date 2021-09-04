@@ -366,10 +366,10 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     let data;
     switch (className) {
       case 'mecanicaFluidos':
-        data = this.mecanicaFluidosStatus;
+        data = this.mecanicaFluidosClassroom;
         break;
       case 'cienciasMateriales':
-        data = this.cienciasMaterialesStatus;
+        data = this.cienciasMaterialesClassroom;
         break;
       case 'maquinasHerramientas':
         data = this.maquinasHerramientasClassroom;
@@ -379,6 +379,21 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
         break;
       case 'salaComputo':
         data = this.salaComputoClassroom;
+        break;
+      case 'celdaManufactura':
+        data = this.celdamanufacturaClassroom;
+        break;
+      case 'mantenimiento':
+        data = this.mantenimientoClassroom;
+        break;
+      case 'salaAsesorias':
+        data = this.salaAsesoriasClassroom;
+        break;
+      case 'refrigeracion':
+        data = this.refrigeracionClassroom;
+        break;
+      case 'mecanicaMateriales':
+        data = this.mecanicaMaterialesClassroom;
         break;
       default:
         break;
@@ -392,11 +407,16 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
 
   //public dayData = []; // complete array of objects from that day and class
   // public completeClassroomData = [];
-  public cienciasMaterialesStatus: ClassroomTemplate;
-  public mecanicaFluidosStatus: ClassroomTemplate;
+  public cienciasMaterialesClassroom: ClassroomTemplate;
+  public mecanicaFluidosClassroom: ClassroomTemplate;
   public maquinasHerramientasClassroom: ClassroomTemplate;
   public salaAudiovisualClassroom: ClassroomTemplate;
   public salaComputoClassroom: ClassroomTemplate;
+  public celdamanufacturaClassroom: ClassroomTemplate;
+  public mantenimientoClassroom: ClassroomTemplate;
+  public salaAsesoriasClassroom: ClassroomTemplate;
+  public refrigeracionClassroom: ClassroomTemplate;
+  public mecanicaMaterialesClassroom: ClassroomTemplate;
   // public currentClassData;
   public currentClassName;
 
@@ -404,44 +424,91 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     this._scheduleMap.cienciasMaterialesClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
 
       let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
-      console.log(completeClassroomData);
+      console.log(data, completeClassroomData);
 
-      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      // let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase())
       console.log(dayData, dayData.length, this.hourFirebase);
 
-      this.cienciasMaterialesStatus = this.classStatusTest(dayData); // checking if there is a class in current hour
-      console.log(this.cienciasMaterialesStatus);
+      this.cienciasMaterialesClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(this.cienciasMaterialesClassroom);
     });
 
 
     this._scheduleMap.mecanicaFluidosClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
       let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
-      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
-      this.mecanicaFluidosStatus = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(completeClassroomData);
+      let dayData = this.classDayData(data, this.weekdayNameFirebase())
+      // let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      this.mecanicaFluidosClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
     });
 
     this._scheduleMap.maquinasHerramientasClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
       let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
-      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()) // filling current day data to variable
       this.maquinasHerramientasClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
     });
 
     this._scheduleMap.salaAudiovisualClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
       let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
-      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
       this.salaAudiovisualClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
       console.log(dayData);
     });
 
     this._scheduleMap.salaComputoClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
       let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
-      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameFirebase())).shift(); // filling current day data to variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
       this.salaComputoClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(dayData);
+    });
+
+    this._scheduleMap.celdaManufacturaClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
+      this.celdamanufacturaClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(dayData);
+    });
+
+    this._scheduleMap.mantenimientoClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
+      this.mantenimientoClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(dayData);
+    });
+
+    this._scheduleMap.salaAsesoriasClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
+      this.salaAsesoriasClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(dayData);
+    });
+
+    this._scheduleMap.refrigeracionClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
+      this.refrigeracionClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      console.log(dayData);
+    });
+
+    this._scheduleMap.mecanicaMaterialesClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
+      this.mecanicaMaterialesClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
       console.log(dayData);
       this.isLoaded = true;
     });
 
+  }
 
+  classDayData(data, day) {
+    let dayData = data.map(element => element.payload.doc.get(day)).shift();
+    if (dayData) {
+      return dayData;
+    }
+    else {
+      return dayData = [];
+    }
   }
 
 
@@ -465,11 +532,11 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     }
   }
 
-  tileTest(classTest){
-    if(this.currentClass(classTest).weekday){
+  tileTest(classTest) {
+    if (this.currentClass(classTest).weekday) {
       console.log(true);
     }
-    else{
+    else {
       console.log(false);
     }
   }

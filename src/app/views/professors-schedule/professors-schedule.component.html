@@ -26,17 +26,14 @@
               <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle1')">
                 <mat-icon>list</mat-icon>
               </button>
-              <button mat-mini-fab color="accent" class="tile-button-2" (click)="dialogBox.openDialog('cubicle1')">
-                <mat-icon >info</mat-icon>
-              </button>
             </mat-grid-tile>
 
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle2')">
               <div class="text-inside-grid">Dr. Álvaro Gonzalez Álvarez</div>
               <div>{{cubicleStatus('cubicle2')}}</div>
-              <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle2')">
+              <!-- <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle2')">
                 <mat-icon>list</mat-icon>
-              </button>
+              </button> -->
               <button mat-mini-fab [ngStyle]="{'background-color':'#FFC107'}" class="tile-button-2" (click)="dialogBox.openDialog('cubicle2')">
                 <!-- ///////////////////////////// -->
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
@@ -46,9 +43,9 @@
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle3')">
               <div class="text-inside-grid">Vacante</div>
               <div>{{cubicleStatus('cubicle3')}}</div>
-              <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle3')">
+              <!-- <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle3')">
                 <mat-icon>list</mat-icon>
-              </button>
+              </button> -->
               <button mat-mini-fab color="accent" class="tile-button-2" (click)="dialogBox.openDialog('cubicle3')"><!-- ///////////////////////////// -->
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>

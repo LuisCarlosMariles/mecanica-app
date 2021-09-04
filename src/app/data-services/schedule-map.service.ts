@@ -28,4 +28,28 @@ export class ScheduleMapService {
   salaComputoClassroom(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('classrooms/salaComputo/classes').snapshotChanges();
   }
+
+  celdaManufacturaClassroom(){
+    return this.firestore.collection('classrooms/celdaManufactura/classes').snapshotChanges();
+  }
+
+  mantenimientoClassroom(){
+    return this.firestore.collection('classrooms/mantenimiento/classes').snapshotChanges();
+  }
+
+  salaAsesoriasClassroom(){
+    return this.firestore.collection('classrooms/salaAsesorias/classes').snapshotChanges();
+  }
+
+  refrigeracionClassroom(){
+    return this.firestore.collection('classrooms/refrigeracion/classes').snapshotChanges();
+  }
+
+  mecanicaMaterialesClassroom(){
+    return this.firestore.collection('classrooms/mecanicaMateriales/classes').snapshotChanges();
+  }
+  
+  cncClassroom(){
+    return this.firestore.collection('classrooms/cnc/classes').snapshotChanges();
+  }
 }

@@ -4,6 +4,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MANUFACTURE_LAB_ARRAY, DESIGN_LAB_ARRAY, THERMO_LAB_ARRAY, FLUIDS_LAB_ARRAY, LaboratoriesTemplate } from '../../models/laboratories';
+import { ScheduleMapService } from 'src/app/data-services/schedule-map.service';
 
 
 @Component({
@@ -20,16 +21,16 @@ export class DialogComponent {
 
 
     switch (name) {
-      case 'manufacture':
+      case 'mecanicaFluidos':
         this.dialog.open(DialogContentManufacture);
         break;
-      case 'design':
+      case 'cienciasMateriales':
         this.dialog.open(DialogContentDesign);
         break;
-      case 'fluids':
+      case 'maquinasHerramientas':
         this.dialog.open(DialogContentFluids);
         break;
-      case 'thermo':
+      case 'salaAudiovisual':
         this.dialog.open(DialogContentThermo);
         break;
       default:
@@ -116,7 +117,7 @@ export class DialogContentManufacture implements OnInit{
         dayName = 'Martes';
         break;
       case 3:
-        dayName = 'Miercoles';
+        dayName = 'Miércoles';
         break;
       case 4:
         dayName = 'Jueves';
@@ -149,7 +150,7 @@ export class DialogContentManufacture implements OnInit{
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogContentDesign implements OnInit{
-  constructor() {}
+  constructor(public _scheduleMap: ScheduleMapService,) {}
 
   isWeekend: boolean = false;
 
