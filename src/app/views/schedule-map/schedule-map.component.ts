@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { MANUFACTURE_LAB_ARRAY, DESIGN_LAB_ARRAY, THERMO_LAB_ARRAY, FLUIDS_LAB_ARRAY, LaboratoriesTemplate } from '../../models/laboratories';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent, DialogContentManufacture } from '../../shared/dialog/dialog.component';
+import { DialogComponent, /*DialogContentManufacture*/ } from '../../shared/dialog/dialog.component';
 import { Time } from '../../models/classes-time';
 import { defaultMaxListeners } from 'stream';
 import { WeekdayArray } from '../schedule-map/weekdayArrayClass';
@@ -30,7 +30,7 @@ export interface ClassroomTemplate {
 export class ScheduleMapComponent implements OnInit, OnDestroy {
 
   dialogBox: DialogComponent;
-  manufactureContent: DialogContentManufacture;
+  // manufactureContent: DialogContentManufacture;
 
   constructor(
     public dialog: MatDialog,
@@ -42,7 +42,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     public _scheduleMap: ScheduleMapService,
   ) {
     this.dialogBox = new DialogComponent(dialog);
-    this.manufactureContent = new DialogContentManufacture;
+    // this.manufactureContent = new DialogContentManufacture;
   }
 
   hour: Number;

@@ -15,7 +15,7 @@
         Mantenimiento
       </div>
       {{currentClass('mantenimiento')?.className }}
-      <button mat-mini-fab color="warn" class="tile-button-long" (click)="dialogBox.openDialog('thermo')">
+      <button mat-mini-fab color="warn" class="tile-button-long" (click)="dialogBox.openDialog('mantenimiento')">
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -26,7 +26,7 @@
         Celda de manufactura
       </div>
       {{currentClass('celdaManufactura')?.className }}
-      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('manufacture')">
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('celdaManufactura')">
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -54,7 +54,7 @@
         Taller de máquinas y herramientas
       </div>
       {{currentClass('maquinasHerramientas')?.className }}
-      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('fluids')">
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('maquinasHerramientas')">
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -64,7 +64,7 @@
         Laboratorio de ciencia de materiales
       </div>
       {{currentClass('cienciasMateriales')?.className}}
-      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('manufacture')">
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('cienciasMateriales')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -74,7 +74,7 @@
         Laboratorio de mecánica de fluidos
       </div>
       {{currentClass('mecanicaFluidos')?.className}}
-      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('fluids')">
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('mecanicaFluidos')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -84,7 +84,7 @@
         Sala audiovisual
       </div>
       {{currentClass('salaAudiovisual')?.className}}
-      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('thermo')">
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('salaAudiovisual')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -98,7 +98,17 @@
         Mecánica de materiales
       </div>
       {{currentClass('mecanicaMateriales')?.className}}
-      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('fluids')">
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('mecanicaMateriales')">
+        <mat-icon>list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('refrigeracion')">
+      <div class="text-inside-grid">
+        Laboratorio de refrigeración
+      </div>
+      {{currentClass('refrigeracion')?.className}}
+      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('refrigeracion')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -113,22 +123,13 @@
       </button>
     </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('refrigeracion')">
-      <div class="text-inside-grid">
-        Laboratorio de refrigeración
-      </div>
-      {{currentClass('refrigeracion')?.className}}
-      <button mat-mini-fab color="warn" class="tile-button" (click)="dialogBox.openDialog('thermo')">
-        <mat-icon>list</mat-icon>
-      </button>
-    </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('fluids')">
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('fluids')"> <!--CORREGIR-->
       <div class="text-inside-grid">
-        Laboratorio de manufactura
+        Laboratorio de Proyectos
       </div>
       {{classStatus('fluids')}}
-      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('fluids')">
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('laboratorioProyectos')">
         <mat-icon>list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -147,7 +148,7 @@
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('thermo')">
       <div class="text-inside-grid">
-        Taller de CNC
+        Laboratorio de CNC
       </div>
       {{classStatus('thermo')}}
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('thermo')">

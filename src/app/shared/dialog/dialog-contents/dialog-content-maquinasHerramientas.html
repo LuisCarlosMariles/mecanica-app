@@ -1,8 +1,13 @@
+<div *ngIf="!loadCompleted">
+  <mat-spinner color="warn"></mat-spinner>
+</div>
+
 <h2 *ngIf="isWeekend">El día de hoy no hay clases en este laboratorio</h2>
 
-<ng-container *ngIf="!isWeekend">
+<ng-container *ngIf="!isWeekend || loadCompleted">
   <h2>Clases de hoy en este laboratorio</h2>
-<table mat-table #table [dataSource]="dataSourceManufacture" matSort >
+
+<table mat-table #table [dataSource]="dataSourceMaquinasHerramientas" matSort >
 
     <!-- Position Column -->
     <ng-container matColumnDef="weekday">
@@ -37,9 +42,3 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
-</ng-container>
-
-
-<!-- 
-<div *ngFor="let item of someArray"> {{item.weekday + item.teacher}}</div> -->

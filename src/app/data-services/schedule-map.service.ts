@@ -52,4 +52,8 @@ export class ScheduleMapService {
   cncClassroom(){
     return this.firestore.collection('classrooms/cnc/classes').snapshotChanges();
   }
+
+  laboratorioProyectosClassroom(){
+    return this.firestore.collection('classrooms/laboratorioProyectos/classes').snapshotChanges();
+  }
 }

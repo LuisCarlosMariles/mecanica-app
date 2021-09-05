@@ -47,11 +47,11 @@ import { AuthService } from './data-services/auth.service';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
-import { DialogComponent } from './shared/dialog/dialog.component';
-import { DialogContentManufacture } from './shared/dialog/dialog.component';
-import { DialogContentDesign } from './shared/dialog/dialog.component';
-import { DialogContentThermo } from './shared/dialog/dialog.component';
-import { DialogContentFluids } from './shared/dialog/dialog.component';
+import { DialogComponent, DialogContentLaboratorioProyectos, DialogContentMecanicaFluidos, DialogContentMecanicaMateriales, DialogContentRefrigeracion, DialogContentSalaAudiovisual } from './shared/dialog/dialog.component';
+import { DialogContentMantenimiento } from './shared/dialog/dialog.component';
+import { DialogContentCeldaManufactura } from './shared/dialog/dialog.component';
+import { DialogContentCienciasMateriales } from './shared/dialog/dialog.component';
+import { DialogContentMaquinasHerramientas } from './shared/dialog/dialog.component';
 import { ChatComponent } from './views/chat/chat.component';
 import { CompleteScheduleComponent } from './views/complete-schedule/complete-schedule.component';
 import { ChatComponentContent } from './views/chat/chat.component';
@@ -74,11 +74,15 @@ import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, 
     NavigationBarComponent,
     MainNavComponent,
     DialogComponent,
-    DialogContentManufacture,
-    DialogContentManufacture,
-    DialogContentDesign,
-    DialogContentThermo,
-    DialogContentFluids,
+    DialogContentMantenimiento,
+    DialogContentCeldaManufactura,
+    DialogContentCienciasMateriales,
+    DialogContentMaquinasHerramientas,
+    DialogContentMecanicaFluidos,
+    DialogContentSalaAudiovisual,
+    DialogContentMecanicaMateriales,
+    DialogContentRefrigeracion,
+    DialogContentLaboratorioProyectos,
     ChatComponent,
     ChatComponentContent,
     CompleteScheduleComponent,
