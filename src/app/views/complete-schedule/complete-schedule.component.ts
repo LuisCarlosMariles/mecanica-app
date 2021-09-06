@@ -108,9 +108,12 @@ export class CompleteScheduleComponent implements OnInit {
       this.classData1 = mergedObjects;
 
       // this.dataSource1 = completeClassroomData.filter(x => x == day)
-      console.log(mergedObjects);
-      console.log(completeClassroomData[0]);
-      console.log(mergedObjects);
+
+
+      
+      // console.log(mergedObjects);    //commented on final version
+      // console.log(completeClassroomData[0]);    //commented on final version
+      // console.log(mergedObjects);    //commented on final version
     });
 
     

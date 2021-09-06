@@ -50,7 +50,7 @@ export class MainNavComponent implements OnInit {
         if (user) {
           this.isLogged = true;
           this.userEmail = user;
-          console.log('User->', user); //delete on final version
+          // console.log('User->', user);  // commented on final version
         }
         else {
           console.log('No user');

@@ -96,7 +96,7 @@ export class ChatComponentContent implements OnInit {
       let allIds = [];
 
       for(let y = 0; y<allMessages.length-1; y++){
-        allMessagesTimes.push(allMessages[y].timeCheck + (1/60) * 60 * 60 * 1000);
+        allMessagesTimes.push(allMessages[y].timeCheck + (1) * 60 * 60 * 1000);
         allIds.push(allMessages[y].id);
       }
 

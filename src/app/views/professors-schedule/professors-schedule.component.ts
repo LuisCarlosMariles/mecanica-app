@@ -54,6 +54,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   public weekdayData10: CubicleScheduleTemplate
   public cbcData11 = [];
   public weekdayData11: CubicleScheduleTemplate
+  public cbcData12 = [];
+  public weekdayData12: CubicleScheduleTemplate
 
   public hour: Number;
   public day: Number;
@@ -70,6 +72,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   public subscription9: Subscription;
   public subscription10: Subscription;
   public subscription11: Subscription;
+  public subscription12: Subscription;
+
   // public subscription9: Subscription;
 
   public floor: string;
@@ -152,6 +156,9 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
       case 'cubicle11':
         cubicle = this.weekdayData11;
         break;
+      case 'cubicle12':
+        cubicle = this.weekdayData12;
+        break;
       default:
         break;
     }
@@ -169,7 +176,7 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
 
       });
       this.weekdayData1 = this.cbcData1.filter(x => x.day == this.weekdayName()).shift();
-      console.log(this.weekdayData1)
+      // console.log(this.weekdayData1)    //commented on final version
     });
 
     this._professorsSchedule.cubicle1Classes().subscribe(data => {
@@ -253,6 +260,13 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
       });
     });
 
+    this.subscription12 = this._professorsSchedule.cubicle12().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData12.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData12 = this.cbcData12.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
+      });
+    });
+
 
   }
 
@@ -261,16 +275,16 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     const CUBICLE_DATA = this.cubicleData(name);
     if ((this.hour > CUBICLE_DATA.startHour1 && this.hour < CUBICLE_DATA.endHour1) ||
       (this.hour > CUBICLE_DATA.startHour2 && this.hour < CUBICLE_DATA.endHour2)) {
-      return 'Cubiculo disponible';
+      return 'Cubículo disponible';
     }
     else {
-      return 'Cubiculo no disponible';
+      return 'Cubículo no disponible';
     }
   }
 
 
   tileColor(name) {
-    if (this.cubicleStatus(name) == 'Cubiculo disponible') {
+    if (this.cubicleStatus(name) == 'Cubículo disponible') {
       const buttonStyles = {
         'background-color': 'rgb(76, 175, 80)'
       };
@@ -294,5 +308,9 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     this.subscription6.unsubscribe();
     this.subscription7.unsubscribe();
     this.subscription8.unsubscribe();
+    this.subscription9.unsubscribe();
+    this.subscription10.unsubscribe();
+    this.subscription11.unsubscribe();
+    this.subscription12.unsubscribe();
   }
 }

@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'completeSchedule', canActivate:[ScheduleVisualizationGuard], component: CompleteScheduleComponent},
   {path: 'sendVerificationEmail', component: SendEmailComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'professors', component: ProfessorsScheduleComponent},
+  {path: 'professors', canActivate:[ScheduleVisualizationGuard], component: ProfessorsScheduleComponent},
   {path:'',redirectTo:'about', pathMatch: 'full' },
 ];
 

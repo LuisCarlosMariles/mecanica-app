@@ -24,9 +24,9 @@ export class ScheduleVisualizationGuard implements CanActivate, OnInit{
     return this.afAuth.authState
                       .pipe(map(authState => {
                         if(authState){ //if the user was created
-                        console.log(authState);
+                        // console.log(authState); // commented in final version
                         return !!authState.emailVerified} //if the user has accpeted the email verification, the access is true. If it exists but hasnt accepted, returns false
-                        console.log('nooo');
+                        // console.log('nooo');   //commented on final version
                         this.route.navigate(['/signIn']); // this happens if the user doesn't exist
                       }));
 

@@ -57,7 +57,7 @@ export class AuthService implements OnInit{
       return this.angularAuth.signInWithEmailAndPassword(email, password)
                              .then((result) => {
                                 if(result.user.emailVerified){
-                                console.log(result.user);
+                                // console.log(result.user);    // commented on final version
                                 this.chatApproval.next(true);
                                 this.subjectApproved.next(true);
                                 this.route.navigate(['/scheduleHome']);
@@ -71,7 +71,7 @@ export class AuthService implements OnInit{
                              .catch((error) => {
                                 this.subjectApproved.next(false);
                              
-                                console.log(error);
+                                console.log(error);    // comment on final version
                                 return false; });
   }
 
@@ -98,14 +98,14 @@ export class AuthService implements OnInit{
       return result;
     } 
     catch (error) {
-      console.log(error);
+      console.log(error);    // commented on final version
     }
   }
 
   signUp(email: string, password: string): Promise<boolean> {
       return this.angularAuth.createUserWithEmailAndPassword(email, password)
-                             .then((result) => { console.log(result.user); this.sendVerificationEmail(); return true; })
-                             .catch((error) => { console.log(error); return false; });
+                             .then((result) => {/* console.log(result.user);*/ this.sendVerificationEmail(); return true; })    // commented console.log on final version
+                             .catch((error) => { /*console.log(error);*/ return false; });// commented console.log on final version
   }
 
 
@@ -115,8 +115,8 @@ export class AuthService implements OnInit{
 
   logOut(): Promise<boolean> {
      return this.angularAuth.signOut()
-                            .then(() => {this.subjectApproved.next(false); console.log('Cerraste sesión'); this.chatApproval.next(false); this.chatSubscription.unsubscribe(); return true})
-                            .catch((error) => { console.log(error); return false});
+                            .then(() => {this.subjectApproved.next(false); console.log('Cerraste sesión'); this.chatApproval.next(false); this.chatSubscription.unsubscribe(); return true}) // comment console.log on final version
+                            .catch((error) => { /*console.log(error);*/ return false}); // comment console.log on final version
   
   }
 

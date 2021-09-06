@@ -63,6 +63,9 @@ export class DialogCubicleComponent {
       case 'cubicle11':
         this.dialog.open(DialogContentCubicle11);
         break;
+      case 'cubicle12':
+        this.dialog.open(DialogContentCubicle12);
+        break;
       default:
         break;
     }
@@ -719,6 +722,65 @@ export class DialogContentCubicle11 implements OnInit {
     this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle11Photo = url;
+      });
+    if (this.dayNumber() == 6 || this.dayNumber() == 0) {
+      this.isWeekend = true;
+    }
+  }
+
+  dayNumber(): Number {
+    const time = new Date;
+    this.day = time.getDay();
+    return this.day;
+  }
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
+@Component({
+  templateUrl: './dialog-cubicle-content/cubicle12.html',
+  styleUrls: ['./dialog-cubicle.component.scss']
+})
+export class DialogContentCubicle12 implements OnInit {
+  constructor(
+    public _professorsSchedule: ProfessorsScheduleService,
+    public firebaseStorage: AngularFireStorage,) { }
+
+  public isWeekend: boolean = false;
+  public displayedColumns: string[] = ['day', 'startHour1', 'endHour1', 'startHour2', 'endHour2'];
+  public day: Number;
+  public cbcData12 = [];
+  public dataSourceCubicle12;
+  public loaded = false;
+  public cubicle12Photo: string;
+
+
+  classesArray12 = [];
+  description12: string;
+
+
+  ngOnInit() {
+    this._professorsSchedule.cubicle12().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData12.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+      });
+      this.dataSourceCubicle12 = new MatTableDataSource(this.cbcData12);
+      this.cbcData12.sort((a, b) => a.dayNumber - b.dayNumber);
+    });
+    this._professorsSchedule.cubicle12Classes().subscribe(data => {
+      data.forEach(element => {
+        this.classesArray12 = element.payload.doc.get('classesList');
+      });
+    });
+
+    this._professorsSchedule.cubicle12Description().subscribe(data => {
+      data.forEach(element => {
+        this.description12 = element.payload.doc.get('professorDescription');
+      });
+    });
+
+    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+      .then((url) => { // Function to get image from firebase storage
+        this.cubicle12Photo = url;
       });
     if (this.dayNumber() == 6 || this.dayNumber() == 0) {
       this.isWeekend = true;

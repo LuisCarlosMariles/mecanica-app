@@ -47,7 +47,7 @@ import { AuthService } from './data-services/auth.service';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
-import { DialogComponent, DialogContentLaboratorioProyectos, DialogContentMecanicaFluidos, DialogContentMecanicaMateriales, DialogContentRefrigeracion, DialogContentSalaAudiovisual } from './shared/dialog/dialog.component';
+import { DialogComponent, DialogContentCnc, DialogContentLaboratorioProyectos, DialogContentMecanicaFluidos, DialogContentMecanicaMateriales, DialogContentRefrigeracion, DialogContentSalaAudiovisual, DialogContentSalaComputo } from './shared/dialog/dialog.component';
 import { DialogContentMantenimiento } from './shared/dialog/dialog.component';
 import { DialogContentCeldaManufactura } from './shared/dialog/dialog.component';
 import { DialogContentCienciasMateriales } from './shared/dialog/dialog.component';
@@ -60,7 +60,7 @@ import { AboutComponent } from './views/about/about.component';
 import { ScheduleVisualizationGuard } from './shared/guards/schedule-visualization.guard';
 import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
 import { ProfessorsScheduleComponent } from './views/professors-schedule/professors-schedule.component';
-import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, DialogContentCubicle2, DialogContentCubicle3, DialogContentCubicle4, DialogContentCubicle5, DialogContentCubicle6, DialogContentCubicle7, DialogContentCubicle8, DialogContentCubicle9, DialogCubicleComponent } from './shared/dialog-cubicle/dialog-cubicle.component';
+import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, DialogContentCubicle12, DialogContentCubicle2, DialogContentCubicle3, DialogContentCubicle4, DialogContentCubicle5, DialogContentCubicle6, DialogContentCubicle7, DialogContentCubicle8, DialogContentCubicle9, DialogCubicleComponent } from './shared/dialog-cubicle/dialog-cubicle.component';
 
 
 
@@ -83,6 +83,8 @@ import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, 
     DialogContentMecanicaMateriales,
     DialogContentRefrigeracion,
     DialogContentLaboratorioProyectos,
+    DialogContentSalaComputo,
+    DialogContentCnc,
     ChatComponent,
     ChatComponentContent,
     CompleteScheduleComponent,
@@ -101,6 +103,7 @@ import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, 
     DialogContentCubicle9,
     DialogContentCubicle10,
     DialogContentCubicle11,
+    DialogContentCubicle12,
 
 
   ],

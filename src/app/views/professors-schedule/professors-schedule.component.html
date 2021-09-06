@@ -9,7 +9,7 @@
   </mat-radio-button>
 
   <div *ngIf="spinnerLoading ; else loaded">
-    <mat-spinner color="warn" class="centered"></mat-spinner>
+    <mat-spinner color="primary" class="centered"></mat-spinner>
   </div>
 
   <ng-template #loaded>
@@ -18,23 +18,21 @@
         <div *ngIf="cbcData8">
           <mat-card-title>Planta alta</mat-card-title>
           <mat-grid-list cols="10" rowHeight="2:1">
-            <mat-grid-tile colspan="2" rowspan="2" class="transparent"></mat-grid-tile>
+            <!-- <mat-grid-tile colspan="2" rowspan="2" class="transparent"></mat-grid-tile> -->
 
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle1')">
               <div class="text-inside-grid">M.C. Ana María Castañeda</div>
               <div>{{cubicleStatus('cubicle1')}}</div>
-              <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle1')">
-                <mat-icon>list</mat-icon>
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle1')">
+                <!-- ///////////////////////////// -->
+                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle2')">
-              <div class="text-inside-grid">Dr. Álvaro Gonzalez Álvarez</div>
+              <div class="text-inside-grid">Vacante</div>
               <div>{{cubicleStatus('cubicle2')}}</div>
-              <!-- <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle2')">
-                <mat-icon>list</mat-icon>
-              </button> -->
-              <button mat-mini-fab [ngStyle]="{'background-color':'#FFC107'}" class="tile-button-2" (click)="dialogBox.openDialog('cubicle2')">
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle2')">
                 <!-- ///////////////////////////// -->
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
@@ -43,43 +41,54 @@
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle3')">
               <div class="text-inside-grid">Vacante</div>
               <div>{{cubicleStatus('cubicle3')}}</div>
-              <!-- <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle3')">
-                <mat-icon>list</mat-icon>
-              </button> -->
-              <button mat-mini-fab color="accent" class="tile-button-2" (click)="dialogBox.openDialog('cubicle3')"><!-- ///////////////////////////// -->
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle3')"><!-- ///////////////////////////// -->
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle4')">
-              <div class="text-inside-grid">M.C. Rigoberto Zamora Alarcón</div>
+              <div class="text-inside-grid">Dr. Álvaro Gonzalez Álvarez</div>
               <div>{{cubicleStatus('cubicle4')}}</div>
-              <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle4')">
-                <mat-icon>list</mat-icon>
-              </button>
-              <button mat-mini-fab color="accent" class="tile-button-2" (click)="dialogBox.openDialog('cubicle4')"><!-- ///////////////////////////// -->
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle4')"><!-- ///////////////////////////// -->
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle5')">
-              <div class="text-inside-grid">Vacante</div>
+              <div class="text-inside-grid">M.C. Miguel Ángel Martínez Hernández</div>
               <div>{{cubicleStatus('cubicle5')}}</div>
-              <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle5')">
-                <mat-icon>list</mat-icon>
-              </button>
-              <button mat-mini-fab color="accent" class="tile-button-2" (click)="dialogBox.openDialog('cubicle5')"><!-- ///////////////////////////// -->
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle5')">
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
+            <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle5')">
+              <div class="text-inside-grid">M.C. Rigoberto Zamora Alarcón</div>
+              <div>{{cubicleStatus('cubicle5')}}</div>
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle5')">
+                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+              </button>
+            </mat-grid-tile>
+
+
+            <!-- CORRREEEEEGGIIIIIR NO FUNCIONA CUBCICLE12 -->
+            <!--
+              <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle12')">
+              <div class="text-inside-grid">M.C. Rigoberto Zamora Alarcón</div>
+              <div>{{cubicleStatus('cubicle12')}}</div>
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle12')">
+                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+              </button>
+            </mat-grid-tile> -->
+
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle6')">
-              <div class="text-inside-grid">Vacante</div>
+              <div class="text-inside-grid">Dr. Arili Cárdenas Robles</div>
               <div>{{cubicleStatus('cubicle6')}}</div>
               <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle6')">
                 <mat-icon>list</mat-icon>
               </button>
-              <button mat-mini-fab color="accent" class="tile-button-2" (click)="dialogBox.openDialog('cubicle6')"><!-- ///////////////////////////// -->
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle6')">
+                <!-- ///////////////////////////// -->
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
@@ -92,7 +101,8 @@
               <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle7')">
                 <mat-icon>list</mat-icon>
               </button>
-              <button mat-mini-fab color="accent" class="tile-button-2" (click)="dialogBox.openDialog('cubicle7')"><!-- ///////////////////////////// -->
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle7')">
+                <!-- ///////////////////////////// -->
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
@@ -103,7 +113,8 @@
               <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle8')">
                 <mat-icon>list</mat-icon>
               </button>
-              <button mat-mini-fab color="accent" class="tile-button-2" (click)="dialogBox.openDialog('cubicle8')"><!-- ///////////////////////////// -->
+              <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle8')">
+                <!-- ///////////////////////////// -->
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
@@ -132,18 +143,20 @@
         </mat-grid-tile>
 
         <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle10')">
-          <div class="text-inside-grid">Elvira</div>
+          <div class="text-inside-grid">Vacante</div>
           <div>{{cubicleStatus('cubicle10')}}</div>
-          <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle10')">
-            <mat-icon>list</mat-icon>
+          <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle10')">
+            <!-- ///////////////////////////// -->
+            <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
           </button>
         </mat-grid-tile>
 
         <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle9')">
           <div class="text-inside-grid">Eddna Martínez</div>
           <div>{{cubicleStatus('cubicle9')}}</div>
-          <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle9')">
-            <mat-icon>list</mat-icon>
+          <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle9')">
+            <!-- ///////////////////////////// -->
+            <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
           </button>
         </mat-grid-tile>
 
@@ -152,10 +165,11 @@
         <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
 
         <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle11')">
-          <div class="text-inside-grid">Maestro</div>
+          <div class="text-inside-grid">Ing. Juan Raúl Alcántara Ávila</div>
           <div>{{cubicleStatus('cubicle11')}}</div>
-          <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle11')">
-            <mat-icon>list</mat-icon>
+          <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle11')">
+            <!-- ///////////////////////////// -->
+            <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
           </button>
         </mat-grid-tile>
   

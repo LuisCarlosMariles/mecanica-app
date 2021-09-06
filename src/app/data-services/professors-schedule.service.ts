@@ -128,6 +128,16 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle11/description').snapshotChanges();
   }
   //----------------------------------------------------------------------------------
+  cubicle12(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('cubicles/cubicle12/weekday').snapshotChanges();
+  }
+  cubicle12Classes(){
+    return this.firestore.collection('cubicles/cubicle12/assignatures').snapshotChanges();
+  }
+  cubicle12Description(){ 
+    return this.firestore.collection('cubicles/cubicle12/description').snapshotChanges();
+  }
+  //----------------------------------//----------------------------------
 
   test(){ // metodo para listar todos los estudiantes
     return this.firestore.collection('professorsSchedule').snapshotChanges();

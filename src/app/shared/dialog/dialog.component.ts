@@ -49,6 +49,12 @@ export class DialogComponent {
       case 'laboratorioProyectos':
         this.dialog.open(DialogContentLaboratorioProyectos);
         break;
+      case 'salaComputo':
+        this.dialog.open(DialogContentSalaComputo);
+        break;
+      case 'cnc':
+        this.dialog.open(DialogContentCnc);
+        break;
       default:
         break;
     }
@@ -126,7 +132,7 @@ export class DialogContentMantenimiento implements OnInit{
 
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay()+1;
+    this.day = time.getDay();
     return this.day;
  }
 
@@ -210,7 +216,7 @@ subscriptions(){
 
 dayNumber(): Number{
   const time = new Date;
-  this.day = time.getDay()+1;
+  this.day = time.getDay();
   return this.day;
 }
 
@@ -288,7 +294,7 @@ export class DialogContentMaquinasHerramientas implements OnInit {
 
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay()+1;
+    this.day = time.getDay();
     return this.day;
  }
 
@@ -366,7 +372,7 @@ export class DialogContentCienciasMateriales implements OnInit{
 
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay()+1;
+    this.day = time.getDay();
     return this.day;
  }
 
@@ -445,7 +451,7 @@ export class DialogContentMecanicaFluidos implements OnInit{
 
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay()+1;
+    this.day = time.getDay();
     return this.day;
  }
 
@@ -524,7 +530,7 @@ export class DialogContentSalaAudiovisual implements OnInit{
 
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay()+1;
+    this.day = time.getDay();
     return this.day;
  }
 
@@ -602,7 +608,7 @@ export class DialogContentMecanicaMateriales implements OnInit{
 
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay()+1;
+    this.day = time.getDay();
     return this.day;
  }
 
@@ -680,7 +686,7 @@ export class DialogContentRefrigeracion implements OnInit{
 
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay()+1;
+    this.day = time.getDay();
     return this.day;
  }
 
@@ -770,7 +776,7 @@ export class DialogContentLaboratorioProyectos implements OnInit{
 
   dayNumber(): Number{
     const time = new Date;
-    this.day = time.getDay()+1;
+    this.day = time.getDay();
     return this.day;
  }
 
@@ -810,12 +816,160 @@ export class DialogContentLaboratorioProyectos implements OnInit{
 
 
 
+@Component({
+  templateUrl: './dialog-contents/dialog-content-salaComputo.html',
+  styleUrls: ['./dialog.component.scss'],
+})
+export class DialogContentSalaComputo implements OnInit{
+  constructor(
+    public _scheduleMap: ScheduleMapService,
+  ) {}
+
+  isWeekend: boolean = false;
+
+  displayedColumns: string[] = ['weekday', 'startHour', 'endHour', 'className', 'teacher'];
+  public dataSourceSalaComputo;
+  
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  day: Number;
+
+  ngOnInit() {
+    if(this.dayNumber() == 0 || this.dayNumber() == 6){
+      this.isWeekend = true;
+    }
+
+    this.subscriptions();
+  }
+
+  public loadCompleted = false;
+  subscriptions(){
+    this._scheduleMap.salaComputoClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameForDialog())).shift();
+      this.dataSourceSalaComputo = new MatTableDataSource(dayData);
+      this.dataSourceSalaComputo.sort = this.sort;
+      this.loadCompleted = true;
+    });
+  }
+
+  dayNumber(): Number{
+    const time = new Date;
+    this.day = time.getDay();
+    return this.day;
+ }
+
+ weekdayNameForDialog() {  // returns the current day number from Time function
+  const dayNumber = this.dayNumber();
+  let dayName;
+  switch (dayNumber) {
+    case 0:
+      dayName = 'sunday';
+      break;
+    case 1:
+      dayName = 'monday';
+      break;
+    case 2:
+      dayName = 'tuesday';
+      break;
+    case 3:
+      dayName = 'wednesday';
+      break;
+    case 4:
+      dayName = 'thursday';
+      break;
+    case 5:
+      dayName = 'friday';
+      break;
+    case 6:
+      dayName = 'saturday';
+      break;
+    default:
+      break;
+  }
+  // console.log(dayName);
+  return dayName;
+}
+}
 
 
 
 
+@Component({
+  templateUrl: './dialog-contents/dialog-content-cnc.html',
+  styleUrls: ['./dialog.component.scss'],
+})
+export class DialogContentCnc implements OnInit{
+  constructor(
+    public _scheduleMap: ScheduleMapService,
+  ) {}
 
+  isWeekend: boolean = false;
 
+  displayedColumns: string[] = ['weekday', 'startHour', 'endHour', 'className', 'teacher'];
+  public dataSourceCnc;
+  
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  day: Number;
+
+  ngOnInit() {
+    if(this.dayNumber() == 0 || this.dayNumber() == 6){
+      this.isWeekend = true;
+    }
+
+    this.subscriptions();
+  }
+
+  public loadCompleted = false;
+  subscriptions(){
+    this._scheduleMap.cncClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameForDialog())).shift();
+      this.dataSourceCnc = new MatTableDataSource(dayData);
+      this.dataSourceCnc.sort = this.sort;
+      this.loadCompleted = true;
+    });
+  }
+
+  dayNumber(): Number{
+    const time = new Date;
+    this.day = time.getDay();
+    return this.day;
+ }
+
+ weekdayNameForDialog() {  // returns the current day number from Time function
+  const dayNumber = this.dayNumber();
+  let dayName;
+  switch (dayNumber) {
+    case 0:
+      dayName = 'sunday';
+      break;
+    case 1:
+      dayName = 'monday';
+      break;
+    case 2:
+      dayName = 'tuesday';
+      break;
+    case 3:
+      dayName = 'wednesday';
+      break;
+    case 4:
+      dayName = 'thursday';
+      break;
+    case 5:
+      dayName = 'friday';
+      break;
+    case 6:
+      dayName = 'saturday';
+      break;
+    default:
+      break;
+  }
+  // console.log(dayName);
+  return dayName;
+}
+}
 
 
 
