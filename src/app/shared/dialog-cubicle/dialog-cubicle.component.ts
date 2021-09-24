@@ -301,7 +301,7 @@ export class DialogContentCubicle4 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/photo4.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle4Photo = url;
       });
@@ -361,7 +361,7 @@ export class DialogContentCubicle5 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/photo5.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle5Photo = url;
       });
@@ -481,7 +481,7 @@ export class DialogContentCubicle7 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/photo7.png').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle7Photo = url;
       });
@@ -542,7 +542,7 @@ export class DialogContentCubicle8 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/photo8.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle8Photo = url;
       });
@@ -601,7 +601,7 @@ export class DialogContentCubicle9 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/photo9.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle9Photo = url;
       });
@@ -719,7 +719,7 @@ export class DialogContentCubicle11 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/photo11.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle11Photo = url;
       });
@@ -778,7 +778,7 @@ export class DialogContentCubicle12 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/photo12.jpeg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle12Photo = url;
       });

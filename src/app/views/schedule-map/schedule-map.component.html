@@ -157,6 +157,8 @@
     </mat-grid-tile>
     
   </mat-grid-list>
+  <button mat-raised-button color="accent" [routerLink]="['/completeSchedule']" class="completeScheduleButton">Horario completo</button>
+  <button mat-raised-button color="accent" [routerLink]="['/professors']" class="cubicleButton">Cubículos</button>
   <app-chat *ngIf="this._authService.chatApproval | async"></app-chat>
 </ng-template>
 

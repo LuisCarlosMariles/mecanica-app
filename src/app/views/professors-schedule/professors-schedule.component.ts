@@ -57,8 +57,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   public cbcData12 = [];
   public weekdayData12: CubicleScheduleTemplate
 
-  public hour: Number;
-  public day: Number;
+  public hour: number;
+  public day: number;
 
 
   public subscription1: Subscription;
@@ -83,7 +83,7 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const time = new Date;
     this.day = time.getDay();
-    this.hour = time.getHours();
+    this.hour = time.getHours()
     this.subscriptions();
     this.weekdayName();
   }
@@ -94,7 +94,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     let dayName;
     switch (dayNumber) {
       case 0:
-        dayName = 'Miércoles';
+        dayName = 'Lunes';
+        this.hour = 14.5;
         break;
       case 1:
         dayName = 'Lunes';
@@ -112,7 +113,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
         dayName = 'Viernes';
         break;
       case 6:
-        dayName = 'Miércoles';
+        dayName = 'Lunes';
+        this.hour = 14.5;
         break;
       default:
         break;
@@ -235,8 +237,6 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
         // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
       });
       this.weekdayData8 = this.cbcData8.filter(x => x.day == this.weekdayName()).shift();
-      this.spinnerLoading = false;
-      this.spinnerLoading2 = false;
     });
 
     this.subscription9 = this._professorsSchedule.cubicle9().pipe(first()).subscribe(data => {
@@ -265,6 +265,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
         this.cbcData12.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
         this.weekdayData12 = this.cbcData12.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
       });
+      this.spinnerLoading = false;
+      this.spinnerLoading2 = false;
     });
 
 
@@ -273,18 +275,18 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
 
   cubicleStatus(name: string): string {
     const CUBICLE_DATA = this.cubicleData(name);
-    if ((this.hour > CUBICLE_DATA.startHour1 && this.hour < CUBICLE_DATA.endHour1) ||
-      (this.hour > CUBICLE_DATA.startHour2 && this.hour < CUBICLE_DATA.endHour2)) {
-      return 'Cubículo disponible';
+    if ((this.hour >= CUBICLE_DATA.startHour1 && this.hour < CUBICLE_DATA.endHour1) ||
+      (this.hour >= CUBICLE_DATA.startHour2 && this.hour < CUBICLE_DATA.endHour2)) {
+      return 'Disponible en cubículo';
     }
     else {
-      return 'Cubículo no disponible';
+      return 'Fuera de cubículo';
     }
   }
 
 
   tileColor(name) {
-    if (this.cubicleStatus(name) == 'Cubículo disponible') {
+    if (this.cubicleStatus(name) == 'Disponible en cubículo') {
       const buttonStyles = {
         'background-color': 'rgb(76, 175, 80)'
       };

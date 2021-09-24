@@ -64,6 +64,27 @@ span{
 //     border: solid 1px #000;
 //   }
 
+.cubicleButton{
+    flex: auto;
+    align-self: center;
+    width: 10%;
+    height: 5%; //new = makes a taller button than previous version
+    left:80%;
+    top:92%;
+    position: absolute;
+    font-weight:bold;
+}
+
+.completeScheduleButton{
+    flex: auto;
+    align-self: center;
+    width: 10%;
+    height: 5%; //new = makes a taller button than previous version
+    left:10%;
+    top:92%;
+    position: absolute;
+    font-weight:bold;
+}
 
 mat-grid-tile {
     background:white;
