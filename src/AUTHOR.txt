@@ -1,0 +1,8 @@
+Luis Carlos Mariles Saavedra se identifica como autor intelectual del programa Mecanica-app el cual es un programa de cómputo que despliega 
+en forma de mapa los salones de los laboratorios de la escuela, estos tendrán el color verde o rojo si están disponibles o no respectivamente.
+También muestra en su mismo recuadro el nombre del profesor y la clase que se está impartiendo en tiempo real. Al darle click al cuadro se
+despliega información sobre el horario del salón. En la parte de abajo del mapa hay un botón para abrir el chat en vivo y otros botones para 
+navegar a otras partes de la página. El programa también tiene una sección para consultar los horarios de las clases por días. También tiene
+una sección donde se tiene un mapa con los cubículos de los docentes donde se muestra también con colores si está disponible o no. Al darle
+click se muestra el horario del docente, las clases y imparte y su información básica. Toda la información está almacenada en una base de
+datos de manera ordenada y el proyecto se hizo usando Angular, Typescript y SCSS.

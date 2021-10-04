@@ -14,27 +14,30 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('teachersSchedule').snapshotChanges();
   }
   
-
+  //Ana María Castañeda (1)
   cubicle1(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle1/weekday').snapshotChanges();
   }
-  cubicle1Classes(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+  cubicle1Classes(){ 
     return this.firestore.collection('cubicles/cubicle1/assignatures').snapshotChanges();
   }
-  cubicle1Description(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+  cubicle1Description(){
     return this.firestore.collection('cubicles/cubicle1/description').snapshotChanges();
   }
 
+  // Cubículo vacante (2)
   cubicle2(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle2/weekday').snapshotChanges();
   }
-  cubicle2Classes(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+  cubicle2Classes(){
     return this.firestore.collection('cubicles/cubicle2/assignatures').snapshotChanges();
   }
   cubicle2Description(){
     return this.firestore.collection('cubicles/cubicle2/description').snapshotChanges();
   }
 //-------------------------
+
+  // Cubículo vacante (3)
   cubicle3(){ 
     return this.firestore.collection('cubicles/cubicle3/weekday').snapshotChanges();
   }
@@ -46,6 +49,7 @@ export class ProfessorsScheduleService {
   }
   //--------------------------------
 
+  // Dr. Álvaro Gonzalez Álvarez (4)
   cubicle4(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle4/weekday').snapshotChanges();
   }
@@ -56,6 +60,7 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle4/description').snapshotChanges();
   }
 //----------------------------------------------
+// Rigoberto Zamora (5)
   cubicle5(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle5/weekday').snapshotChanges();
   }
@@ -66,7 +71,7 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle5/description').snapshotChanges();
   }
   //---------------------------
-
+  // Arili Cárdenas (6)
   cubicle6(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle6/weekday').snapshotChanges();
   }
@@ -78,6 +83,7 @@ export class ProfessorsScheduleService {
   }
 
   //--------------------------------------------------------
+  // Fernando Lara (7)
   cubicle7(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle7/weekday').snapshotChanges();
   }
@@ -88,6 +94,7 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle7/description').snapshotChanges();
   }
   //--------------------------------------------------------
+  // Israel Sauceda (8)
   cubicle8(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle8/weekday').snapshotChanges();
   }
@@ -98,6 +105,7 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle8/description').snapshotChanges();
   }
   //----------------------------------------------------------------------------------
+  // Eddna Martínez (9) 
   cubicle9(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle9/weekday').snapshotChanges();
   }
@@ -108,6 +116,7 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle9/description').snapshotChanges();
   }
   //----------------------------------------------------------------------------------
+  // Vacante arriba en medio planta baja (10)
   cubicle10(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle10/weekday').snapshotChanges();
   }
@@ -118,6 +127,7 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle10/description').snapshotChanges();
   }
   //----------------------------------------------------------------------------------
+  // Juan Raúl Alcántara (11)
   cubicle11(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle11/weekday').snapshotChanges();
   }
@@ -128,6 +138,7 @@ export class ProfessorsScheduleService {
     return this.firestore.collection('cubicles/cubicle11/description').snapshotChanges();
   }
   //----------------------------------------------------------------------------------
+  // Miguel Ángel Martínez (12)
   cubicle12(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
     return this.firestore.collection('cubicles/cubicle12/weekday').snapshotChanges();
   }
@@ -136,6 +147,17 @@ export class ProfessorsScheduleService {
   }
   cubicle12Description(){ 
     return this.firestore.collection('cubicles/cubicle12/description').snapshotChanges();
+  }
+  //----------------------------------//----------------------------------
+  // Asistente de laboratorio (13)
+  cubicle13(){ // method to bring data specific cubicle data (all week from that cubicle) from firebase
+    return this.firestore.collection('cubicles/cubicle13/weekday').snapshotChanges();
+  }
+  cubicle13Classes(){
+    return this.firestore.collection('cubicles/cubicle13/assignatures').snapshotChanges();
+  }
+  cubicle13Description(){ 
+    return this.firestore.collection('cubicles/cubicle13/description').snapshotChanges();
   }
   //----------------------------------//----------------------------------
 

@@ -66,6 +66,10 @@ export class DialogCubicleComponent {
       case 'cubicle12':
         this.dialog.open(DialogContentCubicle12);
         break;
+      case 'cubicle13':
+        this.dialog.open(DialogContentCubicle13);
+        break;
+        
       default:
         break;
     }
@@ -74,7 +78,7 @@ export class DialogCubicleComponent {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ // ANA MARIA CASTAÑEDA
   templateUrl: './dialog-cubicle-content/cubicle1.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -136,7 +140,7 @@ export class DialogContentCubicle1 implements OnInit {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ //VACANTE ARRIBA IZQUIERDA
   templateUrl: './dialog-cubicle-content/cubicle2.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -179,7 +183,7 @@ export class DialogContentCubicle2 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/default.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle2Photo = url;
       });
@@ -198,7 +202,7 @@ export class DialogContentCubicle2 implements OnInit {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ // VACANTE ARRIBA EN MEDIO
   templateUrl: './dialog-cubicle-content/cubicle3.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -240,7 +244,7 @@ export class DialogContentCubicle3 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/default.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle3Photo = url;
       });
@@ -258,7 +262,7 @@ export class DialogContentCubicle3 implements OnInit {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ // ÁLVARO GONZÁLEZ ÁNGELES
   templateUrl: './dialog-cubicle-content/cubicle4.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -319,7 +323,7 @@ export class DialogContentCubicle4 implements OnInit {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ //RIGOBERTO ZAMORA ALARCÓN
   templateUrl: './dialog-cubicle-content/cubicle5.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -379,7 +383,7 @@ export class DialogContentCubicle5 implements OnInit {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ //ARILÍ CÁRDENAS
   templateUrl: './dialog-cubicle-content/cubicle6.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -439,7 +443,7 @@ export class DialogContentCubicle6 implements OnInit {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ // FERNANDO LARA
   templateUrl: './dialog-cubicle-content/cubicle7.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -500,7 +504,7 @@ export class DialogContentCubicle7 implements OnInit {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ //ISRAEL SAUCEDA
   templateUrl: './dialog-cubicle-content/cubicle8.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -559,7 +563,7 @@ export class DialogContentCubicle8 implements OnInit {
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ //EDDNA MARTÍNEZ
   templateUrl: './dialog-cubicle-content/cubicle9.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -618,7 +622,7 @@ export class DialogContentCubicle9 implements OnInit {
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ //VACANTE PRIMER PISO ARRIBA EN MEDIO
   templateUrl: './dialog-cubicle-content/cubicle10.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -660,7 +664,7 @@ export class DialogContentCubicle10 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/default.jpg').getDownloadURL()
       .then((url) => { // Function to get image from firebase storage
         this.cubicle10Photo = url;
       });
@@ -677,7 +681,7 @@ export class DialogContentCubicle10 implements OnInit {
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ // JUAN RAUL ALCÁNTARA
   templateUrl: './dialog-cubicle-content/cubicle11.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -736,7 +740,7 @@ export class DialogContentCubicle11 implements OnInit {
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-@Component({
+@Component({ // MIGUEL ÁNGEL MARTÍNEZ
   templateUrl: './dialog-cubicle-content/cubicle12.html',
   styleUrls: ['./dialog-cubicle.component.scss']
 })
@@ -782,6 +786,73 @@ export class DialogContentCubicle12 implements OnInit {
       .then((url) => { // Function to get image from firebase storage
         this.cubicle12Photo = url;
       });
+    if (this.dayNumber() == 6 || this.dayNumber() == 0) {
+      this.isWeekend = true;
+    }
+  }
+
+  dayNumber(): Number {
+    const time = new Date;
+    this.day = time.getDay();
+    return this.day;
+  }
+}
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
+@Component({ // ASISTENTE DE LABORATORIO
+  templateUrl: './dialog-cubicle-content/cubicle13.html',
+  styleUrls: ['./dialog-cubicle.component.scss']
+})
+export class DialogContentCubicle13 implements OnInit {
+  constructor(
+    public _professorsSchedule: ProfessorsScheduleService,
+    public firebaseStorage: AngularFireStorage,) { }
+
+  public isWeekend: boolean = false;
+  public displayedColumns: string[] = ['day', 'startHour1', 'endHour1', 'startHour2', 'endHour2'];
+  public day: Number;
+  public cbcData13 = [];
+  public dataSourceCubicle13;
+  public loaded = false;
+  public cubicle13Photo: string;
+  public cubicle13_2Photo: string; // for the other lab assitant
+
+
+  classesArray13 = [];
+  description13: string;
+
+
+  ngOnInit() {
+    this._professorsSchedule.cubicle13().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData13.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+      });
+      this.dataSourceCubicle13 = new MatTableDataSource(this.cbcData13);
+      this.cbcData13.sort((a, b) => a.dayNumber - b.dayNumber);
+    });
+    this._professorsSchedule.cubicle13Classes().subscribe(data => {
+      data.forEach(element => {
+        this.classesArray13 = element.payload.doc.get('classesList');
+      });
+    });
+
+    this._professorsSchedule.cubicle13Description().subscribe(data => {
+      data.forEach(element => {
+        this.description13 = element.payload.doc.get('professorDescription');
+      });
+    });
+
+    this.firebaseStorage.storage.ref('professors/photo13.jpg').getDownloadURL()
+      .then((url) => { // Function to get image from firebase storage
+        this.cubicle13Photo = url;
+      });
+
+    this.firebaseStorage.storage.ref('professors/photo13_2.jpg').getDownloadURL()
+      .then((url) => { // Function to get image from firebase storage
+        this.cubicle13_2Photo = url;
+      });
+
     if (this.dayNumber() == 6 || this.dayNumber() == 0) {
       this.isWeekend = true;
     }

@@ -56,6 +56,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   public weekdayData11: CubicleScheduleTemplate
   public cbcData12 = [];
   public weekdayData12: CubicleScheduleTemplate
+  public cbcData13 = [];
+  public weekdayData13: CubicleScheduleTemplate
 
   public hour: number;
   public day: number;
@@ -73,6 +75,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   public subscription10: Subscription;
   public subscription11: Subscription;
   public subscription12: Subscription;
+  public subscription13: Subscription;
+
 
   // public subscription9: Subscription;
 
@@ -160,6 +164,9 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
         break;
       case 'cubicle12':
         cubicle = this.weekdayData12;
+        break;
+      case 'cubicle13':
+        cubicle = this.weekdayData13;
         break;
       default:
         break;
@@ -269,6 +276,15 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
       this.spinnerLoading2 = false;
     });
 
+    this.subscription13 = this._professorsSchedule.cubicle13().pipe(first()).subscribe(data => {
+      data.forEach(element => {
+        this.cbcData13.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
+        this.weekdayData13 = this.cbcData13.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
+      });
+      this.spinnerLoading = false;
+      this.spinnerLoading2 = false;
+    });
+
 
   }
 
@@ -314,5 +330,7 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     this.subscription10.unsubscribe();
     this.subscription11.unsubscribe();
     this.subscription12.unsubscribe();
+    this.subscription13.unsubscribe();
+
   }
 }
