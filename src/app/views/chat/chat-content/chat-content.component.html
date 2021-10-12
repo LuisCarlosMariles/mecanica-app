@@ -7,7 +7,7 @@
             <p>{{message.message}}</p>
             <p>
                 <span class="bold">
-                <div *ngIf="message.message" class="email">{{email}}</div>    
+                <div *ngIf="message.message" class="email">{{message?.email}}</div>    
                 {{message.date}}
                 {{message.time}}
                 </span>

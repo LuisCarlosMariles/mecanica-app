@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFireDatabase, snapshotChanges  } from '@angular/fire/database';
 import { Query } from '@google-cloud/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 
 export interface Message{
+  email: string,
   message: string;
   timeCheck: number,
   time: string;
@@ -17,12 +19,25 @@ export interface Message{
 @Injectable({
   providedIn: 'root'
 })
-export class ChatService {
+export class ChatService implements OnInit{
 
 
   constructor(
-    public chatDatabase: AngularFireDatabase 
+    public chatDatabase: AngularFireDatabase,
+    private _authService: AuthService,
   ) { }
+
+  userEmail: string;
+
+  ngOnInit(){
+    this._authService.getCurrentUser().subscribe(
+      user => {
+        this.userEmail = user?.email;
+      }
+    );
+    console.log(this.userEmail);
+  }
+
 
   getMessages(): Observable<any> {
     return this.chatDatabase.list<Message>('messages').valueChanges();
@@ -37,8 +52,10 @@ export class ChatService {
     const now = Date.now();
     const readableTime = new Date(currTime).toLocaleTimeString();
     const readableDate = new Date(currTime).toDateString();
+    const email = this.userEmail;
 
     let object = this.chatDatabase.list<Message>('messages').push({
+      email: email,
       message,
       timeCheck: now,
       time: readableTime,

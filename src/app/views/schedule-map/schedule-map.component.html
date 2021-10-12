@@ -1,6 +1,8 @@
 
 
-<mat-card color="accent">Son las {{changeHourFormat()}} y las clases en los laboratorios son:</mat-card>
+<mat-card color="accent" class="hourCard">
+  <div class="textInCard">Son las {{changeHourFormat()}} y las clases en los laboratorios son:</div>
+</mat-card>
 
 <ng-container *ngIf="!isLoaded ; else loaded">
   <mat-spinner color="primary" class="centered"></mat-spinner>
@@ -81,7 +83,7 @@
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('salaAudiovisual')">
       <div class="text-inside-grid">
-        Sala audiovisual
+        Sala audiovisual (Planta alta)
       </div>
       {{currentClass('salaAudiovisual')?.className}}
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('salaAudiovisual')">

@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private authService: AuthService,
+    private _authService: AuthService,
     public _chatService: ChatService,
     public chatDeleter: ChatComponentContent,
   ) {
@@ -68,12 +68,13 @@ export class ChatComponentContent implements OnInit {
   public hour: number;
   public minutes: Number;
   public newMessage: string;
-  public email: string;
+  // public email: string;
   ngOnInit(): void {
-    this._authService.getCurrentUser().subscribe(user => {
-      this.email = user.email;
-    })
+    // this._authService.getCurrentUser().subscribe(user => {
+    //   this.email = user.email;
+    // })
 
+    // this._chatService.ngOnInit();
     
    // this.deleteMessageAfter2Hours();
   }

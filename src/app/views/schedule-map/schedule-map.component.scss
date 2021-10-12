@@ -64,6 +64,18 @@ span{
 //     border: solid 1px #000;
 //   }
 
+.hourCard{
+    height: 1px;
+}
+
+.textInCard{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(850%);
+    transform: translateY(-50%);
+}
+
 .cubicleButton{
     flex: auto;
     align-self: center;
