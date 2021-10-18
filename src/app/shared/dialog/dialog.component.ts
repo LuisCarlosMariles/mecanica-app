@@ -127,6 +127,9 @@ export class DialogContentMantenimiento implements OnInit{
       this.dataSourceMantenimiento = new MatTableDataSource(dayData);
       this.dataSourceMantenimiento.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -211,6 +214,9 @@ subscriptions(){
     this.dataSourceCeldaManufactura = new MatTableDataSource(dayData);
     this.dataSourceCeldaManufactura.sort = this.sort;
     this.loadCompleted = true;
+    if(dayData?.length == 0  || dayData == undefined){
+      this.isWeekend = true;
+    }
   });
 }
 
@@ -285,10 +291,13 @@ export class DialogContentMaquinasHerramientas implements OnInit {
   public loadCompleted = false;
   subscriptions(){
     this._scheduleMap.maquinasHerramientasClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
-      let dayData = data.map(element => element.payload.doc.get('friday')).shift();
+      let dayData = data.map(element => element.payload.doc.get(this.weekdayNameForDialog())).shift();
       this.dataSourceMaquinasHerramientas = new MatTableDataSource(dayData);
       this.dataSourceMaquinasHerramientas.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -367,6 +376,9 @@ export class DialogContentCienciasMateriales implements OnInit{
       this.dataSourceCienciasMateriales = new MatTableDataSource(dayData);
       this.dataSourceCienciasMateriales.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -446,6 +458,9 @@ export class DialogContentMecanicaFluidos implements OnInit{
       this.dataSourceMecanicaFluidos = new MatTableDataSource(dayData);
       this.dataSourceMecanicaFluidos.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -525,6 +540,10 @@ export class DialogContentSalaAudiovisual implements OnInit{
       this.dataSourceSalaAudivisual = new MatTableDataSource(dayData);
       this.dataSourceSalaAudivisual.sort = this.sort;
       this.loadCompleted = true;
+      console.log(dayData.length)
+      if(dayData.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -603,6 +622,9 @@ export class DialogContentMecanicaMateriales implements OnInit{
       this.dataSourceMecanicaMateriales = new MatTableDataSource(dayData);
       this.dataSourceMecanicaMateriales.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -681,6 +703,9 @@ export class DialogContentRefrigeracion implements OnInit{
       this.dataSourceRefrigeracion = new MatTableDataSource(dayData);
       this.dataSourceRefrigeracion.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -749,7 +774,7 @@ export class DialogContentLaboratorioProyectos implements OnInit{
   isWeekend: boolean = false;
 
   displayedColumns: string[] = ['weekday', 'startHour', 'endHour', 'className', 'teacher'];
-  public dataSourceLaboratoriosProyectos;
+  public dataSourceLaboratorioProyectos;
   
 
   @ViewChild(MatSort) sort: MatSort;
@@ -768,9 +793,12 @@ export class DialogContentLaboratorioProyectos implements OnInit{
   subscriptions(){
     this._scheduleMap.laboratorioProyectosClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
       let dayData = data.map(element => element.payload.doc.get(this.weekdayNameForDialog())).shift();
-      this.dataSourceLaboratoriosProyectos = new MatTableDataSource(dayData);
-      this.dataSourceLaboratoriosProyectos.sort = this.sort;
+      this.dataSourceLaboratorioProyectos = new MatTableDataSource(dayData);
+      this.dataSourceLaboratorioProyectos.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -850,6 +878,9 @@ export class DialogContentSalaComputo implements OnInit{
       this.dataSourceSalaComputo = new MatTableDataSource(dayData);
       this.dataSourceSalaComputo.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 
@@ -929,6 +960,9 @@ export class DialogContentCnc implements OnInit{
       this.dataSourceCnc = new MatTableDataSource(dayData);
       this.dataSourceCnc.sort = this.sort;
       this.loadCompleted = true;
+      if(dayData?.length == 0  || dayData == undefined){
+        this.isWeekend = true;
+      }
     });
   }
 

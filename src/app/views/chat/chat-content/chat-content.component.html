@@ -28,10 +28,10 @@
         <form class="example-form">
             <mat-form-field class="example-full-width">
               <mat-label>Mensaje</mat-label>
-              <input matInput #newMessage maxlength="256" placeholder="¿Están abiertos los baños?" (keyup.enter)="sendMessage(newMessage.value)" >
+              <input matInput #newMessage maxlength="256" placeholder="¿Están abiertos los baños?" (keyup.enter)="sendMessage(newMessage?.value)" >
               <mat-hint align="start"><strong>Tu mensaje se borrará en 2 horas</strong> </mat-hint>
             </mat-form-field>
-            <button mat-mini-fab (click)="sendMessage(newMessage.value)" type="button">
+            <button mat-mini-fab (click)="sendMessage(newMessage?.value)" type="button">
               <mat-icon>send</mat-icon>
           </button>
           </form>

@@ -126,11 +126,11 @@
     </mat-grid-tile>
 
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('fluids')"> <!--CORREGIR-->
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('laboratorioProyectos')"> <!--CORREGIR-->
       <div class="text-inside-grid">
         Laboratorio de Proyectos
       </div>
-      {{classStatus('fluids')}}
+      {{currentClass('laboratorioProyectos')?.className}}
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('laboratorioProyectos')">
         <mat-icon>list</mat-icon>
       </button>
@@ -148,11 +148,11 @@
     </mat-grid-tile>
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColor('thermo')">
+    <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('cnc')">
       <div class="text-inside-grid">
         Laboratorio de CNC
       </div>
-      {{classStatus('thermo')}}
+      {{currentClass('cnc')?.className}}
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cnc')">
         <mat-icon>list</mat-icon>
       </button>

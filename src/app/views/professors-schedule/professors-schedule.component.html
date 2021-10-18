@@ -31,7 +31,7 @@
 
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle2')">
               <!-- Cubículo vacante (2)-->
-              <div class="text-inside-grid">Vacante</div>
+              <div class="text-inside-grid">M.C. Miguel Ángel Martínez Hernández</div>
               <div>{{cubicleStatus('cubicle2')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle2')">
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
@@ -58,12 +58,14 @@
 
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle12')">
               <!-- Miguel Ángel Martínez (12) -->
-              <div class="text-inside-grid">M.C. Miguel Ángel Martínez Hernández</div>
+              <div class="text-inside-grid">Dr. Miguel Ángel Martínez Romero</div>
               <div>{{cubicleStatus('cubicle12')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle12')">
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
+
+
 
             <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle5')">
               <div class="text-inside-grid">M.C. Rigoberto Zamora Alarcón</div>
@@ -73,6 +75,9 @@
                 <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
               </button>
             </mat-grid-tile>
+
+            <mat-grid-tile colspan="8" rowspan="1" rowHeight=".5:1">PASILLO</mat-grid-tile>
+
 
 
             <!-- CORRREEEEEGGIIIIIR NO FUNCIONA CUBCICLE12 -->
@@ -164,9 +169,12 @@
           </button>
         </mat-grid-tile>
 
-        <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+        <mat-grid-tile colspan="8" rowspan="1" rowHeight=".5:1">PASILLO</mat-grid-tile>
+
+        <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile> 
+
         <mat-grid-tile colspan="2" rowspan="4" class="transparent"></mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
 
         <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle11')">
           <!-- Juan Raúl Alcántara (11) -->

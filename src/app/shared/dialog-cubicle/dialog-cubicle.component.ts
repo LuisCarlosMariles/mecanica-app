@@ -425,7 +425,7 @@ export class DialogContentCubicle6 implements OnInit {
       });
     });
 
-    this.firebaseStorage.storage.ref('professors/photo1.jpg').getDownloadURL()
+    this.firebaseStorage.storage.ref('professors/default.jpg').getDownloadURL() // gets image from firebase storage depending on cubicle number
       .then((url) => { // Function to get image from firebase storage
         this.cubicle6Photo = url;
       });

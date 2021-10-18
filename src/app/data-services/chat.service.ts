@@ -35,7 +35,7 @@ export class ChatService implements OnInit{
         this.userEmail = user?.email;
       }
     );
-    console.log(this.userEmail);
+    // console.log(this.userEmail); // commented but when chat box is opened it is supposed to show in console
   }
 
 

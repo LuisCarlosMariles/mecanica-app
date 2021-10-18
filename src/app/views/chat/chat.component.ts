@@ -74,7 +74,7 @@ export class ChatComponentContent implements OnInit {
     //   this.email = user.email;
     // })
 
-    // this._chatService.ngOnInit();
+    this._chatService.ngOnInit();
     
    // this.deleteMessageAfter2Hours();
   }

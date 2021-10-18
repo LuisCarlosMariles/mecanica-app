@@ -108,7 +108,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
         dayName = 'Viernes';
         break;
       case 6:
-        dayName = 'Lunes';
+        dayName = 'Martes';
         break;
       default:
         break;
@@ -339,7 +339,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
         dayName = 'sunday';
         break;
       case 1:
-        dayName = 'wednesday';
+        dayName = 'monday';
         break;
       case 2:
         dayName = 'tuesday';
@@ -395,6 +395,12 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
       case 'mecanicaMateriales':
         data = this.mecanicaMaterialesClassroom;
         break;
+      case 'cnc':
+        data = this.cncClassroom;
+        break;
+      case 'laboratorioProyectos':
+        data = this.laboratorioProyectos;
+        break;
       default:
         break;
     }
@@ -417,6 +423,10 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
   public salaAsesoriasClassroom: ClassroomTemplate;
   public refrigeracionClassroom: ClassroomTemplate;
   public mecanicaMaterialesClassroom: ClassroomTemplate;
+  public cncClassroom: ClassroomTemplate;
+  public laboratorioProyectos: ClassroomTemplate;
+
+
   // public currentClassData;
   public currentClassName;
 
@@ -496,9 +506,22 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
       let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
       this.mecanicaMaterialesClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
       // console.log(dayData);    //commented on final version
-      this.isLoaded = true;
     });
 
+    this._scheduleMap.cncClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
+      this.cncClassroom = this.classStatusTest(dayData); // checking if there is a class in current hour
+      // console.log(dayData);    //commented on final version
+    });
+
+    this._scheduleMap.laboratorioProyectosClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
+      let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable
+      let dayData = this.classDayData(data, this.weekdayNameFirebase()); // filling current day data to variable
+      this.laboratorioProyectos = this.classStatusTest(dayData); // checking if there is a class in current hour
+      // console.log(dayData);    //commented on final version
+      this.isLoaded = true;
+    });
   }
 
   classDayData(data, day) {
