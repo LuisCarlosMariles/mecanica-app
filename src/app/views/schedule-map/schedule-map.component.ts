@@ -12,6 +12,9 @@ import { StudyRoomService } from 'src/app/data-services/study-room.service';
 import { first } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ScheduleMapService } from 'src/app/data-services/schedule-map.service';
+import { Observable } from 'rxjs';
+import { EmailValidator } from '@angular/forms';
+import { HostListener } from "@angular/core";
 
 export interface ClassroomTemplate {
   weekday: string;
@@ -30,7 +33,9 @@ export interface ClassroomTemplate {
 export class ScheduleMapComponent implements OnInit, OnDestroy {
 
   dialogBox: DialogComponent;
-  // manufactureContent: DialogContentManufacture;
+  mobile: boolean = false; //To change HTML content depending on screen size
+  screenHeight: number;
+  screenWidth: number;
 
   constructor(
     public dialog: MatDialog,
@@ -42,9 +47,12 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     public _scheduleMap: ScheduleMapService,
   ) {
     this.dialogBox = new DialogComponent(dialog);
-    // this.manufactureContent = new DialogContentManufacture;
+    this.onResize();//To change HTML content depending on screen size
   }
 
+  public email: string = this.mainNavComponent.userEmail?.email;
+  public name: string = this.email.substring(0, this.email.indexOf('@')).charAt(0).toUpperCase() + this.email.slice(1).substring(0, this.email.indexOf('@')-1);
+  
   hour: Number;
   minutes: Number;
   seconds: Number;
@@ -54,10 +62,14 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     console.log(this.peopleNumber[0]);
   }
 
-  name: string;
+  // name: string;
 
   public verifiedBoolean: boolean; // prueba
   ngOnInit() {
+    // if (window.screen.width === 900) { // 768px portrait
+    //   this.mobile = true;
+    // }
+
     this.angularAuth.currentUser.then(result => {
       this.verifiedBoolean = result.emailVerified;
       // console.log(this.verifiedBoolean);
@@ -82,6 +94,19 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     this.dayFirebase = time.getDay();
     this.hourFirebase = time.getHours();
   }
+
+  @HostListener('window:resize', ['$event']) //To change HTML content depending on screen size
+  onResize(event?) {
+   this.screenHeight = window.innerHeight;
+   this.screenWidth = window.innerWidth;
+   if(this.screenWidth <= 900){
+     this.mobile = true;
+   }
+   else{
+    this.mobile = false;
+   }
+   console.log(this.mobile);
+}
 
 
 

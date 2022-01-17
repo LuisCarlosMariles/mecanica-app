@@ -1,3 +1,5 @@
+
+
 .mat-card{
     background-color:lightgoldenrodyellow;
 }
@@ -7,9 +9,9 @@ div{
     font-size: 1vw;
 }
 
-span{
-    font-weight:bold;
-}
+// span{
+//     font-weight:bold;
+// }
 
 .teacher{
     font-style: oblique;
@@ -114,7 +116,170 @@ mat-grid-tile {
   }
 
 
+
 //   mat-grid-list, mat-grid-tile {
 //     padding-bottom: 0 !important;
 //     padding-top: 0 !important;
 // }
+
+
+
+
+
+
+
+@media screen and (max-width: 900px) {
+    .mat-card{
+        background-color:lightgoldenrodyellow;
+    }
+    
+    div{
+        font-weight:bold;
+        font-size: 1vw;
+    }
+    
+    // span{
+    //     font-weight:bold;
+    //     color: yellow;
+    // }
+    
+    .teacher{
+        font-style: oblique;
+    }
+
+  
+    
+    .text-inside-grid{
+        font-weight:bold;
+        position: absolute;
+        margin-bottom: 90px;
+        align-self: center;
+        font-size: 100%;
+        top: 3%;
+        line-height: 100%;
+    }
+
+    .availability{
+        // color: blue;
+        font-style: normal;
+        font-size: 100%;
+        line-height: 80%;
+        margin-top: 5%;
+        text-align: center;
+    }
+    
+    .tile-button{
+        position:absolute;
+        display: list-item;
+        bottom: 1%;
+        right: 1%;
+        width: 15%;
+        height: 30%;
+    }
+    
+    .tile-icon{
+        margin-top: -60% !important;
+        margin-left: 0%;
+        font-size: 150%;
+        width: 100%;
+    }
+    
+    .tile-button-long{
+        position:absolute;
+        display: list-item;
+        bottom: 2%;
+        right: 2%;
+        width: 7%;
+        height: 40%;
+    }
+    
+    .centered{
+        left: 40%;
+        margin-top: 40%; 
+        }
+    
+    .people-number{
+        font-size:100%;
+    }
+    // mat-grid-list {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     justify-content: center;
+    //     border: solid 1px #000;
+    //   }
+    
+    .hourCard{
+        height: 2%;
+    }
+
+    .grid{
+        top:15%;
+        position: absolute;
+        width: 94.5%;
+    }
+    
+    .textInCard{
+        margin: 0;
+        position: absolute;
+        font-size: 100%;
+        // top: 50%;
+        // -ms-transform: translateY(850%);
+        // transform: translateY(-50%);
+    }
+    
+    .cubicleButton{
+        flex: auto;
+        align-self: center;
+        width: 21%;
+        height: 5%; //new = makes a taller button than previous version
+        left:75%;
+        top:92%;
+        position: absolute;
+        font-weight:bold;
+    }
+    
+    .completeScheduleButton{
+        flex: auto;
+        align-self: center;
+        width: 32%;
+        height: 5%; //new = makes a taller button than previous version
+        left:2%;
+        top:92%;
+        position: absolute;
+        font-weight:bold;
+    }
+    
+    mat-grid-tile {
+        background:white;
+        text-align: center;
+        border: solid 1px #000;
+        
+        // flex-wrap: wrap;
+    
+      }
+
+      span.rotate{
+        transform: rotate(-90deg);
+        // border: solid 1px #000;
+   
+        position:absolute;
+    }
+
+    // .mobile-grid{
+    //     width: 1000px;
+    // }
+    
+    
+      mat-grid-list{
+          width: 99%;
+          left: 5.5%;
+          
+      }
+    
+    
+    //   mat-grid-list, mat-grid-tile {
+    //     padding-bottom: 0 !important;
+    //     padding-top: 0 !important;
+    // }
+    
+}

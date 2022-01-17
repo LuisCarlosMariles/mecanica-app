@@ -7,6 +7,7 @@
       <a mat-list-item [routerLink]="['/completeSchedule']">Horario de laboratorios</a>
       <a mat-list-item [routerLink]="['/professors']">Horario de cubículos</a>
       <a mat-list-item [routerLink]="['/about']">Acerca del proyecto</a>
+      <a mat-list-item *ngIf="user$ | async" (click)="onSignOut()" [routerLink]="['/signIn']"><b>Cerrar sesión</b></a>
       <!-- sliding menu options -->
     </mat-nav-list>
   </mat-sidenav>
@@ -22,14 +23,15 @@
       <!-- <div>{{ user$ | async | json}}</div> -->
       <span class="spacer"> </span>
 
+      <!-- ONLY DIV -->
       <div *ngIf="user$ | async as user; else noUser">
-      
-      <a *ngIf="user" (click)="onSignOut()" [routerLink]="['/signIn']">Cerrar sesión</a>
+      <!-- <a *ngIf="user" (click)="onSignOut()" [routerLink]="['/signIn']">Cerrar sesión</a> -->
       <a>{{ userEmail?.email }}</a>
       </div>
+      
       <ng-template #noUser>
-        <a [routerLink]="['/signUp']" *ngIf="!user">Regístrate</a>
-        <a [routerLink]="['/signIn']" *ngIf="!user">Inicia sesión</a>
+        <a [routerLink]="['/signIn']" *ngIf="!user" class="sign-in-route">Inicia sesión</a>
+        <a [routerLink]="['/signUp']" *ngIf="!user" class="sign-up-route"><b>Regístrate</b></a>
         
       </ng-template>
       <!-- <div>{{guardBoolean | async}}</div> -->

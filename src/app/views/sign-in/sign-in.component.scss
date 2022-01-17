@@ -72,3 +72,89 @@ label {
     .example-full-width {
       width: 100%;
     }
+
+
+    
+
+@media screen and (max-width: 900px) {
+  
+span{
+  
+  margin-left: 400px;
+  
+}
+
+
+
+label {
+    display: block;
+    margin: auto;
+
+    margin: 20px;
+    margin-left: 40%;
+    color: black;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+
+  a {
+    color:royalblue;
+    text-decoration: none;
+  }
+
+  .redBorder{
+    border-color: red;
+  }
+
+  .emailRedBorder{
+    border-color: red;
+  }
+
+ 
+  
+  .is-invalid{
+    border-color: red ; 
+  }
+
+    .text-danger{
+      color: red;
+    }
+
+    .text-hide{
+      display: none;
+    }
+
+    //MATERIAL
+
+    
+  mat-card{
+    position: absolute;
+    width: 72%;
+    left: 10%;
+    top: 30%;
+  }
+
+  mat-form-field{
+    left: 25%;
+  }
+
+  button{
+    left: 35%;
+    height: 180%;
+    width: 80%;
+  }
+
+    .example-form {
+      min-width: 150px;
+      max-width: 200px;
+      width: 100%;
+    }
+    
+    .example-full-width {
+      width: 100%;
+    }
+
+
+    
+}

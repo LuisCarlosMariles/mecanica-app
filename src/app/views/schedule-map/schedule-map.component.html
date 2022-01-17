@@ -1,22 +1,23 @@
 
-
+<!-- <div class="desktop">this is the content for desktop</div>
+<div *ngIf="mobile">this is the content for mobile</div> -->
 <mat-card color="accent" class="hourCard">
-  <div class="textInCard">Son las {{changeHourFormat()}} y las clases en los laboratorios son:</div>
+  <div class="textInCard" >Hola {{ name }}, son las {{changeHourFormat()}} y las clases en los laboratorios son:</div>
 </mat-card>
 
-<ng-container *ngIf="!isLoaded ; else loaded">
+<ng-container *ngIf="!isLoaded">
   <mat-spinner color="primary" class="centered"></mat-spinner>
 </ng-container>
 
 
-<ng-template #loaded>
-  <mat-grid-list cols="7" rowHeight="2:1">
+<ng-container *ngIf="isLoaded && !mobile">
+  <mat-grid-list cols="7" rowHeight="2:1" class="grid">
 
     <mat-grid-tile colspan="1" rowspan="5" [ngStyle]="tileColorFirebase('mantenimiento')">
       <div class="text-inside-grid">
         Mantenimiento
       </div>
-      {{currentClass('mantenimiento')?.className }}
+      <span class="availability">{{currentClass('mantenimiento')?.className }}</span>
       <button mat-mini-fab color="primary" class="tile-button-long" (click)="dialogBox.openDialog('mantenimiento')">
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
@@ -27,7 +28,7 @@
       <div class="text-inside-grid">
         Celda de manufactura
       </div>
-      {{currentClass('celdaManufactura')?.className }}
+      <span class="availability">{{currentClass('celdaManufactura')?.className }}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('celdaManufactura')">
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
@@ -55,7 +56,7 @@
       <div class="text-inside-grid">
         Taller de máquinas y herramientas
       </div>
-      {{currentClass('maquinasHerramientas')?.className }}
+      <span class="availability">{{currentClass('maquinasHerramientas')?.className }}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('maquinasHerramientas')">
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
@@ -65,9 +66,9 @@
       <div class="text-inside-grid">
         Laboratorio de ciencia de materiales
       </div>
-      {{currentClass('cienciasMateriales')?.className}}
+      <span class="availability">{{currentClass('cienciasMateriales')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cienciasMateriales')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
 
@@ -75,9 +76,9 @@
       <div class="text-inside-grid">
         Laboratorio de mecánica de fluidos
       </div>
-      {{currentClass('mecanicaFluidos')?.className}}
+      <span class="availability">{{currentClass('mecanicaFluidos')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaFluidos')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
 
@@ -85,9 +86,9 @@
       <div class="text-inside-grid">
         Sala audiovisual (Planta alta)
       </div>
-      {{currentClass('salaAudiovisual')?.className}}
+      <span class="availability">{{currentClass('salaAudiovisual')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('salaAudiovisual')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -99,9 +100,9 @@
       <div class="text-inside-grid">
         Mecánica de materiales
       </div>
-      {{currentClass('mecanicaMateriales')?.className}}
+      <span class="availability">{{currentClass('mecanicaMateriales')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaMateriales')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
 
@@ -109,9 +110,9 @@
       <div class="text-inside-grid">
         Laboratorio de refrigeración
       </div>
-      {{currentClass('refrigeracion')?.className}}
+      <span class="availability">{{currentClass('refrigeracion')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('refrigeracion')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
 
@@ -119,9 +120,9 @@
       <div class="text-inside-grid">
         Sala de asesorías
       </div>
-      {{currentClass('salaAsesorias')?.className}}
+      <span class="availability">{{currentClass('salaAsesorias')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('design')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
 
@@ -130,9 +131,9 @@
       <div class="text-inside-grid">
         Laboratorio de Proyectos
       </div>
-      {{currentClass('laboratorioProyectos')?.className}}
+      <span class="availability">{{currentClass('laboratorioProyectos')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('laboratorioProyectos')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -141,9 +142,9 @@
       <div class="text-inside-grid">
         Sala de cómputo
       </div>
-      {{currentClass('salaComputo')?.className}}
+      <span class="availability">{{currentClass('salaComputo')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('salaComputo')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -152,9 +153,202 @@
       <div class="text-inside-grid">
         Laboratorio de CNC
       </div>
-      {{currentClass('cnc')?.className}}
+      <span class="availability">{{currentClass('cnc')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cnc')">
-        <mat-icon>list</mat-icon>
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <button mat-raised-button color="accent" [routerLink]="['/completeSchedule']" class="completeScheduleButton">Horario completo</button>
+  <button mat-raised-button color="accent" [routerLink]="['/professors']" class="cubicleButton">Cubículos</button>
+  <app-chat *ngIf="this._authService.chatApproval | async"></app-chat>
+</ng-container>
+
+
+<!-- </ng-template> -->
+<!-- </mat-grid-list> -->
+
+<!-- <app-chat *ngIf="this._authService.chatApproval | async"></app-chat> -->
+
+
+
+
+
+
+
+
+
+
+
+<ng-container *ngIf="isLoaded && mobile">
+  <mat-grid-list cols="12" rowHeight="2:1" class="grid">
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('salaAudiovisual')">
+      <div class="text-inside-grid">
+        Sala audiovisual (Planta alta)
+      </div>
+      <span class="availability">{{currentClass('salaAudiovisual')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('salaAudiovisual')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" rowspan="29"><span class="rotate">PASILLO</span></mat-grid-tile>
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('cnc')">
+      <div class="text-inside-grid">
+        Laboratorio de CNC
+      </div>
+      <span class="availability">{{currentClass('cnc')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cnc')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+<!-- 
+    <mat-grid-tile colspan="1" rowspan="1" [ngStyle]="tileColorFirebase('mecanicaFluidos')">
+      <div class="text-inside-grid">
+        Laboratorio de mecánica de fluidos
+      </div>
+      <span class="availability">{{currentClass('mecanicaFluidos')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaFluidos')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile> -->
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('mecanicaFluidos')">
+      <div class="text-inside-grid">
+        Laboratorio de mecánica de fluidos
+      </div>
+      <span class="availability">{{currentClass('mecanicaFluidos')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaFluidos')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    
+    <!-- <mat-grid-tile colspan="1" rowspan="1" >PASILLO</mat-grid-tile> -->
+   
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('salaComputo')">
+      <div class="text-inside-grid">
+        Sala de cómputo
+      </div>
+      <span class="availability">{{currentClass('salaComputo')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('salaComputo')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('cienciasMateriales')">
+      <div class="text-inside-grid">
+        Laboratorio de ciencia de materiales
+      </div>
+      <span class="availability">{{currentClass('cienciasMateriales')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cienciasMateriales')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <!-- <mat-grid-tile colspan="1" rowspan="1" >PASILLO</mat-grid-tile> -->
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('laboratorioProyectos')"> <!--CORREGIR-->
+      <div class="text-inside-grid">
+        Laboratorio de Proyectos
+      </div>
+      <span class="availability">{{currentClass('laboratorioProyectos')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('laboratorioProyectos')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('maquinasHerramientas')">
+      <div class="text-inside-grid">
+        Taller de máquinas y herramientas
+      </div>
+      <span class="availability">{{currentClass('maquinasHerramientas')?.className }}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('maquinasHerramientas')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <!-- <mat-grid-tile colspan="1" rowspan="1" >PASILLO</mat-grid-tile> -->
+
+    <mat-grid-tile colspan="5" rowspan="4" [ngStyle]="tileColorFirebase('salaAsesorias')">
+      <div class="text-inside-grid">
+        Sala de asesorías
+      </div>
+      <span class="availability">{{currentClass('salaAsesorias')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('design')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('refrigeracion')">
+      <div class="text-inside-grid">
+        Laboratorio de refrigeración
+      </div>
+      <span class="availability">{{currentClass('refrigeracion')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('refrigeracion')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="5" rowspan="4" [ngStyle]="studyRoomColor()">
+      <div *ngIf="spinnerLoading ; else studyLoaded">
+        <mat-spinner></mat-spinner>
+      </div>
+
+        <ng-template #studyLoaded>
+          <div class="text-inside-grid">
+            Sala de estudio
+          </div>
+          <div class="people-number">
+            {{peopleNumber}}
+          </div>
+        </ng-template>
+
+    </mat-grid-tile>
+
+
+    <!-- <mat-grid-tile colspan="1" rowspan="1" >PASILLO</mat-grid-tile> -->
+
+
+
+
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('celdaManufactura')">
+      <div class="text-inside-grid">
+        Celda de manufactura
+      </div>
+      <span class="availability">{{currentClass('celdaManufactura')?.className }}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('celdaManufactura')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+
+    <!-- <mat-grid-tile colspan="1" rowspan="1" >PASILLO</mat-grid-tile> -->
+
+
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('mecanicaFluidos')">
+      <div class="text-inside-grid">
+        Laboratorio de mecánica de fluidos
+      </div>
+      <span class="availability">{{currentClass('mecanicaFluidos')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaFluidos')">
+        <mat-icon class="tile-icon">list</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile colspan="11" rowspan="4" [ngStyle]="tileColorFirebase('mantenimiento')">
+      <div class="text-inside-grid">
+        Mantenimiento
+      </div>
+      <span class="availability">{{currentClass('mantenimiento')?.className }}</span>
+      <button mat-mini-fab color="primary" class="tile-button-long" (click)="dialogBox.openDialog('mantenimiento')">
+        <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
     
@@ -162,9 +356,4 @@
   <button mat-raised-button color="accent" [routerLink]="['/completeSchedule']" class="completeScheduleButton">Horario completo</button>
   <button mat-raised-button color="accent" [routerLink]="['/professors']" class="cubicleButton">Cubículos</button>
   <app-chat *ngIf="this._authService.chatApproval | async"></app-chat>
-</ng-template>
-
-<!-- </ng-template> -->
-<!-- </mat-grid-list> -->
-
-<!-- <app-chat *ngIf="this._authService.chatApproval | async"></app-chat> -->
+</ng-container>

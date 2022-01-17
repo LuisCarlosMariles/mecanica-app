@@ -1,8 +1,16 @@
-.example-card {
+  .top-card {
     max-width: 1000px;
     height: 500px;
     left: 10%;
     top: 5%;
+  }
+
+  mat-card-title{
+    font-size: 300% !important; 
+    margin-bottom: 10% !important;
+    left: -800px !important;
+    // padding-left: -800px;
+    margin-left: -5%;
   }
 
   .bottom-card {
@@ -10,9 +18,11 @@
     height: 50px;
   }
   .image_ontica{
-    width: 20%;
-    margin-right: 10%;
-    margin-bottom: 10%;
+    width: 9%;
+    margin-right: 10% !important;
+    left: 12%;
+    top: -.5%;
+    margin-bottom: 50%;
     position: absolute;
   }
   .image_uabc{
@@ -36,4 +46,57 @@
     width: 25%;
     margin-right: 10%;
     position: absolute;
+  }
+
+
+  @media screen and (max-width: 900px) {
+
+    .top-card {
+      max-width: 370px;
+      height: 900px;
+      left: 1%;
+      top: 10%;
+      text-align: justify;
+      position: absolute;
+    }
+
+    .bottom-card {
+      background-color: rgb(255, 215, 64);
+      height: 50px;
+      width: 370px;
+      right:4%;
+    }
+
+    .image_ontica{
+      width: 17%;
+      margin-right: 8%;
+      margin-left: -8%;
+      top: 11%;
+      position: absolute;
+    }
+
+    .image_uabc{
+      width: 12%;
+      margin-top: -2%;
+      margin-right: 10%;
+      margin-left: 22%;
+      position: absolute;
+    }
+  
+    .image_angular{
+      width: 25%;
+      margin-right: 4%;
+      margin-left: 40%;
+      margin-top: 3.25%;
+      position: absolute;
+    }  
+  
+    .image_firebase{
+      margin-top: 4.75%;
+      margin-left: 65%;
+      width: 31%;
+      margin-right: 10%;
+      position: absolute;
+    }
+  
   }
