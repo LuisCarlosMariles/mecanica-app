@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
@@ -24,11 +24,16 @@ export interface CubicleScheduleTemplate {
 
 export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
 
+  mobile: boolean = false; //To change HTML content depending on screen size
+  screenHeight: number;
+  screenWidth: number;
+
   constructor(
     public _professorsSchedule: ProfessorsScheduleService,
     public dialog: MatDialog,
   ) {
     this.dialogBox = new DialogCubicleComponent(dialog, _professorsSchedule);
+    this.onResize();//To change HTML content depending on screen size
   }
 
   public dialogBox: DialogCubicleComponent;
@@ -81,8 +86,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
   // public subscription9: Subscription;
 
   public floor: string;
-  public spinnerLoading: boolean = true;
-  public spinnerLoading2: boolean = true;
+  public isLoaded: boolean = false;
+  public isLoaded2: boolean = true;
 
   ngOnInit(): void {
     const time = new Date;
@@ -91,6 +96,19 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     this.subscriptions();
     this.weekdayName();
   }
+
+  @HostListener('window:resize', ['$event']) //To change HTML content depending on screen size
+  onResize(event?) {
+   this.screenHeight = window.innerHeight;
+   this.screenWidth = window.innerWidth;
+   if(this.screenWidth <= 900){
+     this.mobile = true;
+   }
+   else{
+    this.mobile = false;
+   }
+   console.log(this.mobile);
+}
 
 
   weekdayName() {  // returns the current day number from Time function
@@ -272,8 +290,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
         this.cbcData12.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
         this.weekdayData12 = this.cbcData12.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
       });
-      this.spinnerLoading = false;
-      this.spinnerLoading2 = false;
+      this.isLoaded = true;
+      this.isLoaded2 = false;
     });
 
     this.subscription13 = this._professorsSchedule.cubicle13().pipe(first()).subscribe(data => {
@@ -281,8 +299,8 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
         this.cbcData13.push(element.payload.doc.data()); // for each element inside firebase dayData1Data array, it pushes the contnet into cbcData1(local variable)
         this.weekdayData13 = this.cbcData13.filter(x => x.day == this.weekdayName()).shift(); // compares current weekday to the weekdays inside array and assigns that complete object in which that weekday is contained to a local dayData1 (local variable) it also takes the object out of the array with .reduce
       });
-      this.spinnerLoading = false;
-      this.spinnerLoading2 = false;
+      this.isLoaded = true;
+      this.isLoaded2 = false;
     });
 
 

@@ -8,11 +8,11 @@
     Alta
   </mat-radio-button>
 
-  <div *ngIf="spinnerLoading ; else loaded">
+  <ng-container *ngIf="!isLoaded">
     <mat-spinner color="primary" class="centered"></mat-spinner>
-  </div>
+  </ng-container>
 
-  <ng-template #loaded>
+  <ng-container *ngIf="isLoaded  && !mobile">
     <ng-container *ngIf="floor == undefined || floor =='second'; else firstFloor">
       <mat-card class="second-floor-card">
         <div *ngIf="cbcData8">
@@ -25,7 +25,7 @@
               <div class="text-inside-grid">M.C. Ana María Castañeda</div>
               <div>{{cubicleStatus('cubicle1')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle1')">
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
@@ -34,7 +34,7 @@
               <div class="text-inside-grid">M.C. Miguel Ángel Martínez Hernández</div>
               <div>{{cubicleStatus('cubicle2')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle2')">
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
@@ -43,7 +43,7 @@
               <div class="text-inside-grid">Vacante</div>
               <div>{{cubicleStatus('cubicle3')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle3')"><!-- ///////////////////////////// -->
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
@@ -52,7 +52,7 @@
               <div class="text-inside-grid">Dr. Álvaro Gonzalez Álvarez</div>
               <div>{{cubicleStatus('cubicle4')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle4')"><!-- ///////////////////////////// -->
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
@@ -61,7 +61,7 @@
               <div class="text-inside-grid">Dr. Miguel Ángel Martínez Romero</div>
               <div>{{cubicleStatus('cubicle12')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle12')">
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
@@ -72,7 +72,7 @@
               <!-- Rigoberto Zamora (5) -->
               <div>{{cubicleStatus('cubicle5')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle5')">
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
@@ -86,7 +86,7 @@
               <div class="text-inside-grid">M.C. Rigoberto Zamora Alarcón</div>
               <div>{{cubicleStatus('cubicle12')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle12')">
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile> -->
 
@@ -95,7 +95,7 @@
               <div class="text-inside-grid">Dr. Arili Cárdenas Robles</div>
               <div>{{cubicleStatus('cubicle6')}}</div>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle6')">
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
@@ -109,7 +109,7 @@
                 <mat-icon>list</mat-icon>
               </button>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle7')">
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
 
@@ -121,15 +121,15 @@
                 <mat-icon>list</mat-icon>
               </button>
               <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle8')">
-                <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+                <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
               </button>
             </mat-grid-tile>
-
+            <ng-template></ng-template>
           </mat-grid-list>
         </div>
       </mat-card>
     </ng-container>
-  </ng-template>
+
 
 
 
@@ -147,7 +147,7 @@
           <div class="text-inside-grid">Asistente de laboratorio</div>
           <div>{{cubicleStatus('cubicle13')}}</div>
           <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle13')">
-            <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+            <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
           </button>
         </mat-grid-tile>
 
@@ -156,7 +156,7 @@
           <div class="text-inside-grid">Vacante</div>
           <div>{{cubicleStatus('cubicle10')}}</div>
           <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle10')">
-            <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+            <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
           </button>
         </mat-grid-tile>
 
@@ -165,7 +165,7 @@
           <div class="text-inside-grid">Eddna Martínez</div>
           <div>{{cubicleStatus('cubicle9')}}</div>
           <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle9')">
-            <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+            <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
           </button>
         </mat-grid-tile>
 
@@ -181,11 +181,196 @@
           <div class="text-inside-grid">Ing. Juan Raúl Alcántara Ávila</div>
           <div>{{cubicleStatus('cubicle11')}}</div>
           <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle11')">
-            <mat-icon [ngStyle]="{'color':'white'}">info</mat-icon>
+            <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
           </button>
         </mat-grid-tile>
   
       </mat-grid-list>
     </mat-card>
   </ng-template>
-  </ng-template>
+</ng-template>
+</ng-container>
+
+
+<ng-container *ngIf="isLoaded && mobile">
+  <ng-container *ngIf="floor == undefined || floor =='second'; else firstFloor">
+    <mat-card class="second-floor-card">
+      <div *ngIf="cbcData8">
+        <mat-card-title>Planta alta</mat-card-title>
+        <mat-grid-list cols="7" rowHeight="2:1" class="grid">
+          <!-- <mat-grid-tile colspan="2" rowspan="2" class="transparent"></mat-grid-tile> -->
+
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle1')">
+            <!-- Ana María Castañeda (1) -->
+            <div class="text-inside-grid">M.C. Ana María Castañeda</div>
+            <div class="availability">{{cubicleStatus('cubicle1')}}</div>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle1')">
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle2')">
+            <!-- Cubículo vacante (2)-->
+            <div class="text-inside-grid">M.C. Miguel Ángel Martínez Hernández</div>
+            <div class="availability">{{cubicleStatus('cubicle2')}}</div>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle2')">
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle3')">
+            <!-- Cubículo vacante (3)-->
+            <div class="text-inside-grid">Vacante</div>
+            <div class="availability">{{cubicleStatus('cubicle3')}}</div>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle3')"><!-- ///////////////////////////// -->
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle4')">
+            <!-- Dr. Álvaro Gonzalez Álvarez (4) -->
+            <div class="text-inside-grid">Dr. Álvaro Gonzalez Álvarez</div>
+            <div class="availability">{{cubicleStatus('cubicle4')}}</div>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle4')"><!-- ///////////////////////////// -->
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+          <mat-grid-tile colspan="2" rowspan="4" class="transparent"></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent">
+            <span class="rotate">PASILLO</span>
+          </mat-grid-tile>
+
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle12')">
+            <!-- Miguel Ángel Martínez (12) -->
+            <div class="text-inside-grid">Dr. Miguel Ángel Martínez Romero</div>
+            <div class="availability">{{cubicleStatus('cubicle12')}}</div>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle12')">
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle5')">
+            <div class="text-inside-grid">M.C. Rigoberto Zamora Alarcón</div>
+            <!-- Rigoberto Zamora (5) -->
+            <div class="availability">{{cubicleStatus('cubicle5')}}</div>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle5')">
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle6')">
+            <!-- Arili Cárdenas (6)-->
+            <div class="text-inside-grid">Dr. Arili Cárdenas Robles</div>
+            <div class="availability">{{cubicleStatus('cubicle6')}}</div>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle6')">
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle7')">
+            <!-- Fernando Lara (7) -->
+            <div class="text-inside-grid">Dr. Fernando Lara Chávez</div>
+            <div class="availability">{{cubicleStatus('cubicle7')}}</div>
+            <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle7')">
+              <mat-icon>list</mat-icon>
+            </button>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle7')">
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+          <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle8')">
+            <!-- Israel Sauceda (8) -->
+            <div class="text-inside-grid"> Dr. Israel Sauceda Meza</div>
+            <div class="availability">{{cubicleStatus('cubicle8')}}</div>
+            <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cubicle8')">
+              <mat-icon>list</mat-icon>
+            </button>
+            <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle8')">
+              <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+            </button>
+          </mat-grid-tile>
+          <ng-template></ng-template>
+        </mat-grid-list>
+      </div>
+    </mat-card>
+  </ng-container>
+
+
+
+
+<ng-template #firstFloor>
+  <div *ngIf="spinnerLoading2 ; else loaded2">
+    <mat-spinner color="warn" class="centered"></mat-spinner>
+  </div>
+  <ng-template #loaded2>
+  <mat-card class="first-floor-card">
+    <mat-card-title>Planta baja</mat-card-title>
+    <mat-grid-list cols="8" rowHeight="2:1">
+      <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile>
+
+      <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle13')">
+        <div class="text-inside-grid">Asistente de laboratorio</div>
+        <div>{{cubicleStatus('cubicle13')}}</div>
+        <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle13')">
+          <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle10')">
+        <!-- Vacante arriba en medio planta baja (10) -->
+        <div class="text-inside-grid">Vacante</div>
+        <div>{{cubicleStatus('cubicle10')}}</div>
+        <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle10')">
+          <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle9')">
+        <!-- Eddna Martínez (9)  -->
+        <div class="text-inside-grid">Eddna Martínez</div>
+        <div>{{cubicleStatus('cubicle9')}}</div>
+        <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle9')">
+          <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+
+      <mat-grid-tile colspan="8" rowspan="1" rowHeight=".5:1">PASILLO</mat-grid-tile>
+
+      <mat-grid-tile colspan="1" rowspan="4" class="transparent"></mat-grid-tile> 
+
+      <mat-grid-tile colspan="2" rowspan="4" class="transparent"></mat-grid-tile>
+
+      <mat-grid-tile colspan="2" rowspan="4" [ngStyle]="tileColor('cubicle11')">
+        <!-- Juan Raúl Alcántara (11) -->
+        <div class="text-inside-grid">Ing. Juan Raúl Alcántara Ávila</div>
+        <div>{{cubicleStatus('cubicle11')}}</div>
+        <button mat-mini-fab color="accent" class="tile-button" (click)="dialogBox.openDialog('cubicle11')">
+          <mat-icon [ngStyle]="{'color':'white','margin-top':'-12px'}">info</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </mat-card>
+</ng-template>
+</ng-template>
+</ng-container>

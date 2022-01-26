@@ -1,8 +1,8 @@
-
+<!-- <button (click)=requestPermission()>Permiso</button> -->
 <!-- <div class="desktop">this is the content for desktop</div>
 <div *ngIf="mobile">this is the content for mobile</div> -->
 <mat-card color="accent" class="hourCard">
-  <div class="textInCard" >Hola {{ name }}, son las {{changeHourFormat()}} y las clases en los laboratorios son:</div>
+  <div class="textInCard" >{{ name }}, son las {{changeHourFormat()}} y las clases en los laboratorios son:</div>
 </mat-card>
 
 <ng-container *ngIf="!isLoaded">

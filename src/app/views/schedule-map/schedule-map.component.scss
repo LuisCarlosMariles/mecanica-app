@@ -213,7 +213,7 @@ mat-grid-tile {
     }
 
     .grid{
-        top:15%;
+        top:16%;
         position: absolute;
         width: 94.5%;
     }
@@ -233,7 +233,7 @@ mat-grid-tile {
         width: 21%;
         height: 5%; //new = makes a taller button than previous version
         left:75%;
-        top:92%;
+        top:94%;
         position: absolute;
         font-weight:bold;
     }
@@ -244,7 +244,7 @@ mat-grid-tile {
         width: 32%;
         height: 5%; //new = makes a taller button than previous version
         left:2%;
-        top:92%;
+        top:94%;
         position: absolute;
         font-weight:bold;
     }
@@ -252,7 +252,7 @@ mat-grid-tile {
     mat-grid-tile {
         background:white;
         text-align: center;
-        border: solid 1px #000;
+        border: solid 1px white;
         
         // flex-wrap: wrap;
     

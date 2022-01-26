@@ -40,6 +40,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 import { environment } from 'src/environments/environment';
 import { NavigationBarComponent } from './shared/navigation-bar/navigation-bar.component';
@@ -122,6 +123,7 @@ import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, 
     AngularFireDatabaseModule,
     AngularFireAuthModule,   
     AngularFireStorageModule,
+    AngularFireMessagingModule,
     // AngularFireStorage,
      
     MatInputModule,

@@ -15,6 +15,7 @@ import { ScheduleMapService } from 'src/app/data-services/schedule-map.service';
 import { Observable } from 'rxjs';
 import { EmailValidator } from '@angular/forms';
 import { HostListener } from "@angular/core";
+import { AngularFireMessaging } from '@angular/fire/messaging';
 
 export interface ClassroomTemplate {
   weekday: string;
@@ -45,6 +46,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     public _studyRoom: StudyRoomService,
     public angularAuth: AngularFireAuth,
     public _scheduleMap: ScheduleMapService,
+    private afMessaging: AngularFireMessaging
   ) {
     this.dialogBox = new DialogComponent(dialog);
     this.onResize();//To change HTML content depending on screen size
@@ -109,6 +111,13 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
 }
 
 
+  requestPermission() {
+  this.afMessaging.requestPermission
+    .subscribe(
+      () => { console.log('Permission granted!'); },
+      (error) => { console.error(error); },  
+    );
+  }
 
   weekdayName() {  // returns the current day number from Time function
     const dayNumber = this.day as number;
