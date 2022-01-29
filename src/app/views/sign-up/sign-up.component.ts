@@ -19,6 +19,7 @@ export class SignUpComponent implements OnInit{
   validationStyles: ValidationStyles;
   majorList: Object = MAJOR_ARRAY;
   emails = [];
+  hide = true;
 
 ///
   // showUsers(){

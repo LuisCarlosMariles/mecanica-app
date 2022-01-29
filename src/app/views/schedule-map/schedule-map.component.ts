@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 import { EmailValidator } from '@angular/forms';
 import { HostListener } from "@angular/core";
 import { AngularFireMessaging } from '@angular/fire/messaging';
+import { RegistrationService } from 'src/app/data-services/registration.service';
 
 export interface ClassroomTemplate {
   weekday: string;
@@ -46,11 +47,14 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     public _studyRoom: StudyRoomService,
     public angularAuth: AngularFireAuth,
     public _scheduleMap: ScheduleMapService,
-    private afMessaging: AngularFireMessaging
+    private afMessaging: AngularFireMessaging,
+    private _registrationService: RegistrationService,
   ) {
     this.dialogBox = new DialogComponent(dialog);
     this.onResize();//To change HTML content depending on screen size
   }
+
+
 
   public email: string = this.mainNavComponent.userEmail?.email;
   public name: string = this.email.substring(0, this.email.indexOf('@')).charAt(0).toUpperCase() + this.email.slice(1).substring(0, this.email.indexOf('@')-1);
@@ -447,6 +451,8 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
 
   //public dayData = []; // complete array of objects from that day and class
   // public completeClassroomData = [];
+  public firstName: string;
+  public lastName: string;
   public cienciasMaterialesClassroom: ClassroomTemplate;
   public mecanicaFluidosClassroom: ClassroomTemplate;
   public maquinasHerramientasClassroom: ClassroomTemplate;
@@ -465,6 +471,17 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
   public currentClassName;
 
   subscriptions() {
+
+    this._registrationService.getUser().subscribe(data => {
+      let name = data.map(element => element.payload.doc.data()).find(x => x.email == this.email);
+      // .map(element => element.payload.doc.data());
+      this.firstName = name?.firstName
+      this.lastName = name?.lastName;
+
+      console.log(name);
+      console.log('Hola ' + this.firstName + ' ' + this.lastName);
+    })
+
     this._scheduleMap.cienciasMaterialesClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
 
       let completeClassroomData = data.map(element => element.payload.doc.data()); // filling all the data from firebase class into variable

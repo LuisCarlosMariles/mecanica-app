@@ -2,8 +2,10 @@
 <!-- <div class="desktop">this is the content for desktop</div>
 <div *ngIf="mobile">this is the content for mobile</div> -->
 <mat-card color="accent" class="hourCard">
-  <div class="textInCard" >{{ name }}, son las {{changeHourFormat()}} y las clases en los laboratorios son:</div>
+  <div class="textInCard" >Hola {{ firstName }} {{ lastName }}, este es el laboratorio de mecánica</div>
+  <!-- , son las {{changeHourFormat()}} -->
 </mat-card>
+<div class="entrance" *ngIf="isLoaded">Entrada</div>
 
 <ng-container *ngIf="!isLoaded">
   <mat-spinner color="primary" class="centered"></mat-spinner>
@@ -160,8 +162,8 @@
     </mat-grid-tile>
 
   </mat-grid-list>
-  <button mat-raised-button color="accent" [routerLink]="['/completeSchedule']" class="completeScheduleButton">Horario completo</button>
-  <button mat-raised-button color="accent" [routerLink]="['/professors']" class="cubicleButton">Cubículos</button>
+  <!-- <button mat-raised-button color="accent" [routerLink]="['/completeSchedule']" class="completeScheduleButton">Horario completo</button>
+  <button mat-raised-button color="accent" [routerLink]="['/professors']" class="cubicleButton">Cubículos</button> -->
   <app-chat *ngIf="this._authService.chatApproval | async"></app-chat>
 </ng-container>
 

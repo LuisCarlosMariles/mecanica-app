@@ -15,8 +15,8 @@ export class RegistrationService {
 
    getUser(): Observable<any>{ // metodo para listar todos los estudiantes
     // console.log(this.firestore.collection('users').snapshotChanges().pipe(/*, map(element => element.map)*/    ));
-    return this.firestore.collection('users').snapshotChanges();/*, map(element => element.map)    );              */                     //dile al tio que es lo que pasa cuando quitas .pipe(first())
-  }
+    return this.firestore.collection('users', (ref) => ref.orderBy("email", "asc")).snapshotChanges();/*, map(element => element.map)    );              */                     //dile al tio que es lo que pasa cuando quitas .pipe(first())
+  } //AL RETURN DE ARRIBA LE AGREGUE LO DE ORDERBY PARA TENER LA LISTA DE OBJETO ORDENADOS CON SU EMAIL EN FORMA ASCENDENTE
 
   // emails = [];
   // allUsers(){

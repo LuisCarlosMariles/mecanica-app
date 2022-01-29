@@ -1,4 +1,11 @@
-
+.entrance{
+    font-size:15px;
+    font-style: normal !important;
+    margin-left: 95%;
+    top: 38%;  
+    position: relative;
+    z-index: 100 !important;
+}
 
 .mat-card{
     background-color:lightgoldenrodyellow;
@@ -103,7 +110,7 @@ div{
 mat-grid-tile {
     background:white;
     text-align: center;
-    border: solid 1px #000;
+    border: solid 1px white;
     // flex-wrap: wrap;
 
   }
@@ -129,6 +136,14 @@ mat-grid-tile {
 
 
 @media screen and (max-width: 900px) {
+
+    .entrance{
+        font-size:15px;
+        font-style: normal !important;
+        margin-left: 43%;
+        top: 1.5%;  
+        position: relative
+    }
     .mat-card{
         background-color:lightgoldenrodyellow;
     }
@@ -236,7 +251,7 @@ mat-grid-tile {
     //   }
     
     .hourCard{
-        height: 2%;
+        height: -1%;
     }
 
     .grid{
