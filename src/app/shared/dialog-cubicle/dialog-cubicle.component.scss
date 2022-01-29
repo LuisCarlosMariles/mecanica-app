@@ -10,6 +10,8 @@ body{
 .column2 {
     flex: 50%;
     float: right;
+    position: relative;
+    margin-top: -41% !important;
   }
 
 //   .verticalDivider{
@@ -115,4 +117,149 @@ h2{
   height: 100%;
   width: auto;
   left: 10%;
+}
+
+
+
+
+
+
+@media screen and (max-width: 900px) {
+  body{
+    width: 300px;
+    height: 550px;
+  }
+
+.column1 {
+  float: left;
+  // top: -500px !important; 
+  margin-top: -8% !important;
+  margin-bottom: 1%;
+  }
+
+.column2 {
+    flex: 25%;
+    float: left;
+    position: relative;
+    margin-top: -4% !important;
+  }
+
+  mat-list{
+    position: relative;
+    top: -25px;
+    left: -25px;
+  }
+
+.bottomSticky{
+  display:block;
+  position: relative;
+  bottom: 80px;
+  left: 10px;
+}
+
+.bottom-card {
+  background-color: rgb(255, 215, 64);
+  width: 90%;
+  height: 50px;
+  // display: block;
+  // position:inherit;
+  top: 350px;
+  margin-right: 25px;
+  margin-left: -5px;
+  // margin-bottom: -5%;
+}
+
+
+table {
+  top: -10px;
+  position: relative;
+  left: -30px;
+  width: 340px;
+}
+
+.startHour{
+    text-align: center !important; 
+}
+
+.header{
+    padding-left: 20px;
+}
+
+mat-list-item{
+    margin-top: -10px;
+    // margin-bottom: -20px;
+}
+
+mat-divider{
+    // // top: 15px;
+    // top: 40px
+    top: 37px;
+}
+
+
+h2{
+    margin-bottom: 0%;
+    // margin-left: 200px !important;
+}
+
+
+.textInCard{
+  width: 50%;
+  // display: inline-block;
+  font-size: 120%;
+  position: absolute;
+  top: 84%;
+  line-height: 95%;
+  left: 30%;
+}
+
+.text-in-card-double-photo{
+  width: 50%;
+  // display: inline-block;
+  font-size: 120%;
+  position: absolute;
+  top: 84%;
+  line-height: 95%;
+  left: 40%;
+}
+
+.image-cropper {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  left: -4%;
+}
+
+.image-cropper-2 {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  // right: 5%;
+  bottom: 100%;
+  left: 14%;
+  margin-top: 6px;
+}
+
+.profile-pic {
+  display: inline;
+  margin: 0 auto;
+  // margin-left: -25%; //centers the image
+  height: 100%;
+  width: auto;
+  left: -4%;
+}
+
+.profile-pic-2 {
+  margin: 0 auto;
+  // margin-left: -25%; //centers the image
+  height: 100%;
+  width: auto;
+  left: 14%;
+  margin-top: 0px;
+}
+
 }

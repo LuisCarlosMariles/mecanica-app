@@ -37,7 +37,7 @@
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="studyRoomColor()">
       <div *ngIf="spinnerLoading ; else studyLoaded">
-        <mat-spinner></mat-spinner>
+        <mat-spinner ></mat-spinner>
       </div>
 
         <ng-template #studyLoaded>
@@ -279,8 +279,8 @@
         Sala de asesorías
       </div>
       <span class="availability">{{currentClass('salaAsesorias')?.className}}</span>
-      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('design')">
-        <mat-icon class="tile-icon">list</mat-icon>
+      <button mat-mini-fab color="primary" class="tile-button-rowspan-4" (click)="dialogBox.openDialog('design')">
+        <mat-icon class="tile-icon-rowspan-4">list</mat-icon>
       </button>
     </mat-grid-tile>
 
@@ -296,7 +296,7 @@
 
     <mat-grid-tile colspan="5" rowspan="4" [ngStyle]="studyRoomColor()">
       <div *ngIf="spinnerLoading ; else studyLoaded">
-        <mat-spinner></mat-spinner>
+        <mat-spinner [diameter]="50"></mat-spinner>
       </div>
 
         <ng-template #studyLoaded>
@@ -304,7 +304,7 @@
             Sala de estudio
           </div>
           <div class="people-number">
-            {{peopleNumber}}
+            {{peopleNumber}} personas
           </div>
         </ng-template>
 
@@ -331,12 +331,12 @@
     <!-- <mat-grid-tile colspan="1" rowspan="1" >PASILLO</mat-grid-tile> -->
 
 
-    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('mecanicaFluidos')">
+    <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('mecanicaMateriales')">
       <div class="text-inside-grid">
-        Laboratorio de mecánica de fluidos
+        Mecánica de materiales
       </div>
-      <span class="availability">{{currentClass('mecanicaFluidos')?.className}}</span>
-      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaFluidos')">
+      <span class="availability">{{currentClass('mecanicaMateriales')?.className}}</span>
+      <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaMateriales')">
         <mat-icon class="tile-icon">list</mat-icon>
       </button>
     </mat-grid-tile>
@@ -353,7 +353,7 @@
     </mat-grid-tile>
     
   </mat-grid-list>
-  <button mat-raised-button color="accent" [routerLink]="['/completeSchedule']" class="completeScheduleButton">Horario completo</button>
-  <button mat-raised-button color="accent" [routerLink]="['/professors']" class="cubicleButton">Cubículos</button>
+  <!-- <button mat-raised-button color="accent" [routerLink]="['/completeSchedule']" class="completeScheduleButton">Horario completo</button>
+  <button mat-raised-button color="accent" [routerLink]="['/professors']" class="cubicleButton">Cubículos</button> -->
   <app-chat *ngIf="this._authService.chatApproval | async"></app-chat>
 </ng-container>

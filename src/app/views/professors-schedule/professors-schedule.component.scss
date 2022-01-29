@@ -44,115 +44,122 @@
 }
 
 .tile-button{
-  position:absolute;
-  display: list-item;
-  bottom: 2%;
-  right: 2%;
+position:absolute;
+display: list-item;
+bottom: 2%;
+right: 2%;
 }
 
 .planta-text{
-  font-size: 1.5em; 
-  font-weight: bolder;
+font-size: 1.5em; 
+font-weight: bolder;
 }
 
 .tile-button-2{
-  position:absolute;
-  display: list-item;
-  bottom: 2%;
-  right: 78%;
+position:absolute;
+display: list-item;
+bottom: 2%;
+right: 78%;
 }
 
 @media screen and (max-width: 900px) {
-  .availability{
-    // color: blue;
-    font-style: normal;
-    font-size: 100%;
-    line-height: 85%;
-    margin-top: 5%;
-    text-align: center;
+  
+.availability{
+  // color: blue;
+  font-style: normal;
+  font-size: 100%;
+  line-height: 85%;
+  margin-top: 15%;
+  text-align: center;
 }
 
-  mat-grid-tile {
-    background: transparent;
-  }
+mat-grid-tile {
+  background: transparent;
+}
 
-  .transparent{
-      background-color: transparent;
-  }
+.transparent{
+    background-color: blue;
+}
 
-  .label-spacing {
-    margin: 10px;
-  }
+.label-spacing {
+  margin: 10px;
+}
 
-  .second-floor-card {
-    width: 90%;
-    height: 80%;
-    left: 2%;
-    top: .1%;
-    background-color: transparent;
-    box-shadow: transparent;
-    overflow:hidden;
-  }
+.second-floor-card {
+  width: 85%;
+  height: 80%;
+  left: 2%;
+  margin-right: 0px;
+  top: .1%;
+  background-color: transparent;
+  box-shadow: transparent;
+  overflow:hidden;
+}
 
-  .first-floor-card {
-    max-width: 800px;
-    height: 475px;
-    left: 20%;
-    top: 2%;
-    background-color: transparent;
-    box-shadow: transparent;
-  }
-  span.rotate{
-    transform: rotate(-90deg);
-    // border: solid 1px #000;
+.first-floor-card {
+  width: 85%;
+  height: 475px;
+  left: 2%;
+  top: 2%;
+  background-color: transparent;
+  box-shadow: transparent;
+}
+span.rotate{
+  transform: rotate(-90deg);
+  // border: solid 1px #000;
 
-    position:absolute;
-  }
+  position:absolute;
+}
 
-  .grid{
-    left: 8%;
-    // position: absolute;
-    overflow:hidden;
-    margin-right: 0 auto;
-    // overflow-x: hidden;
-    
-  }
+.second-floor-grid{
+  left: 8%;
+  // position: absolute;
+  overflow:hidden;
+  margin-right: 0 auto;
+  // overflow-x: hidden;
+  
+}
 
-  .centered{
-  left: 40%;
-  margin-top: 50%;
-  width: 24px; 
-  height: 24px; 
-  }
+.first-floor-grid{
+  margin-top: 20%;
+}
 
-  .text-inside-grid{
-    font-weight:bold;
-    position: absolute;
-    margin-bottom: 90px;
-    align-self: center;
-    font-size: 100%;
-    top: 3%;
-    line-height: 100%;
+.centered{
+left: 40%;
+margin-top: 50%;
+width: 24px; 
+height: 24px; 
+}
+
+.text-inside-grid{
+  font-weight:bold;
+  position: absolute;
+  margin-bottom: 90px;
+  align-self: center;
+  font-size: 100%;
+  top: 3%;
+  line-height: 90%;
+  width: 103%;
 }
 
 .tile-button{
-  position:absolute;
-  display: list-item;
-  bottom: 2%;
-  right: 2%;
-  width: 25%;
-  height: 25%;
+position:absolute;
+display: list-item;
+bottom: 2%;
+right: 2%;
+width: 25%;
+height: 25%;
 }
 
 .planta-text{
-  font-size: 1.5em; 
-  font-weight: bolder;
+font-size: 1.5em; 
+font-weight: bolder;
 }
 
 .tile-button-2{
-  position:absolute;
-  display: list-item;
-  bottom: 2%;
-  right: 78%;
+position:absolute;
+display: list-item;
+bottom: 2%;
+right: 78%;
 }
 }

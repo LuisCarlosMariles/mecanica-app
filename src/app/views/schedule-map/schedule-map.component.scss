@@ -183,6 +183,13 @@ mat-grid-tile {
         font-size: 150%;
         width: 100%;
     }
+
+    .tile-icon-rowspan-4{
+        margin-top: -60% !important;
+        margin-left: 0%;
+        font-size: 150%;
+        width: 100%;
+    }
     
     .tile-button-long{
         position:absolute;
@@ -192,14 +199,34 @@ mat-grid-tile {
         width: 7%;
         height: 40%;
     }
+
+    .tile-button-rowspan-4{
+        position:absolute;
+        display: list-item;
+        bottom: 1%;
+        right: 1%;
+        width: 15%;
+        height: 37%;
+    }
+
+    // mat-spinner{
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     width: 15% !important;
+    //     height: 15% !important;
+    // }
     
-    .centered{
-        left: 40%;
-        margin-top: 40%; 
+    mat-spinner.centered{
+        margin-left: -12%;
+        margin-top: 60%;
         }
+
+ 
+
     
     .people-number{
-        font-size:100%;
+        font-size:150%;
     }
     // mat-grid-list {
     //     display: flex;
