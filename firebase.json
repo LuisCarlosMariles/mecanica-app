@@ -35,6 +35,7 @@
     "template": "co6"
   },
   "functions": {
-    "source": "functions"
+    "source": "functions",
+    "predeploy": "npm --prefix \"%RESOURCE_DIR%\" run build"
   }
 }

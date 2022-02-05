@@ -62,6 +62,7 @@ import { ScheduleVisualizationGuard } from './shared/guards/schedule-visualizati
 import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
 import { ProfessorsScheduleComponent } from './views/professors-schedule/professors-schedule.component';
 import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, DialogContentCubicle12, DialogContentCubicle13, DialogContentCubicle2, DialogContentCubicle3, DialogContentCubicle4, DialogContentCubicle5, DialogContentCubicle6, DialogContentCubicle7, DialogContentCubicle8, DialogContentCubicle9, DialogCubicleComponent } from './shared/dialog-cubicle/dialog-cubicle.component';
+import { CocoSsdComponent } from './shared/coco-ssd/coco-ssd.component';
 
 
 
@@ -106,6 +107,7 @@ import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, 
     DialogContentCubicle11,
     DialogContentCubicle12,
     DialogContentCubicle13,
+    CocoSsdComponent,
   ],
   
   imports: [
