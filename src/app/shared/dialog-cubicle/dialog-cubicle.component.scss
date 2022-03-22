@@ -204,13 +204,14 @@ h2{
 
 
 .textInCard{
-  width: 50%;
-  // display: inline-block;
-  font-size: 120%;
-  position: absolute;
-  top: 84%;
+  display: inline-block;
+  font-size: 110%;
+  position: relative;
+  margin-top: 0;
+  bottom:50px;
+  width: 90%;
   line-height: 95%;
-  left: 30%;
+  left: 15%;
 }
 
 .text-in-card-double-photo{

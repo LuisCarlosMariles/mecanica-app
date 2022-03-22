@@ -1,7 +1,7 @@
 <body>
     <h1>Pregunta algo</h1>
     
-    <div class="messagesBox">
+    <div class="messagesBox" #scrollMe id="messagesBox">
     <ul *ngFor="let message of allMessages | async">
         <li>
             <p>{{message.message}}</p>

@@ -596,7 +596,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     else {
       currentClassData = {
         weekday: null,
-        className: 'Salón disponible',
+        className: '', // Was Salon disponible
         teacher: 'Docente no disponible',
         startHour: 0,
         endHour: 0,
@@ -617,16 +617,18 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
 
   tileColorFirebase(className: ClassroomTemplate): object {
     if (!this.currentClass(className)?.weekday) {
-      const buttonStyles = {
-        'background-color': 'rgb(76, 175, 80)'
+      const availability = {
+        'background-color': 'rgb(76, 175, 80)',
+        'font-weight': 'bold',
+        // 'margin-top': '50%'
       };
-      return buttonStyles;
+      return availability;
     }
     else {
-      const buttonStyles = {
-        'background-color': 'rgb(244, 67, 54)'
+      const availability = {
+        'background-color': 'rgb(244, 67, 54)',
       };
-      return buttonStyles;
+      return availability;
     }
   }
 

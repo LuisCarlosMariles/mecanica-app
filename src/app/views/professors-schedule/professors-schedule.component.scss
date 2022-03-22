@@ -78,7 +78,7 @@ mat-grid-tile {
 }
 
 .transparent{
-    background-color: blue;
+    background-color: transparent;
 }
 
 .label-spacing {
@@ -112,16 +112,31 @@ span.rotate{
 }
 
 .second-floor-grid{
-  left: 8%;
+  left: 14%;
   // position: absolute;
   overflow:hidden;
   margin-right: 0 auto;
+  margin-top: 10%;
   // overflow-x: hidden;
   
 }
 
+.green{
+  position: absolute;
+  width: 3%;
+  left: 50%;
+  top: 1%
+}
+
+.red{
+  position: absolute;
+  width: 3%;
+  left: 50%;
+  top: 4%
+}
+
 .first-floor-grid{
-  margin-top: 20%;
+  margin-top: 40%;
 }
 
 .centered{
@@ -134,10 +149,10 @@ height: 24px;
 .text-inside-grid{
   font-weight:bold;
   position: absolute;
-  margin-bottom: 90px;
+  margin-bottom: 55%;
   align-self: center;
   font-size: 100%;
-  top: 3%;
+  top: 18%;
   line-height: 90%;
   width: 103%;
 }

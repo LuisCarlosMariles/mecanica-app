@@ -255,10 +255,25 @@ mat-grid-tile {
     }
 
     .grid{
-        top:16%;
+        top:17.5%;
         position: absolute;
         width: 94.5%;
     }
+
+    .green{
+        position: absolute;
+        width: 3%;
+        left: 60%;
+        top: 13%
+      }
+      
+    .red{
+        position: absolute;
+        width: 3%;
+        left: 60%;
+        top: 15%
+    }
+      
     
     .textInCard{
         margin: 0;

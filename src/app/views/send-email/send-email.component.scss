@@ -3,3 +3,12 @@
   left: 30%;
   top: 10%;
 }
+
+
+@media screen and (max-width: 900px) {
+  .example-card {
+    max-width: 350px;
+    left: 4%;
+    margin-top: 25%;
+  }
+}

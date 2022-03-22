@@ -7,6 +7,7 @@
       <a mat-list-item [routerLink]="['/completeSchedule']">Horario de laboratorios</a>
       <a mat-list-item [routerLink]="['/professors']">Horario de cubículos</a>
       <a mat-list-item [routerLink]="['/about']">Acerca del proyecto</a>
+      <a mat-list-item onclick="location.href='https://ingenieria.mxl.uabc.mx/index.php/descargas/finish/23-reinscripcion/37-horario-escolar-vigente';">Horario oficial vigente</a>
       <a mat-list-item *ngIf="user$ | async" (click)="onSignOut()" [routerLink]="['/signIn']"><b>Cerrar sesión</b></a>
       <!-- sliding menu options -->
     </mat-nav-list>

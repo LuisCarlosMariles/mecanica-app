@@ -41,3 +41,54 @@ mat-card-footer{
 .email{
     color: rgb(103, 58, 183);
 }
+
+
+@media screen and (max-width: 900px) {
+    body{
+        width: 100%;
+        height: 500px;
+        // align-content: center;
+        // margin: 0 auto;
+        // //  width: 80%;
+        //  vertical-align: middle;
+    }
+    
+    
+    
+    button, input{
+        margin-left: 20px;
+        
+       
+    }
+    
+    ul{
+        margin-left: 10%;
+        padding-bottom: 5px;
+        padding-left: 0;
+        list-style-type: none;
+    }
+    
+    mat-card-footer{
+        position: absolute;
+        margin-left: 10%;
+        bottom: 18%;
+    }
+    
+    .messagesBox{
+        height:350px;
+        width:300px;
+        // overflow: auto;
+        overflow: scroll;
+        scroll-margin-inline-end: 0;
+    }
+    
+    .bold{
+        font-weight:bold;
+    }
+    .email{
+        color: rgb(103, 58, 183);
+    }
+    
+    
+
+}

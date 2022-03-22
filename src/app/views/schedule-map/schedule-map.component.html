@@ -184,12 +184,20 @@
 
 
 <ng-container *ngIf="isLoaded && mobile">
+  
+  <span [ngStyle]="{'font-size': '100%;', 'margin-left':'64%', 'position':'absolute', 'top':'12.5%'}">Disponible en cubículo</span>
+  <img src="assets\green.PNG" class="green">
+  <span [ngStyle]="{'font-size': '10%;', 'margin-left':'64%', 'position':'absolute', 'top':'15%'}">Fuera de cubículo</span>
+  <img src="assets\red.PNG" class="red"> 
+
   <mat-grid-list cols="12" rowHeight="2:1" class="grid">
 
+  
+
     <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('salaAudiovisual')">
-      <div class="text-inside-grid">
+      <!-- <div class="text-inside-grid"> -->
         Sala audiovisual (Planta alta)
-      </div>
+      <!-- </div> -->
       <span class="availability">{{currentClass('salaAudiovisual')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('salaAudiovisual')">
         <mat-icon class="tile-icon">list</mat-icon>

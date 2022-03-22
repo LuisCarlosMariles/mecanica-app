@@ -107,7 +107,7 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
    else{
     this.mobile = false;
    }
-   console.log(this.mobile);
+  //  console.log(this.mobile);
 }
 
 

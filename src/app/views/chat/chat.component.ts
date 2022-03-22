@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -25,20 +25,24 @@ export class ChatComponent implements OnInit {
     private dialog: MatDialog,
     private _authService: AuthService,
     public _chatService: ChatService,
-    public chatDeleter: ChatComponentContent,
+    public chat: ChatComponentContent,
   ) {
   }
 
 
 
   ngOnInit(): void {
-    this.chatDeleter.deleteMessageAfter2Hours();
+    this.chat.deleteMessageAfter2Hours();
+    this.chat.scrollToBottom();
+    window.scrollTo(0,document.body.scrollHeight);
+
   }
 
 
   openChat() {
     this.dialog.open(ChatComponentContent);
-    this.chatDeleter.deleteMessageAfter2Hours();
+    this.chat.deleteMessageAfter2Hours();
+    this.chat.scrollToBottom();
   }
 
 }
@@ -51,7 +55,7 @@ export class ChatComponent implements OnInit {
   styleUrls: ['./chat-content/chat-content.component.scss'],
   providers: [MainNavComponent]
 })
-export class ChatComponentContent implements OnInit {
+export class ChatComponentContent implements OnInit, AfterViewInit, AfterViewChecked, AfterContentChecked, AfterContentInit {
   @ViewChild('newMessage') inputName; // accessing the reference element
   messageInput: FormGroup;
   allMessages: Observable<Message>;
@@ -63,6 +67,21 @@ export class ChatComponentContent implements OnInit {
   ) {
     this.allMessages = this._chatService.getMessages();
   }
+  ngAfterContentInit(): void {
+    this.scrollToBottom();
+  }
+  ngAfterContentChecked(): void {
+    // this.scrollToBottom();
+  }
+  ngAfterViewChecked(): void {
+    // this.scrollToBottom();
+  }
+  ngAfterViewInit(): void {
+    this.scrollToBottom();
+  }
+
+
+  @ViewChild('scrollMe', { static: true }) private myScrollContainer: ElementRef;
 
 
   public hour: number;
@@ -73,11 +92,22 @@ export class ChatComponentContent implements OnInit {
     // this._authService.getCurrentUser().subscribe(user => {
     //   this.email = user.email;
     // })
-
+    this.scrollToBottom();
     this._chatService.ngOnInit();
+    window.scrollTo(0,document.body.scrollHeight);
+    let objDiv = document.getElementById('messagesBox');
+    objDiv.scrollTop = objDiv.scrollHeight;
     
    // this.deleteMessageAfter2Hours();
   }
+  
+
+
+  scrollToBottom(): void {
+    try {
+        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }                 
+}
 
 
   sendMessage(message: string) {
