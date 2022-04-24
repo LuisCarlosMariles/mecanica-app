@@ -117,7 +117,7 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
     switch (dayNumber) {
       case 0:
         dayName = 'Lunes';
-        this.hour = 14.5;
+        this.hour = 1;
         break;
       case 1:
         dayName = 'Lunes';
@@ -136,7 +136,7 @@ export class ProfessorsScheduleComponent implements OnInit, OnDestroy {
         break;
       case 6:
         dayName = 'Lunes';
-        this.hour = 14.5;
+        this.hour = 1;
         break;
       default:
         break;

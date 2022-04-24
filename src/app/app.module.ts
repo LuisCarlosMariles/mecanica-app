@@ -27,6 +27,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -63,6 +64,8 @@ import { CheckSignInGuard } from './shared/guards/check-sign-in.guard';
 import { ProfessorsScheduleComponent } from './views/professors-schedule/professors-schedule.component';
 import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, DialogContentCubicle12, DialogContentCubicle13, DialogContentCubicle2, DialogContentCubicle3, DialogContentCubicle4, DialogContentCubicle5, DialogContentCubicle6, DialogContentCubicle7, DialogContentCubicle8, DialogContentCubicle9, DialogCubicleComponent } from './shared/dialog-cubicle/dialog-cubicle.component';
 import { CocoSsdComponent } from './shared/coco-ssd/coco-ssd.component';
+import { DialogOtherMajorComponent } from './shared/dialog-other-major/dialog-other-major.component';
+import { TermsComponent } from './shared/terms/terms.component';
 
 
 
@@ -108,6 +111,8 @@ import { CocoSsdComponent } from './shared/coco-ssd/coco-ssd.component';
     DialogContentCubicle12,
     DialogContentCubicle13,
     CocoSsdComponent,
+    DialogOtherMajorComponent,
+    TermsComponent,
   ],
   
   imports: [
@@ -145,6 +150,7 @@ import { CocoSsdComponent } from './shared/coco-ssd/coco-ssd.component';
     MatSlideToggleModule,
     MatRadioModule,
     MatDividerModule,
+    MatCheckboxModule,
     // Time
   ],
   providers: [AuthService, ChatComponentContent, ScheduleVisualizationGuard, CheckSignInGuard],

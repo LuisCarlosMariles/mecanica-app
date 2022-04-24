@@ -540,7 +540,7 @@ export class DialogContentSalaAudiovisual implements OnInit{
       this.dataSourceSalaAudivisual = new MatTableDataSource(dayData);
       this.dataSourceSalaAudivisual.sort = this.sort;
       this.loadCompleted = true;
-      console.log(dayData.length)
+      // console.log(dayData.length) // commented in release version
       if(dayData.length == 0  || dayData == undefined){
         this.isWeekend = true;
       }

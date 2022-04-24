@@ -17,6 +17,8 @@ import { EmailValidator } from '@angular/forms';
 import { HostListener } from "@angular/core";
 import { AngularFireMessaging } from '@angular/fire/messaging';
 import { RegistrationService } from 'src/app/data-services/registration.service';
+import { DialogOtherMajorComponent } from 'src/app/shared/dialog-other-major/dialog-other-major.component';
+
 
 export interface ClassroomTemplate {
   weekday: string;
@@ -34,6 +36,8 @@ export interface ClassroomTemplate {
 
 export class ScheduleMapComponent implements OnInit, OnDestroy {
 
+  otherMajor: boolean;
+  otherMajorCard: DialogComponent;
   dialogBox: DialogComponent;
   mobile: boolean = false; //To change HTML content depending on screen size
   screenHeight: number;
@@ -65,13 +69,15 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
   day: Number;
   peopleNumber: Number = 0;
   botoncito() {
-    console.log(this.peopleNumber[0]);
+    // console.log(this.peopleNumber[0]); // commented before release version
   }
 
   // name: string;
 
   public verifiedBoolean: boolean; // prueba
   ngOnInit() {
+    this.openOtherMajorCard();
+    
     // if (window.screen.width === 900) { // 768px portrait
     //   this.mobile = true;
     // }
@@ -101,6 +107,25 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
     this.hourFirebase = time.getHours();
   }
 
+  public major: string;
+  openOtherMajorCard(){
+    let isMech = this._authService.getCurrentUser().subscribe(user => {
+      let email = user?.email;
+      this._registrationService.getUser().subscribe(data => {
+        let name = data.map(element => element.payload.doc.data()).find(x => x.email == email);
+        this.major = name?.major.major;
+        if(this.major == 'Ingeniería mecánica'){
+          return
+        } 
+        else{
+          this.dialog.open(DialogOtherMajorComponent)
+        }
+        // console.log('Hola '+ this.major ); // commented before release version
+      });
+      
+    });
+  }
+
   @HostListener('window:resize', ['$event']) //To change HTML content depending on screen size
   onResize(event?) {
    this.screenHeight = window.innerHeight;
@@ -111,7 +136,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
    else{
     this.mobile = false;
    }
-   console.log(this.mobile);
+  //  console.log(this.mobile); // commented before release version
 }
 
 
@@ -478,8 +503,8 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
       this.firstName = name?.firstName
       this.lastName = name?.lastName;
 
-      console.log(name);
-      console.log('Hola ' + this.firstName + ' ' + this.lastName);
+      // console.log(name); // commented before release version
+      // console.log('Hola ' + this.firstName + ' ' + this.lastName); // commented before release version
     })
 
     this._scheduleMap.cienciasMaterialesClassroom().pipe(first()).subscribe(data => { // subscribing to cienciasMateriales class
@@ -608,10 +633,10 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
 
   tileTest(classTest) {
     if (this.currentClass(classTest).weekday) {
-      console.log(true);
+      // console.log(true);  // commented before release version
     }
     else {
-      console.log(false);
+      // console.log(false);  // commented before release version
     }
   }
 

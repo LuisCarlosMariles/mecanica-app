@@ -7,6 +7,9 @@ import { AuthService } from '../../data-services/auth.service';
 import { RegistrationService } from '../../data-services/registration.service'
 import { Router } from '@angular/router';
 import { MainNavComponent } from '../../main-nav/main-nav.component'
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
+import { TermsComponent } from 'src/app/shared/terms/terms.component';
 
 @Component({
 
@@ -20,6 +23,7 @@ export class SignUpComponent implements OnInit{
   majorList: Object = MAJOR_ARRAY;
   emails = [];
   hide = true;
+  // termsDialog: DialogComponent;
 
 ///
   // showUsers(){
@@ -37,9 +41,11 @@ export class SignUpComponent implements OnInit{
     private authentication: AuthService,
     private route: Router,
     private mainNav: MainNavComponent,
-    public registerDatabase: RegistrationService
+    public registerDatabase: RegistrationService,
+    public dialog: MatDialog,
+    // public term: TermsComponent,
   ) {
-
+    // this.termsDialog = new TermsComponent();
     this.validationStyles = new ValidationStyles;
   }
   ngOnInit(): void {
@@ -53,13 +59,18 @@ export class SignUpComponent implements OnInit{
       });
   }
 
+  openTermsDialogBox(){
+    this.dialog.open(TermsComponent)
+  }
+
   signUpForm = this.fb.group({ // declaration and buildinf of the form
     firstName: ['', [Validators.required, Validators.pattern('^[a-z A-Z \u00c0-\u00FF]*$')]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-z A-Z \u00c0-\u00FF]*$')]],
     email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@uabc.edu.mx$')]],
     password: ['', [Validators.required, Validators.minLength(8)]],
     passwordRepeated: ['', [Validators.required, Validators.minLength(8)]],
-    major: ['']
+    major: [''],
+    terms: [false, Validators.required]
   });
 
   dataInput() {// fills data object with input data
@@ -69,7 +80,8 @@ export class SignUpComponent implements OnInit{
       email: this.signUpForm.get('email').value,
       password: this.signUpForm.get('password').value,
       passwordRepeated: this.signUpForm.get('passwordRepeated').value,
-      major: this.signUpForm.get('major').value
+      major: this.signUpForm.get('major').value,
+      terms: this.signUpForm.get('terms').value
     };
     return data;
   }

@@ -7,6 +7,26 @@
     z-index: 100 !important;
 }
 
+.grid{
+    top:17.5%;
+    position: absolute;
+
+}
+
+.monitorGreen{
+    position: absolute;
+    width: 1%;
+    left:76.75%;
+    top: 94%;
+  }
+  
+.monitorRed{
+    position: absolute;
+    width: 1%;
+    left:76.75%;
+    top: 96.5%;
+}
+
 .mat-card{
     background-color:lightgoldenrodyellow;
 }
@@ -121,6 +141,8 @@ mat-grid-tile {
       left: .5%;
       
   }
+
+  
 
 
 

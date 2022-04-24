@@ -13,6 +13,10 @@
 
 
 <ng-container *ngIf="isLoaded && !mobile">
+  <span [ngStyle]="{'font-size': '100%;', 'margin-left':'78%', 'position':'absolute', 'top':'93.75%'}">Disponible en cubículo</span>
+  <img src="assets\green.PNG" class="monitorGreen">
+  <span [ngStyle]="{'font-size': '10%;', 'margin-left':'78%', 'position':'absolute', 'top':'96%'}">Fuera de cubículo</span>
+  <img src="assets\red.PNG" class="monitorRed"> 
   <mat-grid-list cols="7" rowHeight="2:1" class="grid">
 
     <mat-grid-tile colspan="1" rowspan="5" [ngStyle]="tileColorFirebase('mantenimiento')">
@@ -28,7 +32,7 @@
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('celdaManufactura')">
       <div class="text-inside-grid">
-        Celda de manufactura
+        Celda de manufactura / multiejes
       </div>
       <span class="availability">{{currentClass('celdaManufactura')?.className }}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('celdaManufactura')">
@@ -309,12 +313,12 @@
         <mat-spinner [diameter]="50"></mat-spinner>
       </div>
 
-        <ng-template #studyLoaded>
+        <ng-template #studyLoaded> <!--Por el momento no está activo por la pandemia-->
           <div class="text-inside-grid">
-            Sala de estudio
+            No disponible por el momento
           </div>
           <div class="people-number">
-            {{peopleNumber}} personas
+            <!-- {{peopleNumber}} personas -->
           </div>
         </ng-template>
 
@@ -329,7 +333,7 @@
 
     <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('celdaManufactura')">
       <div class="text-inside-grid">
-        Celda de manufactura
+        Celda de manufactura / multiejes
       </div>
       <span class="availability">{{currentClass('celdaManufactura')?.className }}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('celdaManufactura')">

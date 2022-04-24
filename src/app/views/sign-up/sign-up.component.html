@@ -1,3 +1,4 @@
+ 
 <mat-card>
   <mat-card-title>Registrar</mat-card-title>
 <form class="example-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
@@ -48,10 +49,16 @@
     </mat-select>
   </mat-form-field>
 
+  
+  <!-- <mat-label>Términos y condiciones</mat-label> -->
+
+  <div class="conditions">Al hacer clic en "Registrarse", aceptas nuestra <a (click)="this.openTermsDialogBox()">Política de datos</a>.</div>
+
+
   <div *ngIf="!isFormValid" class="text-danger">Por favor registre los datos de manera correcta</div>
   
   <div>
-    <button mat-raised-button color="accent" type="submit">Registrar</button>
+    <button mat-raised-button color="accent" type="submit">Registrarse</button>
   </div>
   <div *ngIf="emailExists" class="text-danger">Error en el registro</div>
 

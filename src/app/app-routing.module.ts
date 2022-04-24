@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'sendVerificationEmail', component: SendEmailComponent},
   {path: 'about', component: AboutComponent},
   {path: 'professors', canActivate:[ScheduleVisualizationGuard], component: ProfessorsScheduleComponent},
-  {path:'',redirectTo:'about', pathMatch: 'full' },
+  {path:'',redirectTo:'scheduleHome', pathMatch: 'full' },
 ];
 
 @NgModule({
