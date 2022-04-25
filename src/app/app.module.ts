@@ -66,6 +66,7 @@ import { DialogContentCubicle1, DialogContentCubicle10, DialogContentCubicle11, 
 import { CocoSsdComponent } from './shared/coco-ssd/coco-ssd.component';
 import { DialogOtherMajorComponent } from './shared/dialog-other-major/dialog-other-major.component';
 import { TermsComponent } from './shared/terms/terms.component';
+import { DialogAnnouncementsComponent } from './shared/dialog-announcements/dialog-announcements.component';
 
 
 
@@ -113,6 +114,7 @@ import { TermsComponent } from './shared/terms/terms.component';
     CocoSsdComponent,
     DialogOtherMajorComponent,
     TermsComponent,
+    DialogAnnouncementsComponent,
   ],
   
   imports: [

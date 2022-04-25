@@ -541,7 +541,7 @@ export class DialogContentSalaAudiovisual implements OnInit{
       this.dataSourceSalaAudivisual.sort = this.sort;
       this.loadCompleted = true;
       // console.log(dayData.length) // commented in release version
-      if(dayData.length == 0  || dayData == undefined){
+      if(dayData?.length == 0  || dayData == undefined){
         this.isWeekend = true;
       }
     });

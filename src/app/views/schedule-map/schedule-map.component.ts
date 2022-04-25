@@ -18,6 +18,7 @@ import { HostListener } from "@angular/core";
 import { AngularFireMessaging } from '@angular/fire/messaging';
 import { RegistrationService } from 'src/app/data-services/registration.service';
 import { DialogOtherMajorComponent } from 'src/app/shared/dialog-other-major/dialog-other-major.component';
+import { DialogAnnouncementsComponent } from 'src/app/shared/dialog-announcements/dialog-announcements.component';
 
 
 export interface ClassroomTemplate {
@@ -77,7 +78,7 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
   public verifiedBoolean: boolean; // prueba
   ngOnInit() {
     this.openOtherMajorCard();
-    
+    this.openAnnouncement();
     // if (window.screen.width === 900) { // 768px portrait
     //   this.mobile = true;
     // }
@@ -124,6 +125,10 @@ export class ScheduleMapComponent implements OnInit, OnDestroy {
       });
       
     });
+  }
+
+  openAnnouncement(){
+    this.dialog.open(DialogAnnouncementsComponent);
   }
 
   @HostListener('window:resize', ['$event']) //To change HTML content depending on screen size

@@ -13,9 +13,9 @@
 
 
 <ng-container *ngIf="isLoaded && !mobile">
-  <span [ngStyle]="{'font-size': '100%;', 'margin-left':'78%', 'position':'absolute', 'top':'93.75%'}">Disponible en cubículo</span>
+  <span [ngStyle]="{'font-size': '100%;', 'margin-left':'78%', 'position':'absolute', 'top':'93.75%'}">Aula disponible</span>
   <img src="assets\green.PNG" class="monitorGreen">
-  <span [ngStyle]="{'font-size': '10%;', 'margin-left':'78%', 'position':'absolute', 'top':'96%'}">Fuera de cubículo</span>
+  <span [ngStyle]="{'font-size': '10%;', 'margin-left':'78%', 'position':'absolute', 'top':'96%'}">Aula en clase</span>
   <img src="assets\red.PNG" class="monitorRed"> 
   <mat-grid-list cols="7" rowHeight="2:1" class="grid">
 
@@ -70,7 +70,7 @@
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('cienciasMateriales')">
       <div class="text-inside-grid">
-        Laboratorio de ciencia de materiales
+        Laboratorio de ciencias de materiales
       </div>
       <span class="availability">{{currentClass('cienciasMateriales')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cienciasMateriales')">
@@ -80,7 +80,7 @@
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('mecanicaFluidos')">
       <div class="text-inside-grid">
-        Laboratorio de mecánica de fluidos
+        Laboratorio de térmica y mecánica de fluidos
       </div>
       <span class="availability">{{currentClass('mecanicaFluidos')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaFluidos')">
@@ -104,7 +104,7 @@
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('mecanicaMateriales')">
       <div class="text-inside-grid">
-        Mecánica de materiales
+        Laboratorio de mecánica de materiales
       </div>
       <span class="availability">{{currentClass('mecanicaMateriales')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaMateriales')">
@@ -124,7 +124,7 @@
 
     <mat-grid-tile colspan="1" rowspan="2" [ngStyle]="tileColorFirebase('salaAsesorias')">
       <div class="text-inside-grid">
-        Sala de asesorías
+        Metrología / Sala de asesorías
       </div>
       <span class="availability">{{currentClass('salaAsesorias')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('design')">
@@ -189,9 +189,9 @@
 
 <ng-container *ngIf="isLoaded && mobile">
   
-  <span [ngStyle]="{'font-size': '100%;', 'margin-left':'64%', 'position':'absolute', 'top':'12.5%'}">Disponible en cubículo</span>
+  <span [ngStyle]="{'font-size': '100%;', 'margin-left':'64%', 'position':'absolute', 'top':'12.5%'}">Aula disponible</span>
   <img src="assets\green.PNG" class="green">
-  <span [ngStyle]="{'font-size': '10%;', 'margin-left':'64%', 'position':'absolute', 'top':'15%'}">Fuera de cubículo</span>
+  <span [ngStyle]="{'font-size': '10%;', 'margin-left':'64%', 'position':'absolute', 'top':'15%'}">Aula en clase</span>
   <img src="assets\red.PNG" class="red"> 
 
   <mat-grid-list cols="12" rowHeight="2:1" class="grid">
@@ -232,7 +232,7 @@
 
     <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('mecanicaFluidos')">
       <div class="text-inside-grid">
-        Laboratorio de mecánica de fluidos
+        Laboratorio de térmica y mecánica de fluidos
       </div>
       <span class="availability">{{currentClass('mecanicaFluidos')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaFluidos')">
@@ -256,7 +256,7 @@
 
     <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('cienciasMateriales')">
       <div class="text-inside-grid">
-        Laboratorio de ciencia de materiales
+        Laboratorio de ciencias de materiales
       </div>
       <span class="availability">{{currentClass('cienciasMateriales')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('cienciasMateriales')">
@@ -290,7 +290,7 @@
 
     <mat-grid-tile colspan="5" rowspan="4" [ngStyle]="tileColorFirebase('salaAsesorias')">
       <div class="text-inside-grid">
-        Sala de asesorías
+        Metrología / Sala de asesorías
       </div>
       <span class="availability">{{currentClass('salaAsesorias')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button-rowspan-4" (click)="dialogBox.openDialog('design')">
@@ -347,7 +347,7 @@
 
     <mat-grid-tile colspan="5" rowspan="5" [ngStyle]="tileColorFirebase('mecanicaMateriales')">
       <div class="text-inside-grid">
-        Mecánica de materiales
+        Laboratorio de mecánica de materiales
       </div>
       <span class="availability">{{currentClass('mecanicaMateriales')?.className}}</span>
       <button mat-mini-fab color="primary" class="tile-button" (click)="dialogBox.openDialog('mecanicaMateriales')">

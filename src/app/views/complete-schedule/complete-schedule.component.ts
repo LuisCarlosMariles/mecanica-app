@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MANUFACTURE_LAB_ARRAY, DESIGN_LAB_ARRAY, THERMO_LAB_ARRAY, FLUIDS_LAB_ARRAY, LaboratoriesTemplate } from '../../models/laboratories';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -17,8 +17,11 @@ export class CompleteScheduleComponent implements OnInit {
     public _scheduleMap: ScheduleMapService
   ) { }
 
+  @ViewChild(MatSort) sort: MatSort;
+
   ngOnInit(): void {
     this.subscriptions();
+    
   }
   
   MANUFACTURE_ARRAY = MANUFACTURE_LAB_ARRAY;
@@ -125,6 +128,7 @@ export class CompleteScheduleComponent implements OnInit {
       let mergedObjects = [].concat.apply([], arrayOfArrays); //separates information from arrays into individual objects
 
       this.classData2 = mergedObjects;
+
 
       // this.dataSource1 = completeClassroomData.filter(x => x == day)
 
@@ -245,7 +249,8 @@ export class CompleteScheduleComponent implements OnInit {
   }
 
   mecanicaFluidosClasses(dayNumberInput) {
-    this.dataSource2 = new MatTableDataSource(this.classData2.filter(x => x.dayNumber == dayNumberInput));  
+    this.dataSource2 = new MatTableDataSource(this.classData2.filter(x => x.dayNumber == dayNumberInput)); 
+    
     return this.dataSource2;
   }
 

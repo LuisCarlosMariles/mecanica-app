@@ -53,7 +53,7 @@ export class MainNavComponent implements OnInit {
           // console.log('User->', user);  // commented on final version
         }
         else {
-          console.log('No user');
+          // console.log('No user'); //commented on realese version
         }
       }
     );
